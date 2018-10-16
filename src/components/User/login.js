@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+
 class Login extends Component {
 
     state = {
         username:'',
         email:'',
         password:'',
+        success:false
     }
     ////////////////Login ////////////////////
     handleInputUsername = (event) => {
@@ -23,12 +25,11 @@ class Login extends Component {
          }
         axios.post('/api/login', { user })
              .then(function(response){
-                 console.log(response)
                  console.log(response.data)
-             })
-             .catch(error => {
-                console.log(error.response)
-            });
+                 if(response.data.code === 200){
+                     /////future work
+                 }
+             });
     }
     updateForm = (newState) =>{
         this.setState({
