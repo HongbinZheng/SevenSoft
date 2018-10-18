@@ -7,7 +7,7 @@ npm run dev
 
 type it under the root path "/node_simple_server"
 better dont change the root floder name, not sure it will work or not after you change it
-
+(FOR SETUP ONLY)
 server:
 npm install http-proxy-middleware --save
 npm init
@@ -17,9 +17,12 @@ client:
 npm install axios react-router-dom --save
 
 10/18/2018 UPDATE
+
 install depencies
 npm install jsonwebtoken --save
 npm install jwt-decode --save
+
+
 create authserver.js
 modify login.js
 create item.js
