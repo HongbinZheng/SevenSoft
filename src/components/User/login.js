@@ -1,15 +1,22 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import Authserver from '../authserver'
 
 
 class Login extends Component {
 
-    state = {
-        username:'',
-        email:'',
-        password:'',
-        success:false
-    }
+    constructor(props) {
+		super(props)
+		this.state = {
+            username:'',
+            password:'',
+            isAuth:false,
+            code:null
+        }
+        this.submitLogin = this.submitLogin.bind(this)
+        this.Auth = new Authserver();
+	}
+
+    
     ////////////////Login ////////////////////
     handleInputUsername = (event) => {
         this.setState({username:event.target.value})
@@ -17,25 +24,43 @@ class Login extends Component {
     handleInputPassword = (event) => {
         this.setState({password:event.target.value})
     }
+
+
     submitLogin = (e) =>{
         e.preventDefault();
-         const user ={
-             username: this.state.username,
-             password: this.state.password
-         }
-        axios.post('/api/login', { user })
-             .then(function(response){
-                 console.log(response.data)
-                 if(response.data.code === 200){
-                     /////future work
-                 }
-             });
+         this.Auth.login(this.state.username,this.state.password)
+            
     }
+
     updateForm = (newState) =>{
         this.setState({
             State:newState
         })
     }
+
+    showValidation = (data) =>{
+        let errorMessage = null; 
+        if(data.code !== null && data.code !==200){
+            if(data.username === ""){
+                data.code = null;
+                errorMessage = (<div>
+                    Need to enter username;
+                </div>)
+            }else if( data.password === ""){
+                data.code = null;
+                errorMessage = (<div>
+                    Need to enter password;
+                </div>)
+            }else{
+           errorMessage =( <div className="label_error">
+                {data.message}
+            </div>)}
+        }
+        return errorMessage
+    }
+
+    
+
 render(){
     return (
         <div className="login_container">
@@ -59,6 +84,8 @@ render(){
             </div>
             <button type="submit">Log in</button>
             </form>
+            { this.showValidation(this.state) }
+            {this.state.code === 200 ? <Authserver user={this.state}/> : null}
             </div>
     );
 }   

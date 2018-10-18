@@ -4,10 +4,11 @@ import { Route, Switch } from 'react-router-dom';
 import Home from './components/home';
 import User from './components/User/User';
 import Layout from './hoc/layout/layout';
-import Beverages from './components/items/beverages/beverages';
-import Dairy from './components/items/dairy/dairy';
-import Meats from './components/items/meats/meats';
-import Produce from './components/items/produce/Produce';
+import Aisle from './components/items/aisle'
+//////////testing//////////
+import Profile from './components/User/profile';
+import Authserver from './components/authserver';
+/////////////////////////////////////////
 
 class Router extends Component {
     render() {
@@ -16,10 +17,9 @@ class Router extends Component {
                 <Switch>
                     <Route path="/" exact component={Home} />
                     <Route path="/User" exact component={User}/>
-                    <Route path="/Beverages" exact component={Beverages}/>
-                    <Route path="/dairy" exact component={Dairy}/>
-                    <Route path="/meats" exact component={Meats}/>
-                    <Route path="/Produce" exact component={Produce}/>
+                    <Route path='/profile' exact component={Profile}/>
+                    <Route path='/abc' exact component={Authserver}/>
+                    <Route path='/:aisle' exact component={Aisle} />
                 </Switch>
             </Layout>
         );
