@@ -10,7 +10,8 @@ class Login extends Component {
             username:'',
             password:'',
             isAuth:false,
-            code:null
+            code:null,
+            message:""
         }
         this.submitLogin = this.submitLogin.bind(this)
         this.Auth = new Authserver();
@@ -28,8 +29,14 @@ class Login extends Component {
 
     submitLogin = (e) =>{
         e.preventDefault();
-         this.Auth.login(this.state.username,this.state.password)
-            
+         this.Auth.login(this.state.username,this.state.password) 
+                .then(res => {
+                    console.log(res.data)
+                    const data = res.data;
+                   // this.setState(data)
+                    console.log(this.state)
+                   // window.location='/'
+                })
     }
 
     updateForm = (newState) =>{
