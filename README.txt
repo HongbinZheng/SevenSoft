@@ -12,6 +12,9 @@ client:
 npm install axios react-router-dom --save
 npm install http-proxy-middleware --save
 
+use: npm install
+to install all depencies in the package.json
+
 10/18/2018 UPDATE
 install depencies
 npm install jsonwebtoken --save
@@ -20,3 +23,6 @@ create authserver.js
 modify login.js
 create item.js
 modify srever.js
+
+10/22/2018 update
+basic validation for login. able to display error message if user enter wrong password or didn't enter user name
