@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Authserver from '../authserver'
-
+import axios from 'axios'
 
 class Login extends Component {
 
@@ -11,10 +11,11 @@ class Login extends Component {
             password:'',
             isAuth:false,
             code:null,
-            message:""
+            message:"",
+            token:''
         }
         this.submitLogin = this.submitLogin.bind(this)
-        this.Auth = new Authserver();
+        //this.Auth = new Authserver();
 	}
 
     
@@ -29,13 +30,19 @@ class Login extends Component {
 
     submitLogin = (e) =>{
         e.preventDefault();
-         this.Auth.login(this.state.username,this.state.password) 
+        let username = this.state.username;
+        let password = this.state.password;
+        axios.post('/api/login',{username,password}) 
                 .then(res => {
-                    console.log(res.data)
-                    const data = res.data;
-                   // this.setState(data)
+                    if(res.data.code === 200){
+                    localStorage.setItem('id_token',res.data.token);
+                    let data = res.data;
+                    this.setState({data})
                     console.log(this.state)
-                   // window.location='/'
+                    window.location='/'}else{
+                    let data = res.data;
+                    this.setState({data})
+                    }
                 })
     }
 
@@ -47,13 +54,14 @@ class Login extends Component {
 
     showValidation = (data) =>{
         let errorMessage = null; 
+        console.log(data)
         if(data.code !== null && data.code !==200){
-            if(data.username === ""){
+            if(this.state.username === ""){
                 data.code = null;
                 errorMessage = (<div>
                     Need to enter username;
                 </div>)
-            }else if( data.password === ""){
+            }else if( this.state.password === ""){
                 data.code = null;
                 errorMessage = (<div>
                     Need to enter password;
@@ -62,7 +70,7 @@ class Login extends Component {
            errorMessage =( <div className="label_error">
                 {data.message}
             </div>)}
-        }
+        }else{errorMessage = null;}
         return errorMessage
     }
 
@@ -91,8 +99,7 @@ render(){
             </div>
             <button type="submit">Log in</button>
             </form>
-            { this.showValidation(this.state) }
-            {this.state.code === 200 ? <Authserver user={this.state}/> : null}
+            {this.state.data ? this.showValidation(this.state.data) : null }
             </div>
     );
 }   
