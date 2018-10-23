@@ -5,7 +5,7 @@ const mysql = require('mysql');
 var bcrypt = require('bcryptjs');
 var salt = bcrypt.genSaltSync(10);
 const jwt = require('jsonwebtoken');
-
+var localStorage = require('localStorage');
 
 // const urlencodeParser = bodyParser.urlencoded({extended:false})
  const jsonParser = bodyParser.json();
@@ -65,7 +65,7 @@ app.post('/api/login',(req,res)=>{
             if(bcrypt.compareSync(password,results[0].password)){
               var SERECT = "superserect"
               var username = req.body.username;
-              var token = jwt.sign(Buffer.from(username,'utf8'),SERECT)
+              var token = jwt.sign(Buffer.from(username,'utf8'),SERECT);
                 res.send({
                   "code":200,
                   "message":"success login",
