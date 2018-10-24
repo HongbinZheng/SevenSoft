@@ -1,8 +1,8 @@
 ## Install Instructions
-Run 'npm install' in 'client' directory to install all dependencies in the package.json
+Run `npm install` in 'client' directory to install all dependencies in the package.json
 
 ## Run Project
-Run 'npm run dev' inside the 'SevenSoft' directory
+Run `npm run dev` inside the 'SevenSoft' directory
 
 ## Changelog
 
