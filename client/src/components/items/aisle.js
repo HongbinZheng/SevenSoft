@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import ReactStars from 'react-stars';
+
 class Aisle extends Component {
     state = { item:[]
     };
@@ -30,7 +32,14 @@ render() {
                 <div class="card-body">
                 <h2 class="card-title" style={{textAlign:"center",background:"#E2D2D2"}}>{items.name}</h2>
                 <p class="card-text" style={{textAlign:"center",background:"#D1B9B9"}}>{items.price * items.discount}</p>
-                <p class="card-text" style={{textAlign:"center"}}>Rating:{items.avgstars}</p>
+                <p class="card-text" style={{background:"#E2D2D2"}}>
+                <ReactStars
+                    count={5}
+                    value={items.avgstars}
+                    size={24}
+                    edit={false}
+                    color2={'#ffd700'} />
+                </p>
                 <a href="#" class="btn btn-primary" >Add to cart</a>
                 </div>
             </div>
