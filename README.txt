@@ -26,3 +26,7 @@ modify srever.js
 
 10/22/2018 update
 basic validation for login. able to display error message if user enter wrong password or didn't enter user name
+
+10/24/2018 update
+update basic look for aisle, and rating star
+new depencies: react-stars
