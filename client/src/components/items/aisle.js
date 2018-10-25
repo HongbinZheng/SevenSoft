@@ -24,7 +24,7 @@ render() {
         <h1>
         {this.state.item.map(items => 
         //items.discount !== 1 ?
-        <div key={items.itemNo} style={{float:"left",margin:"40px"}}>
+        <div key={items.itemNo} style={{float:"left",margin:"40px",border:"1px solid red"}}>
         <div class="card" style={{width:"18rem"}}>
             <img class="card-img-top" style={{width:"100px",height:"150px",marginLeft:"0%"}} src={`/images/aisle/${items.name}.png`} alt="Card image cap"/>
             <div class="card-body">
