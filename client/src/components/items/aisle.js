@@ -25,13 +25,20 @@ render() {
        <div style={{minHeight:window.innerHeight-245}}>
         <h1>
         {this.state.item.map(items => 
-        //items.discount !== 1 ?
+        
         <div key={items.itemNo} style={{float:"left",margin:"40px",border:"1px solid red"}}>
             <div class="card" style={{width:"20rem"}} >
                 <img class="card-img-top" style={{width:"100px",height:"150px",left:"50px"}} src={`/images/aisle/${items.name}.png`} alt="Card image cap"></img>
                 <div class="card-body">
                 <h2 class="card-title" style={{textAlign:"center",background:"#E2D2D2"}}>{items.name}</h2>
+                {items.discount !== 1 ? 
+                <div>
+                <p class="card-text" style={{textAlign:"center",background:"#D1B9B9",textDecorationLine:"line-through"}}>{items.price}</p>
+                <p class="card-text" style={{textAlign:"center",background:"#D1B9B9",color:"red",fontStyle:"italic"}}>On Sale!! {items.price * items.discount}</p>
+                </div>
+                :
                 <p class="card-text" style={{textAlign:"center",background:"#D1B9B9"}}>{items.price * items.discount}</p>
+                }
                 <p class="card-text" style={{background:"#E2D2D2"}}>
                 <ReactStars
                     count={5}
