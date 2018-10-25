@@ -25,14 +25,15 @@ render() {
         {this.state.item.map(items => 
         //items.discount !== 1 ?
         <div key={items.itemNo} style={{float:"left",margin:"40px",border:"1px solid red"}}>
-        <div class="card" style={{width:"18rem"}}>
-            <img class="card-img-top" style={{width:"100px",height:"150px",marginLeft:"0%"}} src={`/images/aisle/${items.name}.png`} alt="Card image cap"/>
-            <div class="card-body">
-            <h2 class="card-title" style={{textAlign:"center"}}>{items.name}</h2>
-            <p class="card-text" style={{textAlign:"center"}}>{items.price * items.discount}</p>
-            <a href="#" class="btn btn-primary" >Add to cart</a>
-        </div>
-        </div>
+            <div class="card" style={{width:"20rem"}} >
+                <img class="card-img-top" style={{width:"100px",height:"150px",left:"50px"}} src={`/images/aisle/${items.name}.png`} alt="Card image cap"></img>
+                <div class="card-body">
+                <h2 class="card-title" style={{textAlign:"center",background:"#E2D2D2"}}>{items.name}</h2>
+                <p class="card-text" style={{textAlign:"center",background:"#D1B9B9"}}>{items.price * items.discount}</p>
+                <p class="card-text" style={{textAlign:"center"}}>Rating:{items.avgstars}</p>
+                <a href="#" class="btn btn-primary" >Add to cart</a>
+                </div>
+            </div>
         </div>
         )
         }  
