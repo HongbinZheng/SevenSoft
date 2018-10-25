@@ -30,8 +30,48 @@ class Register extends Component {
             confirmPassword:this.state.confirmPassword
         }
         axios.post('/api/register',{ user })
-            .then(function(response){console.log(response.data)})
+            .then(response =>{
+                console.log(response.data)
+                let data = response.data;
+                this.setState(data);
+                console.log(this.state);
+            })
     }
+
+    showValidation(data){
+        let errorMessage = null;
+        console.log(data);
+        if(data.code !== null && data.code !== 200){
+            if(data.code !== null && data.code !==200){
+                if(this.state.username === ""){
+                    data.code = null;
+                    errorMessage = (<div>
+                        Need to enter username;
+                    </div>)
+                }else if( this.state.password === ""){
+                    data.code = null;
+                    errorMessage = (<div>
+                        Need to enter password;
+                    </div>)
+                }else if(this.state.confirmPassword === ""){
+                    data.code = null;
+                    errorMessage = (<div>
+                        Need to confirm password;
+                    </div>)
+                }else if(this.state.email === ""){
+                    data.code = null;
+                    errorMessage = (<div>
+                        Need to enter email;
+                    </div>)
+                } else{
+               errorMessage =( <div className="label_error">
+                    {data.message}
+                </div>)}    
+        }
+    }
+    return errorMessage;
+}
+
     updateForm = (newState) =>{
         this.setState({
             State:newState
@@ -76,6 +116,7 @@ render(){
         </div>   
         <button type="submit">Create account</button>
         </form>
+        {this.state.code ? this.showValidation(this.state) : null }
         </div>
     );
 }

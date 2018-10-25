@@ -102,7 +102,7 @@ app.post('/api/login',(req,res)=>{
 app.post('/api/register', (req,res)=>{
   console.log(req.body)
   var password = req.body.user.password;
-  if(password === req.body.user.confirmPassword){
+  if(password === req.body.user.confirmPassword && req.body.user.username !== "" && req.body.user.email !== ""){
   var user = {
       username: req.body.user.username,
       email: req.body.user.email,
@@ -111,14 +111,17 @@ app.post('/api/register', (req,res)=>{
       var query = db.query('INSERT INTO members SET ?', user, function(err, result) {
               if(err){
                   console.log('not able to insert!')
-                  res.send(err);
-              }
+                  res.send({
+                    "code":204,
+                    message:"user exist"
+                  });
+              }else{
               message = "Succesfully! Your account has been created.";
               console.log(message)
               res.send({
                 "code":200,
                 "success": message
-              })
+              })}
            })
      }else{
       res.send({
