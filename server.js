@@ -30,6 +30,9 @@ global.db = connect;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
+app.use(express.static('client/build'))
+
+
 //////////GET//////////////////
 app.get('/api/getItems', (req,res)=>{
   let aisle = req.query.aisle;
@@ -123,5 +126,13 @@ app.post('/api/register', (req,res)=>{
         "message":"password not match"
       })
   }})
+
+if(process.env.NODE_ENV === 'production'){
+    const path=require('path');
+    app.get('/*',(req,res)=>{
+        res.sendfile(path.resolve(__dirname,'./client','build','index.html'))
+    })
+}
+
 const port = process.env.PORT || 8000
 app.listen(port);
