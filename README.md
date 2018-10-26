@@ -1,4 +1,4 @@
-command to run the project:
+# command to run the project:
 npm run dev
 
 type it under the root path "/node_simple_server"
