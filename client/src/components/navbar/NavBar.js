@@ -1,42 +1,31 @@
-import React from 'react';
-import {Link } from 'react-router-dom';
-import { Navbar,Nav,NavItem } from 'react-bootstrap';
+import React, { Component } from 'react';
+import {Link } from 'react-router-dom'; 
+import Style from './navbar.css'
 
 
-const NavBar = () => {
-        return (
-         <div>
-            <Navbar inverse collapseOnSelect>
-  <Navbar.Header>
-    <Navbar.Brand>
-     <Link to='/'>SevenSoft</Link>
-    </Navbar.Brand>
-    <Navbar.Toggle />
-  </Navbar.Header>
-  <Navbar.Collapse>
-    <Nav>
-      <NavItem eventKey={1} href={`/${'produce'}`}>
-        Produce
-      </NavItem>
-      <NavItem eventKey={2} href={`/${'Meats'}`}>
-        Meats
-      </NavItem>
-      <NavItem eventKey={3} href={`/${'Dairy'}`}>
-        Dairy
-      </NavItem>
-      <NavItem eventKey={4} href={`/${'Beverages'}`}>
-        Beverages
-      </NavItem>
-      <NavItem eventKey={5} href="/profile">
-        User
-      </NavItem>
-    </Nav>
-  </Navbar.Collapse>
-</Navbar>;
+
+class NavBar extends Component {
+        render (){
+     return(
+         <div className={Style.navbar}>
+            <nav className="navbar sticky-top navbar-light bg-light">
+                <button className="navbar-toggler" type="button" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
+                </button>
+                <div className ="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul className ="navbar-nav">
+                        <a href="/produce" className ="btn btn-danger" role="button" aria-pressed="true">Produce</a>
+                        <a href="/meats" className ="btn btn-danger" role="button" aria-pressed="true">Meats</a>
+                        <a href="/beverages" className ="btn btn-danger" role="button" aria-pressed="true">Beverages</a>
+                        <a href="/dairy" className ="btn btn-danger" role="button" aria-pressed="true">Dairy</a>
+                        <a href="/profile" className ="btn btn-danger" role="button" aria-pressed="true">Login</a>
+                    </ul>
+                </div>
+            </nav>
          </div>
                         
         );
-    
+     }
     
 }
 

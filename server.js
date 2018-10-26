@@ -52,7 +52,25 @@ app.get('/api/getItems', (req,res)=>{
         }
       }
   })
+})
 
+app.get('/api/getOneItem',(req,res)=>{
+  let item =req.query.item;
+  console.log(item);
+  connect.query(`SELECT * FROM items WHERE name = ?`, [item], function (error, results,fields) {
+    if(error){
+      res.send(error);
+    }else{
+      if(results.length >0){
+        res.send(results)
+      }else{
+        res.send({
+          "code":204,
+          "success":"cannot find items"
+        })
+      }
+    }
+  })
 })
 
 ////////POST///////////

@@ -9,8 +9,6 @@ export default class Authserver{
     }
 
     login =(username,password) => {
-
-
        return axios.post('/api/login',{username,password})
                  .then(res=>{
                     // console.log(res.data);

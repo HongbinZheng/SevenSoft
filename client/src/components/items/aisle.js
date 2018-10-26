@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import ReactStars from 'react-stars';
 
@@ -16,7 +17,7 @@ componentWillMount(){
            this.setState({ item })
        })
 }
-
+//style={{background:"#E2D2D2"}},,background:"#D1B9B9",background:"#E2D2D2"
 
 render() {
    console.log(this.state.item);
@@ -26,28 +27,32 @@ render() {
         <h1>
         {this.state.item.map(items => 
         
-        <div key={items.itemNo} style={{float:"left",margin:"40px",border:"1px solid red"}}>
-            <div class="card" style={{width:"20rem"}} >
-                <img class="card-img-top" style={{width:"100px",height:"150px",left:"50px"}} src={`/images/aisle/${items.name}.png`} alt="Card image cap"></img>
-                <div class="card-body">
-                <h2 class="card-title" style={{textAlign:"center",background:"#E2D2D2"}}>{items.name}</h2>
+        <div key={items.itemNo} style={{float:"left",margin:"40px",border:"1px solid #C2C2C2"}}>
+            <div className="card" style={{width:"20rem"}} >
+                <Link to={`/${items.aisle}/${items.name}`}>
+                <img className="card-img-top" style={{width:"75%",height:"75%",left:"50px"}} src={`/images/aisle/${items.name}.png`} alt="Card image cap"></img>
+                </Link>
+                <div className="card-body">
+                <Link to={`/${items.aisle}/${items.name}`}>
+                <h2 className="card-title" style={{textAlign:"center"}}>{items.name}</h2>
+                </Link>
                 {items.discount !== 1 ? 
                 <div>
-                <p class="card-text" style={{textAlign:"center",background:"#D1B9B9",textDecorationLine:"line-through"}}>{items.price}</p>
-                <p class="card-text" style={{textAlign:"center",background:"#D1B9B9",color:"red",fontStyle:"italic"}}>On Sale!! {items.price * items.discount}</p>
+                <p className="card-text" style={{textAlign:"center",textDecorationLine:"line-through"}}>{items.price}</p>
+                <p className="card-text" style={{textAlign:"center",color:"red",fontStyle:"italic"}}>On Sale!! {items.price * items.discount}</p>
                 </div>
                 :
-                <p class="card-text" style={{textAlign:"center",background:"#D1B9B9"}}>{items.price * items.discount}</p>
+                <p className="card-text" style={{textAlign:"center"}}>{items.price * items.discount}</p>
                 }
-                <p class="card-text" style={{background:"#E2D2D2"}}>
+                <h5 className="card-text" >
                 <ReactStars
                     count={5}
                     value={items.avgstars}
                     size={24}
                     edit={false}
                     color2={'#ffd700'} />
-                </p>
-                <a href="#" class="btn btn-primary" >Add to cart</a>
+                </h5>
+                <a href="#" className="btn btn-primary" >Add to cart</a>
                 </div>
             </div>
         </div>
