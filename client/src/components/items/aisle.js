@@ -27,7 +27,7 @@ render() {
         <h1>
         {this.state.item.map(items => 
         
-        <div key={items.itemNo} style={{float:"left",margin:"40px",border:"1px solid #C2C2C2"}}>
+        <div key={items.itemNo} className="rounded float-left" style={{margin:"40px",border:"1px solid #C2C2C2"}}>
             <div className="card" style={{width:"20rem"}} >
                 <Link to={`/${items.aisle}/${items.name}`}>
                 <img className="card-img-top" style={{width:"75%",height:"75%",left:"50px"}} src={`/images/aisle/${items.name}.png`} alt="Card image cap"></img>
