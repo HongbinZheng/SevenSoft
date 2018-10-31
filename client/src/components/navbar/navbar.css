@@ -1,7 +1,9 @@
-.navbar{
-        position: -webkit-sticky;
-        position: sticky;
-        top: 0;
-        padding: 25px;
-        font-size: 20px;
+ul{
+    position: relative;
+    left: 420px;
 }
+
+form{
+    padding-right: 10px;
+}
+

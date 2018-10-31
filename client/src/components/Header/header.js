@@ -7,13 +7,13 @@ const Header = () => {
     const logo = () =>{
         return(
             <Link to="/" className={style.logo}>
-            <img alt="banner" src="images/logo.png"/>
+                <img alt="Medium Banner" src="images/home/medium banner.png"/>
             </Link>
         )
     }
         return (
             <header className={style.header}>
-                 <div className={style.headerOpt}>
+                 <div>
                     {logo()}
                 </div>
             </header>
