@@ -1,7 +1,9 @@
-.navbar{
-        position: -webkit-sticky;
-        position: sticky;
-        top: 0;
-        padding: 25px;
-        font-size: 20px;
+ul{
+    margin: 0 auto;
 }
+
+.navbar-default {
+  background-color:red;
+  background-image: none;
+  background-repeat: no-repeat;
+ }
