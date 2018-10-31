@@ -1,9 +1,9 @@
 ul{
-    margin: 0 auto;
+    position: relative;
+    left: 420px;
 }
 
-.navbar-default {
-  background-color:red;
-  background-image: none;
-  background-repeat: no-repeat;
- }
+form{
+    padding-right: 10px;
+}
+
