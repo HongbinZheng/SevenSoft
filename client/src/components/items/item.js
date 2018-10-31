@@ -3,7 +3,9 @@ import axios from 'axios';
 import ReactStars from 'react-stars';
 
 class Item extends Component {
-    state ={}
+    state ={
+        quantityInCart:0
+    }
     componentWillMount(){
         let item =this.props.match.params.item;
         console.log(this.props.match.params.aisle)
@@ -13,6 +15,37 @@ class Item extends Component {
                 this.setState(res.data[0]);
             })
     }
+    handleAddtoCart(stuff){
+        console.log(stuff)
+        var quantityInCart = this.state.quantityInCart
+        var item = {
+           itemid: stuff.itemNo,
+           name: stuff.name,
+           price: stuff.price,
+           discount: stuff.discount,
+        }
+        console.log(item)
+        if(localStorage.getItem('cart') !== null) {
+          var cartString = localStorage.getItem('cart')
+          console.log(cartString);
+          var cart = JSON.parse(cartString)
+          if(cart[stuff.itemNo]){
+            item.quantityInCart = cart[stuff.itemNo].quantityInCart +1
+        }else{
+           // quantityInCart += 1
+            item.quantityInCart = 1;
+        }    
+          cart[stuff.itemNo] = item
+          localStorage.setItem('cart', JSON.stringify(cart))
+          this.setState({quantityInCart: quantityInCart})
+           } else {
+          var cart = {}
+          item.quantityInCart = ++quantityInCart
+          cart[stuff.itemNo] = item
+          localStorage.setItem('cart', JSON.stringify(cart))
+          this.setState({quantityInCart: quantityInCart})
+      }
+  }
 
     render() {
         console.log(this.props)
@@ -50,12 +83,12 @@ class Item extends Component {
 
                 <h5>description:{this.state.description}</h5>
                 <br/>
-                <h3><button type="button" class="btn btn-primary"> Add to Cart</button>
-                <button type="button" class="btn btn-primary" style={{marginLeft:"20px"}}>Add to Watch List</button>
+                <h3><button type="button" onClick={()=>this.handleAddtoCart(this.state)} className="btn btn-primary"> Add to Cart</button>
+                <button type="button" className="btn btn-primary" style={{marginLeft:"20px"}}>Add to Watch List</button>
                 </h3>
                 
               </div>
-              <div classname="col align-self-end">
+              <div className="col align-self-end">
               </div>
             </div>
           </div>

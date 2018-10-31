@@ -1,9 +1,11 @@
 import React from 'react';
 import {Link } from 'react-router-dom';
+import Cart from '../../components/shopping cart/Cart'
 
 
 const NavBar = () => {
         return (
+            <div className="sticky-top">
              <nav className="navbar sticky-top navbar-expand-lg navbar-light bg-light">
                  <a className="navbar-brand" href="/">Navbar</a>
                  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,6 +34,8 @@ const NavBar = () => {
                      </form>
                  </div>
              </nav>
+             <Cart />
+             </div>
                         
         );
      }

@@ -19,7 +19,6 @@ class Router extends Component {
                     <Route path="/" exact component={Home} />
                     <Route path="/User" exact component={User}/>
                     <Route path='/profile' exact component={Profile}/>
-                    <Route path='/abc' exact component={Authserver}/>
                     <Route path='/:aisle' exact component={Aisle} />
                     <Route path='/:aisle/:item' exact component={Item} />
                 </Switch>

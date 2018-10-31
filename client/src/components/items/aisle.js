@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import ReactStars from 'react-stars';
 
 class Aisle extends Component {
-    state = { item:[]
+    constructor(){
+    super();
+    this.state = { 
+        item:[],
+        quantityInCart:0
     };
-
+    this.handleAddtoCart = this.handleAddtoCart.bind(this)
+    }
 componentWillMount(){
    let items = this.props.match.params.aisle;
    console.log(this.props.match.params.aisle)
@@ -17,10 +21,41 @@ componentWillMount(){
            this.setState({ item })
        })
 }
-//style={{background:"#E2D2D2"}},,background:"#D1B9B9",background:"#E2D2D2"
+
+handleAddtoCart(stuff){
+      console.log(stuff)
+      var quantityInCart = this.state.quantityInCart
+      var item = {
+         itemid: stuff.itemNo,
+         name: stuff.name,
+         price: stuff.price,
+         discount: stuff.discount,
+      }
+      console.log(item)
+      if(localStorage.getItem('cart') != null) {
+        var cartString = localStorage.getItem('cart')
+        console.log(cartString);
+        var cart = JSON.parse(cartString)
+        //console.log(cart[stuff.itemNo].quantityInCart)
+        if(cart[stuff.itemNo]){
+            item.quantityInCart = cart[stuff.itemNo].quantityInCart +1
+        }else{
+           // quantityInCart += 1
+            item.quantityInCart = 1;
+        }     
+        cart[stuff.itemNo] = item
+        localStorage.setItem('cart', JSON.stringify(cart))
+        this.setState({quantityInCart: quantityInCart})
+         } else {
+        var cart = {}
+        item.quantityInCart = ++quantityInCart
+        cart[stuff.itemNo] = item
+        localStorage.setItem('cart', JSON.stringify(cart))
+        this.setState({quantityInCart: quantityInCart})
+    }
+}
 
 render() {
-   console.log(this.state.item);
    return (
        this.state  ? 
        <div style={{minHeight:window.innerHeight-245}}>
@@ -28,7 +63,7 @@ render() {
         {this.state.item.map(items => 
         
         <div key={items.itemNo} className="rounded float-left" style={{margin:"40px",border:"1px solid #C2C2C2"}}>
-            <div className="card" style={{width:"20rem"}} >
+            <div className="card" style={{width:"20rem", height:"26rem"}} >
                 <Link to={`/${items.aisle}/${items.name}`}>
                 <img className="card-img-top" style={{width:"75%",height:"75%",left:"50px"}} src={`/images/aisle/${items.name}.png`} alt="Card image cap"></img>
                 </Link>
@@ -38,22 +73,14 @@ render() {
                 </Link>
                 {items.discount !== 1 ? 
                 <div>
-                <p className="card-text" style={{textAlign:"center",textDecorationLine:"line-through"}}>{items.price}</p>
-                <p className="card-text" style={{textAlign:"center",color:"red",fontStyle:"italic"}}>On Sale!! {items.price * items.discount}</p>
+                <p className="card-text" style={{textAlign:"center",textDecorationLine:"line-through"}}>${items.price}</p>
+                <p className="card-text" style={{textAlign:"center",color:"red",fontStyle:"italic"}}>On Sale!! ${items.price * items.discount}</p>
                 </div>
                 :
-                <p className="card-text" style={{textAlign:"center"}}>{items.price * items.discount}</p>
+                <p className="card-text" style={{textAlign:"center"}}>${items.price * items.discount}</p>
                 }
-                <h5 className="card-text" >
-                <ReactStars
-                    count={5}
-                    value={items.avgstars}
-                    size={24}
-                    edit={false}
-                    color2={'#ffd700'} />
-                </h5>
-                <a href="#" className="btn btn-primary" >Add to cart</a>
                 </div>
+                <button onClick={()=>this.handleAddtoCart(items)} className="btn btn-primary" style={{position:"relative",bottom:"0px"}} >Add to cart</button>
             </div>
         </div>
         )

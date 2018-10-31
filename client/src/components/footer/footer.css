@@ -1,11 +1,12 @@
 .footer{
     
     position: relative;
-    padding: 1rem;
-    bottom: 0;
-    left:0;
-    right:0;
-    background-color: #c2b5b5ab;
+    bottom: 0px;
+    width: 100%;
+    height: auto;
+    background-color: rgb(245, 245, 245);
+    overflow: visible;
+    clear: both;
     text-align: center;
     border-bottom: 1px solid #000000; 
     border-top: 2px solid #000000;

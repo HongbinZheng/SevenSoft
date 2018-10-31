@@ -1,7 +1,6 @@
 import decode from 'jwt-decode';
 import axios from 'axios'
 
-
 export default class Authserver{
     constructor() { 
         this.login = this.login.bind(this)
