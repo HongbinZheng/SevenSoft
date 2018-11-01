@@ -42,7 +42,7 @@ class Cart extends React.Component {
         let total = 0;
 
         return(
-            <div className="Cart card col-2 shadow rounded float-right" style={{position:"relative",border:"1px solid #000000"}}>
+            <div className="Cart card shadow rounded float-right " style={{position:"relative", border:"1px solid #000000", right:"10px"}}>
                     <h1 className="card-header text-center">Shopping Cart</h1>
                    
                     <CartItem items={this.state.cartItems}/>
