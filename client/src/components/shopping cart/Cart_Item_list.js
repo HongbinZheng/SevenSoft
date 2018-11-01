@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { FontAwesome } from 'react-fontawesome'
 
 class CartItemlist extends Component {
 
