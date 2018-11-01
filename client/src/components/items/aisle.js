@@ -34,7 +34,6 @@ handleAddtoCart(stuff){
       console.log(item)
       if(localStorage.getItem('cart') != null) {
         var cartString = localStorage.getItem('cart')
-        console.log(cartString);
         var cart = JSON.parse(cartString)
         //console.log(cart[stuff.itemNo].quantityInCart)
         if(cart[stuff.itemNo]){
@@ -65,7 +64,7 @@ render() {
         <div key={items.itemNo} className="rounded float-left" style={{margin:"40px",border:"1px solid #C2C2C2"}}>
             <div className="card" style={{width:"20rem", height:"26rem"}} >
                 <Link to={`/${items.aisle}/${items.name}`}>
-                <img className="card-img-top" style={{width:"75%",height:"75%",left:"50px"}} src={`/images/aisle/${items.name}.png`} alt="Card image cap"></img>
+                <img className="card-img-top" style={{width:"75%",height:"75%",left:"50px"}} src={`/images/aisle/${items.name}.png`} alt="Card cap"></img>
                 </Link>
                 <div className="card-body">
                 <Link to={`/${items.aisle}/${items.name}`}>

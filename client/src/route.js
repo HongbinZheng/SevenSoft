@@ -8,7 +8,6 @@ import Aisle from './components/items/aisle'
 import Item from './components/items/item'
 //////////testing//////////
 import Profile from './components/User/profile';
-import Authserver from './components/authserver';
 /////////////////////////////////////////
 
 class Router extends Component {

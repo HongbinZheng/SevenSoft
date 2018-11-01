@@ -1,19 +1,33 @@
-import React, {Component} from 'react';
+import React from 'react';
+import CartItemList from './Cart_Item_list'
 
-class CartItem extends Component {
-    deleteItem(id) {
-        this.props.onDelete(id);
-    }
-    render() {
+const CartItem =(props)=> {
+
+    const items = props.items.map((item) => {
         return (
-            <li className="list-group-item CartItem">
-                <h3 className="card-title text-left"><strong>{this.props.item.name}<button type="button" className="btn btn-secondary float-right" onClick={this.deleteItem.bind(this, this.props.item.id)}>X</button></strong></h3>
-
-                <h5 className="card-text text-left">Qty: {this.props.item.quantity}</h5>
-                <h4 className="card-text text-right">${this.props.item.price}</h4>
-            </li>
+            <div key={item.itemid}>
+            <CartItemList item={item} key={item.itemid}/>
+            </div>
         )
-    }
+      });
+      
+        if(props.items.length === 0) {
+            return(
+            <div>
+              <div style={{textAlign: 'center', marginTop: '25%'}}>
+                <h3>No Items</h3>
+              </div>
+            </div>
+            )
+          } else {
+            return(
+            <div>
+              {items}
+            </div>
+
+            )
+          }
+        
 }
 
 export default CartItem;

@@ -2,36 +2,52 @@ import React from 'react';
 import CartItem from './CartItem';
 
 class Cart extends React.Component {
-    deleteItem(id){
-        this.props.onDelete(id);
+    constructor(props) {
+        super(props);
+ 
+        if(localStorage.getItem('cart') != null) {
+          var cartString = localStorage.getItem('cart')
+          var cart = JSON.parse(cartString)
+          this.state ={cartItems: this.getItemsFromCart(cart), totalPrice: 0}
+        } else {
+          this.state = {cartItems: [], totalPrice: 0}
+        }
+        // this.getTotalPrice(this.state.cartItems);
+        // this.handleRemove = this.handleRemove.bind(this)
+        // this.handleIncrease = this.handleIncrease.bind(this)
+        // this.handleDecrease = this.handleDecrease.bind(this)
     }
 
-    render() {
-        let cartItems;
-        let total = 0;
-        if(this.props.items){
-            cartItems = this.props.items.map(item => {
-               return (
-                <CartItem onDelete={this.deleteItem.bind(this)} key={item.name} item={item} />
-               );
-            });
-            for(let i = 0; i < this.props.items.length; i++) {
-                let price = parseFloat(this.props.items[i].price);
-                let qty = parseInt(this.props.items[i].quantity);
-
-                total += price * qty;
-            }
+    componentDidMount(){
+        var cartString = localStorage.getItem('cart')
+        var cart = JSON.parse(cartString)
+        let item ={
+            cartItems:this.getItemsFromCart(cart)
         }
+        if(item.cartItems.length !== this.state.cartItems.length){
+            this.setState({cartItems:item.cartItems})
+        }
+    }
 
+    getItemsFromCart = (cart) => {
+        var cartItems = []
+        for(var itemID in cart) {
+          cartItems.push(cart[itemID])
+        }
+        return cartItems
+      }
+
+    render() {
+        console.log(this.state)
+        let total = 0;
 
         return(
             <div className="Cart card col-2 shadow rounded float-right" style={{position:"relative",border:"1px solid #000000"}}>
                     <h1 className="card-header text-center">Shopping Cart</h1>
-                <ul className="list-group list-group-flush">
-                { cartItems ? <div>{cartItems}<br/><br/><br/></div> : <div><h2 style={{color:"grey"}}>No items yet! Go get something<br/><br/><br/></h2></div>}
-                    
-                </ul>
-                <h2 className="card-text text-left" >Total: <div className="text-right">${total.toFixed(2)}</div></h2>
+                   
+                    <CartItem items={this.state.cartItems}/>
+
+                    <h2 className="card-text text-left" >Total: <div className="text-right">${total.toFixed(2)}</div></h2>
             </div>
 
         )

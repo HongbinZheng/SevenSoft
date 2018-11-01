@@ -1,7 +1,6 @@
 import React from 'react';
-import {Link } from 'react-router-dom';
 import Cart from '../../components/shopping cart/Cart'
-import style from './navbar.css';
+
 
 
 const NavBar = () => {
@@ -21,9 +20,9 @@ const NavBar = () => {
                         <a href="/" className ="btn btn-light text-center" role="button" aria-pressed="true">More>></a>
                         
                      </ul>
-                        <form class="form-inline">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"></input>
-                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        <form className="form-inline">
+                            <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"></input>
+                            <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                         </form>
                         <a href="/profile" className ="btn btn-primary text-center" role="button" aria-pressed="true">Login</a>
                  </div>

@@ -54,7 +54,7 @@ class Item extends Component {
         <div className="container" style={{minHeight:window.innerHeight-245}}>
             <div className="row">
             <div className="col-sm">
-              <img style={{width:"75%",height:"75%",left:"50px",top:"55%"}} src={`/images/aisle/${this.state.name}.png`}></img>
+              <img style={{width:"75%",height:"75%",left:"50px",top:"55%"}} src={`/images/aisle/${this.state.name}.png`} alt="Card cap"></img>
               </div>
               <div className="col align-self-end" style={{top:"100px"}}>
                 <h2>{this.state.name}</h2>
