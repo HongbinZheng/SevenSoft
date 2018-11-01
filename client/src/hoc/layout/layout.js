@@ -5,6 +5,7 @@ import Header from '../../components/Header/header'
 import NavBar from "../../components/navbar/NavBar"
 import Footer from '../../components/footer/footer'
 
+
 class Layout extends Component {
 
     state ={
@@ -15,7 +16,7 @@ class Layout extends Component {
         return (
             <div>
                 <Header/>
-                <NavBar/>
+                    <NavBar/>
                     {this.props.children}
                 <Footer/>
             </div>

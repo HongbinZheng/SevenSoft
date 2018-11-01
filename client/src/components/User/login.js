@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Authserver from '../authserver'
 import axios from 'axios'
 
 class Login extends Component {

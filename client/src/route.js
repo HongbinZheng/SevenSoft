@@ -8,7 +8,6 @@ import Aisle from './components/items/aisle'
 import Item from './components/items/item'
 //////////testing//////////
 import Profile from './components/User/profile';
-import Authserver from './components/authserver';
 /////////////////////////////////////////
 
 class Router extends Component {
@@ -19,7 +18,6 @@ class Router extends Component {
                     <Route path="/" exact component={Home} />
                     <Route path="/User" exact component={User}/>
                     <Route path='/profile' exact component={Profile}/>
-                    <Route path='/abc' exact component={Authserver}/>
                     <Route path='/:aisle' exact component={Aisle} />
                     <Route path='/:aisle/:item' exact component={Item} />
                 </Switch>

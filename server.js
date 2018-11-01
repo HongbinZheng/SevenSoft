@@ -36,8 +36,6 @@ app.use(express.static('client/build'))
 //////////GET//////////////////
 app.get('/api/getItems', (req,res)=>{
   let aisle = req.query.aisle;
-  console.log(req.query)
-  console.log(req.query.aisle)
   connect.query(`SELECT * FROM items WHERE aisle = ?`, [aisle], function (error, results,fields) {
       if(error){
         res.send(error);
@@ -56,7 +54,6 @@ app.get('/api/getItems', (req,res)=>{
 
 app.get('/api/getOneItem',(req,res)=>{
   let item =req.query.item;
-  console.log(item);
   connect.query(`SELECT * FROM items WHERE name = ?`, [item], function (error, results,fields) {
     if(error){
       res.send(error);
@@ -75,7 +72,6 @@ app.get('/api/getOneItem',(req,res)=>{
 
 ////////POST///////////
 app.post('/api/login',(req,res)=>{
-    console.log(req.body)
     var username = req.body.username;
     var password = req.body.password;
     connect.query(`SELECT * FROM members WHERE username = ?`, [username], function (error, results,fields) {
@@ -118,7 +114,6 @@ app.post('/api/login',(req,res)=>{
 
 
 app.post('/api/register', (req,res)=>{
-  console.log(req.body)
   var password = req.body.user.password;
   if(password === req.body.user.confirmPassword && req.body.user.username !== "" && req.body.user.email !== ""){
   var user = {
