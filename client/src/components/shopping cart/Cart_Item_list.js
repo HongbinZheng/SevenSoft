@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { FontAwesome } from 'react-fontawesome'
 
 class CartItemlist extends Component {
 
@@ -30,8 +31,9 @@ class CartItemlist extends Component {
         return (
             <div>
             <li className="list-group-item CartItem">
-                <h3 className="card-title text-left"><strong>{this.props.item.name}<button type="button" className="btn btn-secondary float-right">X</button></strong></h3>
+                <h3 className="card-title text-left"><strong>{this.props.item.name}  <i className="fas fa-trash-alt" onClick={()=>this.props.handleRemove(this.props.item.itemid)} /></strong></h3>
                 <h5 className="card-text text-left">Qty: {this.props.item.quantityInCart}</h5>
+                <i className="far fa-minus-square" onClick={()=> this.props.handleDecrease(this.props.item.itemid)} /> <i onClick={() => this.props.handleIncrease(this.props.item.itemid)} className="far fa-plus-square"></i>
                 <h4 className="card-text text-right">${(this.props.item.price * this.props.item.discount * this.props.item.quantityInCart).toFixed(2)}</h4>
             </li>
             </div>

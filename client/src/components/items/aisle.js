@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import Cart from '../shopping cart/Cart';
 
 class Aisle extends Component {
     constructor(){
@@ -9,6 +10,7 @@ class Aisle extends Component {
         item:[],
         quantityInCart:0
     };
+    this.shoppingCart = new Cart();
     this.handleAddtoCart = this.handleAddtoCart.bind(this)
     }
 componentWillMount(){
@@ -41,12 +43,14 @@ handleAddtoCart(stuff){
         cart[stuff.itemNo] = item
         localStorage.setItem('cart', JSON.stringify(cart))
         this.setState({quantityInCart: quantityInCart})
+        window.location.reload()
          } else {
         var cart = {}
         item.quantityInCart = ++quantityInCart
         cart[stuff.itemNo] = item
         localStorage.setItem('cart', JSON.stringify(cart))
         this.setState({quantityInCart: quantityInCart})
+        window.location.reload()
     }
 }
 
@@ -74,7 +78,7 @@ render() {
                 <p className="card-text" style={{textAlign:"center"}}>${items.price * items.discount}</p>
                 }
                 </div>
-                <button onClick={()=>this.handleAddtoCart(items)} className="btn btn-primary" style={{position:"relative",bottom:"0px"}} >Add to cart</button>
+                <button onClick={()=>this.handleAddtoCart(items)} className="btn btn-primary" style={{position:"relative",bottom:"0px"}} >Add to cart <i class="fas fa-cart-plus"></i></button>
             </div>
         </div>
         )

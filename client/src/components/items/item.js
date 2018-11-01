@@ -38,12 +38,14 @@ class Item extends Component {
           cart[stuff.itemNo] = item
           localStorage.setItem('cart', JSON.stringify(cart))
           this.setState({quantityInCart: quantityInCart})
+          window.location.reload()
            } else {
           var cart = {}
           item.quantityInCart = ++quantityInCart
           cart[stuff.itemNo] = item
           localStorage.setItem('cart', JSON.stringify(cart))
           this.setState({quantityInCart: quantityInCart})
+          window.location.reload()
       }
   }
 
@@ -83,7 +85,7 @@ class Item extends Component {
 
                 <h5>description:{this.state.description}</h5>
                 <br/>
-                <h3><button type="button" onClick={()=>this.handleAddtoCart(this.state)} className="btn btn-primary"> Add to Cart</button>
+                <h3><button type="button" onClick={()=>this.handleAddtoCart(this.state)} className="btn btn-primary"> Add to Cart <i class="fas fa-cart-plus"></i></button>
                 <button type="button" className="btn btn-primary" style={{marginLeft:"20px"}}>Add to Watch List</button>
                 </h3>
                 
