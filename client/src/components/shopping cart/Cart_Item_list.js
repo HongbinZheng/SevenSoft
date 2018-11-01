@@ -26,10 +26,7 @@ class CartItemlist extends Component {
       }
 
 
-    
-
     render() {
-        console.log(this.props)
         return (
             <div>
             <li className="list-group-item CartItem">

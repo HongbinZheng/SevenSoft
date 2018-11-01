@@ -24,6 +24,8 @@ class Cart extends React.Component {
         let item ={
             cartItems:this.getItemsFromCart(cart)
         }
+        console.log(item)
+        console.log(this.state)
         if(item.cartItems.length !== this.state.cartItems.length){
             this.setState({cartItems:item.cartItems})
         }
@@ -38,7 +40,6 @@ class Cart extends React.Component {
       }
 
     render() {
-        console.log(this.state)
         let total = 0;
 
         return(

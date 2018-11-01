@@ -13,17 +13,14 @@ class Aisle extends Component {
     }
 componentWillMount(){
    let items = this.props.match.params.aisle;
-   console.log(this.props.match.params.aisle)
    axios.get(`/api/getItems?aisle=${items}`)
        .then(response => {
-           console.log(response.data);
            const item = response.data
            this.setState({ item })
        })
 }
 
 handleAddtoCart(stuff){
-      console.log(stuff)
       var quantityInCart = this.state.quantityInCart
       var item = {
          itemid: stuff.itemNo,
@@ -31,7 +28,6 @@ handleAddtoCart(stuff){
          price: stuff.price,
          discount: stuff.discount,
       }
-      console.log(item)
       if(localStorage.getItem('cart') != null) {
         var cartString = localStorage.getItem('cart')
         var cart = JSON.parse(cartString)
@@ -59,8 +55,7 @@ render() {
        this.state  ? 
        <div style={{minHeight:window.innerHeight-245}}>
         <h1>
-        {this.state.item.map(items => 
-        
+        {this.state.item.map(items =>      
         <div key={items.itemNo} className="rounded float-left" style={{margin:"40px",border:"1px solid #C2C2C2"}}>
             <div className="card" style={{width:"20rem", height:"26rem"}} >
                 <Link to={`/${items.aisle}/${items.name}`}>
