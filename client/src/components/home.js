@@ -5,7 +5,7 @@ import style from './home.css';
 class Home extends Component {
     render() {
         return (
-            <div>
+            <div style = {{marginTop: "30px", marginLeft: "30px"}}>
                 <div id="carouselExampleIndicators" className="carousel slide w-75 h-75" data-ride="carousel">
                     <ol className="carousel-indicators">
                         <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
