@@ -1,14 +1,38 @@
 import React, { Component } from 'react';
 import style from './home.css';
-//import { Link } from 'react-router-dom';
 
 
 class Home extends Component {
     render() {
         return (
             <div>
-                <h1><img alt="weekly_ad_u25" src="images/home/weekly_ad_u25.png"/></h1>
-               
+                <div id="carouselExampleIndicators" className="carousel slide w-75 h-75" data-ride="carousel">
+                    <ol className="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    </ol>
+                    <div className="carousel-inner">
+                        <div className="carousel-item active">
+                            <img className="d-block w-100" src="images/home/AD1.png" alt="First Ads"></img>
+                        </div>
+                        <div className="carousel-item">
+                            <img className="d-block w-100" src="images/home/AD2.png" alt="Second Ads"></img>
+                        </div>
+                        <div className="carousel-item">
+                            <img className="d-block w-100" src="images/home/AD3.png" alt="Third Ads"></img>
+                        </div>
+                    </div>
+                    <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span className="sr-only">Previous</span>
+                    </a>
+                    <a className="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span className="sr-only">Next</span>
+                    </a>
+                </div>
+            
                 <h1>This is order history</h1><br/>
                 <h1>This is watch lits</h1><br/> 
                 <h1>This is watch lits</h1><br/> 
