@@ -1,9 +1,24 @@
 import React, { Component } from 'react';
-import style from './home.css';
+import Authserver from './authserver';
 
 
 class Home extends Component {
+    constructor(){
+        super()
+        this.state={
+            isLogged:false
+        }
+        this.Auth = new Authserver()
+    }
+
+    componentWillMount(){
+        if(this.Auth.loggedIn()){
+            this.setState({isLogged: true})
+        }
+    }
+
     render() {
+        console.log(this.state);
         return (
             <div style = {{marginTop: "30px", marginLeft: "30px"}}>
                 <div id="carouselExampleIndicators" className="carousel slide w-75 h-75" data-ride="carousel">
@@ -32,7 +47,8 @@ class Home extends Component {
                         <span className="sr-only">Next</span>
                     </a>
                 </div>
-            
+                {this.state.isLogged ? 
+                <div>
                 <h1>This is order history</h1><br/>
                 <h1>This is watch lits</h1><br/> 
                 <h1>This is watch lits</h1><br/> 
@@ -83,7 +99,9 @@ class Home extends Component {
                 <h1>This is watch lits</h1><br/> 
                 <h1>This is watch lits</h1><br/> 
                 <h1>This is watch lits</h1><br/>  <h1>This is watch lits</h1><br/> 
-                <h1>This is watch lits</h1><br/> 
+                <h1>This is watch lits</h1><br/>  
+                </div>: null}
+               
             </div>
         );
     }

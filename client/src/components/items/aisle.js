@@ -12,11 +12,9 @@ class Aisle extends Component {
    this.handleAddtoCart = this.handleAddtoCart.bind(this)
    }
 componentWillMount(){
-  let items = this.props.match.params.aisle;
-  console.log(this.props.match.params.aisle)
+  let items = this.props.match.params.aisle; 
   axios.get(`/api/getItems?aisle=${items}`)
       .then(response => {
-          console.log(response.data);
           const item = response.data
           this.setState({ item })
       })

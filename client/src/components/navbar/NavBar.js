@@ -1,9 +1,41 @@
-import React from 'react';
-import Cart from '../../components/shopping cart/Cart'
+import React, {Component} from 'react';
+import {withRouter} from 'react-router-dom';
+import jwt from'jsonwebtoken'
+import Cart from '../../components/shopping cart/Cart';
+import Search from '../Search/search';
+import Authserver from '../authserver';
 
+class NavBar extends Component {
+        constructor(){
+        super()
+        this.state={
+            isLogged:false,
+            username:''
+        }
+        this.Auth = new Authserver()
+        this.handleLogout.bind(this)
+    }
 
+        componentDidMount(){
+            if(this.Auth.loggedIn()){
+                var SERECT = "superserect"
+                const token = localStorage.getItem('id_token')
+                var decoded = jwt.verify(token, SERECT);
+                console.log(decoded)
+                this.setState({isLogged: true,username:decoded})
+            }else{
+                this.setState({isLogged: false})
+            }
+        }
 
-const NavBar = () => {
+        handleLogout(e){
+            e.preventDefault();
+            this.Auth.logout();
+            this.props.history.replace('/')
+            window.location.reload()
+        }
+
+        render(){
         return (
             <div className="sticky-top">
              <nav className="navbar  navbar-expand-lg navbar-light bg-light center" id = "navBar">
@@ -17,23 +49,37 @@ const NavBar = () => {
                         <a href="/meats" className ="btn btn-light text-center" role="button" aria-pressed="true">Meats</a>
                         <a href="/beverages" className ="btn btn-light text-center" role="button" aria-pressed="true">Beverages</a>
                         <a href="/dairy" className ="btn btn-light text-center" role="button" aria-pressed="true">Dairy</a>
-                        <a href="/" className ="btn btn-light text-center" role="button" aria-pressed="true">More>></a>
-                        
+                        <a href="/" className ="btn btn-light text-center" role="button" aria-pressed="true">More>></a>      
                      </ul>
                         <form className="form-inline">
-                            <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"></input>
+                            <Search />
                             <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                         </form>
-                        <a href="/profile" className ="btn btn-primary text-center" role="button" aria-pressed="true">Login</a>
+                        {this.state.isLogged ? 
+                        <div style={{marginRight:"70px"}}>
+                            <div className="nav-item dropdown">
+                                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Hello {this.state.username}
+                                </a>
+                                <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a className="dropdown-item" href="#">My Profile</a>
+                                    <a className="dropdown-item" href="#">My Orders</a>
+                                    <a className="dropdown-item" href="#">Watch list</a>
+                                    <div className="dropdown-divider"></div>
+                                    <button type="button" onClick={this.handleLogout.bind(this)}>Logout</button>
+                                </div >
+                            </div >
+                        </div >
+     : <a href="/profile" className ="btn btn-primary text-center" role="button" aria-pressed="true">Login</a>}
+                        
                  </div>
              </nav>
              <Cart />
-             </div>
-                        
+             </div>                    
         );
-    
+        }
     
 }
 
-export default NavBar;         
+export default withRouter(NavBar);         
         
