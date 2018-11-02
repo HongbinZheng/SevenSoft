@@ -5,6 +5,9 @@ import Cart from '../../components/shopping cart/Cart';
 import Search from '../Search/search';
 import Authserver from '../authserver';
 
+
+import CartItem from '../shopping cart/CartItem';
+
 class NavBar extends Component {
         constructor(){
         super()
@@ -16,6 +19,7 @@ class NavBar extends Component {
         this.handleLogout.bind(this)
     }
 
+    
         componentDidMount(){
             if(this.Auth.loggedIn()){
                 var SERECT = "superserect"
@@ -34,7 +38,8 @@ class NavBar extends Component {
             this.props.history.replace('/')
             window.location.reload()
         }
-
+    
+    
         render(){
         return (
             <div className="sticky-top">
@@ -51,17 +56,19 @@ class NavBar extends Component {
                         <a href="/dairy" className ="btn btn-light text-center" role="button" aria-pressed="true">Dairy</a>
                         <a href="/" className ="btn btn-light text-center" role="button" aria-pressed="true">More>></a>      
                      </ul>
+                        
+            
                         <form className="form-inline">
                             <Search />
                             <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                         </form>
                         {this.state.isLogged ? 
-                        <div style={{marginRight:"70px"}}>
-                            <div className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <div >
+                            <div className="nav-item dropdown ">
+                                <a className="nav-link dropdown-toggle keep-open" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Hello {this.state.username}
                                 </a>
-                                <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a className="dropdown-item" href="#">My Profile</a>
                                     <a className="dropdown-item" href="#">My Orders</a>
                                     <a className="dropdown-item" href="#">Watch list</a>
@@ -70,11 +77,14 @@ class NavBar extends Component {
                                 </div >
                             </div >
                         </div >
-     : <a href="/profile" className ="btn btn-primary text-center" role="button" aria-pressed="true">Login</a>}
+                        : <a href="/profile" className ="btn btn-primary text-center" role="button" aria-pressed="true">Login</a>}
                         
                  </div>
-             </nav>
+
+
+
              <Cart />
+             </nav>
              </div>                    
         );
         }
