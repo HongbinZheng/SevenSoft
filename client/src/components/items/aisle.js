@@ -70,18 +70,19 @@ render() {
                </Link>
                <div className='card-body'>
                <Link to={`/${items.aisle}/${items.name}`}>
-               <h2 className='card-title' style={{textAlign:'center'}}>{items.name}</h2>
+               <h2 className='card-title' style={{textAlign:'center', height: '50px'}}>{items.name}</h2>
                </Link>
+      
                {items.discount !== 1 ?
-               <div>
-               <p className='card-text' style={{textAlign:'center',textDecorationLine:'line-through'}}>${items.price}</p>
-               <p className='card-text' style={{textAlign:'center',color:'red',fontStyle:'italic'}}>On Sale!! ${items.price * items.discount}</p>
+               <div style = {{position: 'relative', textAlign:'center'}}>
+               <p className='card-text' style={{textAlign:'center',textDecorationLine:'line-through', fontSize: 18, color:'grey', display:'inline'}}>${items.price}</p>
+               <p className='card-text' style={{textAlign:'center',color:'red',fontStyle:'bold', display:'inline', fontSize: 30}}>${items.price * items.discount}</p>
                </div>
                :
-               <p className='card-text' style={{textAlign:'center'}}>${items.price * items.discount}</p>
+               <p className='card-text' style={{textAlign:'center', fontSize: 30, height: '40px'}}>${items.price * items.discount}</p>
                }
                </div>
-               <button onClick={()=>this.handleAddtoCart(items)} className='btn btn-primary' style={{position:'relative',bottom:'0px'}} >Add to cart  <i class="fas fa-cart-plus"></i></button>
+               <button onClick={()=>this.handleAddtoCart(items)} className='btn btn-primary' style={{position:'relative',bottom:'0px'}} >Add to cart  <i className="fas fa-cart-plus"></i></button>
            </div>
        </div>
        )
