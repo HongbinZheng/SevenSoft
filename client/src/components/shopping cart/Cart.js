@@ -1,18 +1,16 @@
 import React from 'react';
 import CartItem from './CartItem';
-import { Link, Redirect } from 'react-router-dom'
-import CheckoutReview from '../Checkout/checkoutReview'
+import { withRouter } from "react-router-dom";
 
 class Cart extends React.Component {
     constructor(props) {
         super(props);
- 
         if(localStorage.getItem('cart') != null) {
           var cartString = localStorage.getItem('cart')
           var cart = JSON.parse(cartString)
-          this.state ={cartItems: this.getItemsFromCart(cart), totalPrice: 0}
+          this.state ={cartItems: this.getItemsFromCart(cart), totalPrice: 0,redirect:false,hide:false}
         } else {
-          this.state = {cartItems: [], totalPrice: 0}
+          this.state = {cartItems: [], totalPrice: 0,redirect:false,hide:false}
         }
          this.getTotalPrice(this.state.cartItems);
          this.handleRemove = this.handleRemove.bind(this)
@@ -78,16 +76,6 @@ class Cart extends React.Component {
         }
     }
 
-    checkout(items){
-        if(items.length === null){
-            return null;
-        }else{
-            return(
-            <CheckoutReview items={items}/>
-            )
-        }
-    }
-
     getTotalPrice(items) {
         var tPrice = 0
         items.forEach((item) => {
@@ -95,15 +83,23 @@ class Cart extends React.Component {
         })
         return tPrice
     }
+     handleCheckoutClick = (items) => {
+         if(items.length !== 0){
+             this.setState({hide:true})
+            this.props.history.push('/review')
+         }
+      }
+
     
 
     render() {
         return(
+            this.state.hide ? null
+             :
             <div className="Cart card shadow rounded float-right " style={{position:"relative", border:"1px solid #000000", right:"10px", top: "10px"}}>
                     <h1 className="card-header text-center">Shopping Cart</h1>
             
-                    <Link to='/review' className="fas fa-shopping-cart" style = {{textAlign: "center"}} items={this.state.cartItems} />
-                   
+                    <i className="fas fa-shopping-cart" style = {{textAlign: "center"}} onClick={()=>this.handleCheckoutClick(this.state.cartItems)} />
                     <CartItem items={this.state.cartItems}
                             handleRemove={(itemID) => this.handleRemove(itemID)}
                             handleIncrease={(itemID) => this.handleIncrease(itemID)}
@@ -117,4 +113,4 @@ class Cart extends React.Component {
     }
 }
 
-export default Cart;
+export default withRouter(Cart);

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import style from './home.css';
 import Authserver from './authserver';
 
 

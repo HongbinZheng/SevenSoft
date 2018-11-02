@@ -13,10 +13,8 @@ class Search extends Component {
   componentWillMount() {
     //let searchTerm = this.props.
     axios.get(`/api/allItems`).then(response => {
-      console.log(response.data);
       const item = response.data;
       this.setState({ allItems: response.data });
-      console.log(this.state);
     });
   }
 
@@ -32,12 +30,8 @@ class Search extends Component {
       keys: ["name", "description"]
     };
 
-    console.log(this.state.allItems);
     var fuse = new Fuse(this.state.allItems, options);
-    console.log(fuse);
-    console.log(fuse.search(this.state.query));
     this.setState({ filtered: fuse.search(this.state.query) });
-    console.log(this.state.filtered);
   };
 
   handleInputChange = () => {
@@ -69,7 +63,7 @@ class Search extends Component {
 
   render() {
     return (
-      <form>
+      <div>
         <input
           placeholder="Search for..."
           ref={input => (this.search = input)}
@@ -78,7 +72,7 @@ class Search extends Component {
         {this.state.query ? (
           <Suggestions suggests={this.state.filtered.slice(0, 4)} />
         ) : null}
-      </form>
+      </div>
     );
   }
 }
