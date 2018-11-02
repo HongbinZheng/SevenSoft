@@ -1,5 +1,6 @@
 import React from 'react';
 import Cart from '../../components/shopping cart/Cart'
+import Search from '../Search/search'
 
 
 
@@ -17,11 +18,10 @@ const NavBar = () => {
                         <a href="/meats" className ="btn btn-light text-center" role="button" aria-pressed="true">Meats</a>
                         <a href="/beverages" className ="btn btn-light text-center" role="button" aria-pressed="true">Beverages</a>
                         <a href="/dairy" className ="btn btn-light text-center" role="button" aria-pressed="true">Dairy</a>
-                        <a href="/" className ="btn btn-light text-center" role="button" aria-pressed="true">More>></a>
-                        
+                        <a href="/" className ="btn btn-light text-center" role="button" aria-pressed="true">More>></a>      
                      </ul>
                         <form className="form-inline">
-                            <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"></input>
+                            <Search />
                             <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                         </form>
                         <a href="/profile" className ="btn btn-primary text-center" role="button" aria-pressed="true">Login</a>

@@ -34,6 +34,23 @@ app.use(express.static('client/build'))
 
 
 //////////GET//////////////////
+app.get(`/api/allItems`, (req, res) => {
+  connect.query(`SELECT * FROM items`, function(error, results) {
+    if (error) {
+      res.send(error);
+    } else {
+      if (results.length > 0) {
+        res.send(results);
+      } else {
+        res.send({
+          code: 204,
+          success: "cannot find items"
+        });
+      }
+    }
+  });
+ });
+
 app.get('/api/getItems', (req,res)=>{
   let aisle = req.query.aisle;
   connect.query(`SELECT * FROM items WHERE aisle = ?`, [aisle], function (error, results,fields) {

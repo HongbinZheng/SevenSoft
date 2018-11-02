@@ -1,5 +1,7 @@
 import React from 'react';
 import CartItem from './CartItem';
+import { Link, Redirect } from 'react-router-dom'
+import CheckoutReview from '../Checkout/checkoutReview'
 
 class Cart extends React.Component {
     constructor(props) {
@@ -76,6 +78,16 @@ class Cart extends React.Component {
         }
     }
 
+    checkout(items){
+        if(items.length === null){
+            return null;
+        }else{
+            return(
+            <CheckoutReview items={items}/>
+            )
+        }
+    }
+
     getTotalPrice(items) {
         var tPrice = 0
         items.forEach((item) => {
@@ -90,7 +102,7 @@ class Cart extends React.Component {
             <div className="Cart card shadow rounded float-right " style={{position:"relative", border:"1px solid #000000", right:"10px", top: "10px"}}>
                     <h1 className="card-header text-center">Shopping Cart</h1>
             
-                    <h3 className="fas fa-shopping-cart" style = {{"text-align": "center"}} onClick={null}> </h3>
+                    <Link to='/review' className="fas fa-shopping-cart" style = {{textAlign: "center"}} items={this.state.cartItems} />
                    
                     <CartItem items={this.state.cartItems}
                             handleRemove={(itemID) => this.handleRemove(itemID)}

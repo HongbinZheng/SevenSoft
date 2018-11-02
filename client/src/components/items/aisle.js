@@ -81,7 +81,7 @@ render() {
                <p className='card-text' style={{textAlign:'center'}}>${items.price * items.discount}</p>
                }
                </div>
-               <button onClick={()=>this.handleAddtoCart(items)} className='btn btn-primary' style={{position:'relative',bottom:'0px'}} >Add to cart  <i class="fas fa-cart-plus"></i></button>
+               <button onClick={()=>this.handleAddtoCart(items)} className='btn btn-primary' style={{position:'relative',bottom:'0px'}} >Add to cart  <i className="fas fa-cart-plus"></i></button>
            </div>
        </div>
        )
