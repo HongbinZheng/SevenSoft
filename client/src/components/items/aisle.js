@@ -57,26 +57,27 @@ handleAddtoCart(stuff){
 render() {
   return (
       this.state  ?
-      <div style={{minHeight:window.innerHeight-245}}>
+      <div className = "container-fluid" style={{minHeight:window.innerHeight-245}}>
        <h1>
        {this.state.item.map(items =>
 
-       <div key={items.itemNo} className='rounded float-left' style={{margin:'20px',border:'1px solid #C2C2C2'}}>
+       <div key={items.itemNo} className='rounded float-left' style={{margin:'10px',border:'1px solid #C2C2C2'}}>
            <div className='card' style={{width:'20rem', height:'26rem'}} >
                <Link to={`/${items.aisle}/${items.name}`}>
                <img className='card-img-top' style={{width:'318px',height:'212.28px'}} src={`/images/aisle/${items.name}.png`} alt='Card cap'></img>
                </Link>
                <div className='card-body'>
                <Link to={`/${items.aisle}/${items.name}`}>
-               <h2 className='card-title' style={{textAlign:'center'}}>{items.name}</h2>
+               <h2 className='card-title' style={{textAlign:'center', height: '50px'}}>{items.name}</h2>
                </Link>
+      
                {items.discount !== 1 ?
-               <div>
-               <p className='card-text' style={{textAlign:'center',textDecorationLine:'line-through'}}>${items.price}</p>
-               <p className='card-text' style={{textAlign:'center',color:'red',fontStyle:'italic'}}>On Sale!! ${items.price * items.discount}</p>
+               <div style = {{position: 'relative', textAlign:'center'}}>
+               <p className='card-text' style={{textAlign:'center',textDecorationLine:'line-through', fontSize: 18, color:'grey', display:'inline'}}>${items.price}</p>
+               <p className='card-text' style={{textAlign:'center',color:'red',fontStyle:'bold', display:'inline', fontSize: 30}}>${items.price * items.discount}</p>
                </div>
                :
-               <p className='card-text' style={{textAlign:'center'}}>${items.price * items.discount}</p>
+               <p className='card-text' style={{textAlign:'center', fontSize: 30, height: '40px'}}>${items.price * items.discount}</p>
                }
                </div>
                <button onClick={()=>this.handleAddtoCart(items)} className='btn btn-primary' style={{position:'relative',bottom:'0px'}} >Add to cart  <i className="fas fa-cart-plus"></i></button>

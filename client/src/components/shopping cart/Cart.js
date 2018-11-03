@@ -102,14 +102,14 @@ class Cart extends React.Component {
         return(
              <div>
              <div className="nav-item dropdown">
-                <a className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
-                <i class="fas fa-shopping-cart"></i> Cart ({this.getTotalQyt(this.state.cartItems)})
+                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i className="fas fa-shopping-cart"></i> Cart ({this.getTotalQyt(this.state.cartItems)})
                 </a>
                 <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <div className="Cart card shadow rounded float-right " style={{position:"relative", border:"1px solid #000000", right:"10px", top: "10px"}}>
                     <h1 className="card-header text-center">Shopping Cart</h1>
             
-                    <i className="fas fa-shopping-cart" style = {{textAlign: "center"}} onClick={()=>this.handleCheckoutClick(this.state.cartItems)} />
+                    
                     <CartItem items={this.state.cartItems}
                             handleRemove={(itemID) => this.handleRemove(itemID)}
                             handleIncrease={(itemID) => this.handleIncrease(itemID)}
@@ -117,6 +117,7 @@ class Cart extends React.Component {
                     />
 
                     <h2 className="card-text text-left" >Total: <div className="text-right">${this.getTotalPrice(this.state.cartItems).toFixed(2)}</div></h2>
+                        <i className="fas fa-shopping-cart fa-5x" style = {{textAlign: "center"}} onClick={()=>this.handleCheckoutClick(this.state.cartItems)} />
                     </div>
             </div>
             </div>
