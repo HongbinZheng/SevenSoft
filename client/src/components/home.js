@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Authserver from './authserver';
 
-
 class Home extends Component {
     constructor(){
         super()
@@ -16,6 +15,8 @@ class Home extends Component {
             this.setState({isLogged: true})
         }
     }
+
+   
 
     render() {
         console.log(this.state);

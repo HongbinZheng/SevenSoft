@@ -7,6 +7,7 @@ import Layout from './hoc/layout/layout';
 import Aisle from './components/items/aisle'
 import Item from './components/items/item'
 import CheckoutReview from './components/Checkout/checkoutReview'
+import OrdersPage from './components/User/ordersPage'
 //////////testing//////////
 import Profile from './components/User/profile';
 /////////////////////////////////////////
@@ -20,6 +21,7 @@ class Router extends Component {
                     <Route path="/User" exact component={User}/>
                     <Route path='/profile' exact component={Profile}/>
                     <Route path='/review' exact component={CheckoutReview} />
+                    <Route path='/orders' exact component={OrdersPage} />
                     <Route path='/:aisle' exact component={Aisle} />
                     <Route path='/:aisle/:item' exact component={Item} />
                 </Switch>

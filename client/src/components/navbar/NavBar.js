@@ -5,9 +5,6 @@ import Cart from '../../components/shopping cart/Cart';
 import Search from '../Search/search';
 import Authserver from '../authserver';
 
-
-import CartItem from '../shopping cart/CartItem';
-
 class NavBar extends Component {
         constructor(){
         super()
@@ -25,7 +22,6 @@ class NavBar extends Component {
                 var SERECT = "superserect"
                 const token = localStorage.getItem('id_token')
                 var decoded = jwt.verify(token, SERECT);
-                console.log(decoded)
                 this.setState({isLogged: true,username:decoded})
             }else{
                 this.setState({isLogged: false})
@@ -70,7 +66,7 @@ class NavBar extends Component {
                                 </a>
                                 <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a className="dropdown-item" href="#">My Profile</a>
-                                    <a className="dropdown-item" href="#">My Orders</a>
+                                    <a className="dropdown-item" href="/orders">My Orders</a>
                                     <a className="dropdown-item" href="#">Watch list</a>
                                     <div className="dropdown-divider"></div>
                                     <button type="button" onClick={this.handleLogout.bind(this)}>Logout</button>

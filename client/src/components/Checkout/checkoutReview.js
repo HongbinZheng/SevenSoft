@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import {firebaseDB} from '../../firebase';
+import Authserver from'../authserver'
+import jwt from'jsonwebtoken'
 
 class CheckoutReview extends Component {
     constructor(props) {
@@ -12,6 +15,7 @@ class CheckoutReview extends Component {
             this.state ={cartItems: this.getItemsFromCart(cart), totalPrice: 0,qty:0}
           } 
           this.getTotalPrice(this.state.cartItems);
+          this.Auth = new Authserver();
     }
 
     getItemsFromCart = (cart) => {
@@ -20,6 +24,18 @@ class CheckoutReview extends Component {
           cartItems.push(cart[itemID])
         }
         return cartItems
+      }
+
+      handleCheckOut(items){
+        if(this.Auth.loggedIn()){
+            var SERECT = "superserect"
+            const token = localStorage.getItem('id_token')
+            var decoded = jwt.verify(token, SERECT);
+            items.forEach(item=>{item.myRate = 0});
+            console.log(items);
+            firebaseDB.ref(`/orders/${decoded}`).push(items);
+        }
+        this.props.history.push('/')
       }
 
       getTotalPrice(items) {
@@ -67,6 +83,7 @@ class CheckoutReview extends Component {
                 })}
                 <div className="col" style={{marginTop:"50px"}}>
                 <h2 className="card-text text-right" >Subtotal: ${this.getTotalPrice(this.state.cartItems).toFixed(2)}</h2>
+                <button className="check out button" onClick={()=>this.handleCheckOut(this.state.cartItems)}> Check Out</button>
                 </div>
             </div>
         );
