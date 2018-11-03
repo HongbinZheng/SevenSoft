@@ -127,9 +127,6 @@ app.post('/api/login',(req,res)=>{
         });
 })
 
-
-
-
 app.post('/api/register', (req,res)=>{
   var password = req.body.user.password;
   if(password === req.body.user.confirmPassword && req.body.user.username !== "" && req.body.user.email !== ""){
@@ -160,6 +157,26 @@ app.post('/api/register', (req,res)=>{
       })
   }})
 
+app.post('/api/updateRating', (req,res)=>{
+  console.log(req.body)
+  var ratingChange = {
+    avgstars:req.body.newAvgRates,
+    nrates:req.body.ratingNumber
+  }
+  var name = req.body.itemName
+  connect.query(`UPDATE items SET ? WHERE name = '${name}';`,ratingChange, function(err,result){
+    if(err){
+      console.log(err)
+      res.send({err})
+    }else{
+      message = "successfully update";
+      console.log(message);
+      res.send({message})
+    }
+  })
+})
+
+//////////////////////////////////////////////
 if(process.env.NODE_ENV === 'production'){
     const path=require('path');
     app.get('/*',(req,res)=>{

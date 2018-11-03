@@ -23,6 +23,8 @@ class Item extends Component {
            name: stuff.name,
            price: stuff.price,
            discount: stuff.discount,
+           avgStars:stuff.avgstars,
+           nrates:stuff.nrates
         }
         console.log(item)
         if(localStorage.getItem('cart') !== null) {
@@ -85,7 +87,7 @@ class Item extends Component {
 
                 <h5>description:{this.state.description}</h5>
                 <br/>
-                <h3><button type="button" onClick={()=>this.handleAddtoCart(this.state)} className="btn btn-primary"> Add to Cart <i class="fas fa-cart-plus"></i></button>
+                <h3><button type="button" onClick={()=>this.handleAddtoCart(this.state)} className="btn btn-primary"> Add to Cart <i className="fas fa-cart-plus"></i></button>
                 <button type="button" className="btn btn-primary" style={{marginLeft:"20px"}}>Add to Watch List</button>
                 </h3>
                 

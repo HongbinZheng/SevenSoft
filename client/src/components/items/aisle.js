@@ -28,6 +28,8 @@ handleAddtoCart(stuff){
         name: stuff.name,
         price: stuff.price,
         discount: stuff.discount,
+        avgStars:stuff.avgstars,
+        nrates:stuff.nrates
      }
      console.log(item)
      if(localStorage.getItem('cart') != null) {
