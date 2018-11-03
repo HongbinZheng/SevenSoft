@@ -8,9 +8,9 @@ class Cart extends React.Component {
         if(localStorage.getItem('cart') != null) {
           var cartString = localStorage.getItem('cart')
           var cart = JSON.parse(cartString)
-          this.state ={cartItems: this.getItemsFromCart(cart), totalPrice: 0,redirect:false,hide:false}
+          this.state ={cartItems: this.getItemsFromCart(cart), totalPrice: 0,redirect:false}
         } else {
-          this.state = {cartItems: [], totalPrice: 0,redirect:false,hide:false}
+          this.state = {cartItems: [], totalPrice: 0,redirect:false}
         }
          this.getTotalPrice(this.state.cartItems);
          this.handleRemove = this.handleRemove.bind(this)
@@ -83,19 +83,29 @@ class Cart extends React.Component {
         })
         return tPrice
     }
+
+    getTotalQyt(items){
+        var qty = 0
+        items.forEach((item) => {
+            qty += item.quantityInCart
+        })
+        return qty
+    }
      handleCheckoutClick = (items) => {
          if(items.length !== 0){
-             this.setState({hide:true})
             this.props.history.push('/review')
          }
       }
-
     
 
     render() {
         return(
-            this.state.hide ? null
-             :
+             <div>
+             <div className="nav-item dropdown">
+                <a className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
+                <i class="fas fa-shopping-cart"></i> Cart ({this.getTotalQyt(this.state.cartItems)})
+                </a>
+                <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <div className="Cart card shadow rounded float-right " style={{position:"relative", border:"1px solid #000000", right:"10px", top: "10px"}}>
                     <h1 className="card-header text-center">Shopping Cart</h1>
             
@@ -107,6 +117,9 @@ class Cart extends React.Component {
                     />
 
                     <h2 className="card-text text-left" >Total: <div className="text-right">${this.getTotalPrice(this.state.cartItems).toFixed(2)}</div></h2>
+                    </div>
+            </div>
+            </div>
             </div>
 
         )
