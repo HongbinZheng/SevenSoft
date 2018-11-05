@@ -97,15 +97,18 @@ class OrdersPage extends Component {
             this.state.orders ?
             <div>
                 <div className="container" style={{display:"flex", marginTop: "50px", marginBottom: "300px", width: "750px", textAlign: "center" }}>
+                {/* get each orders. */}
                     {Object.keys(this.state.orders).map((key) => {
                         return (
                             <div key={key} className="container" style={{border: "2px solid #000000", width: "700px", height: "150px", alignItems: 'center', backgroundColor: "white" }}>
+                               {/** get each items orders  */}
                                 {this.state.orders[key].map((item,index) => {
                                     return (
                                         <div className="row" style={{ marginTop: "30px",textAlign:"center" }} key={item.itemid}>
                                            <div className="col">
                                                 <img className="card-img-top" style={{ width: '40%', height: '40%' }} src={`/images/aisle/${item.name}.png`} alt='Card cap' />
                                                 <h5>{item.name}</h5>
+                                                {/** if user already rated the item, it will display the rating user give, if not, they can rate the item the purchase */}
                                                 {item.myRate === 0 ?
                                                 <div>
                                                 <h5><ReactStars
