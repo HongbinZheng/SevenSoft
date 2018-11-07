@@ -71,22 +71,28 @@ class Item extends Component {
                     edit={false}
                     color2={'#ffd700'} /></h5>
                 <br/>
-                
+                <div style={{marginBottom:'10px'}}>
                 {this.state.discount !== 1 ? 
                 <div>
-                <h2 style={{textDecorationLine:"line-through"}}>${this.state.price}</h2>
-                <h2 style={{color:"red",fontStyle:"italic"}}>On Sale!! ${this.state.price * this.state.discount}</h2>
-                <h6>per {this.state.per}</h6>
+                <h2 style={{display:'inline',textDecorationLine:"line-through", fontSize:26, color:'grey'}}>${this.state.price} </h2>
+           
+                <h2 style={{display:'inline', color:"red",fontStyle:"italic"}}>  On Sale!!</h2>
+            <div>
+                <h2 style={{display:'inline', color:"red"}}> ${this.state.price * this.state.discount}</h2>
+            
+                <h6 style={{display:'inline'}}>  per {this.state.per}</h6>
                 </div>
+            </div>
                 :
                 <div>
-                <h2>{this.state.price * this.state.discount}</h2>
-                <h6>per {this.state.per}</h6>
+                <h2 style={{display:'inline'}}>${this.state.price * this.state.discount}</h2>
+                <h6 style={{display:'inline'}}>  per {this.state.per}</h6>
                 </div>
                 }
-
-
-                <h5>description:{this.state.description}</h5>
+                </div>
+                
+                
+                <h5>{this.state.description}</h5>
                 <br/>
                 <h3 style = {{width:'400px'}}><button type="button" onClick={()=>this.handleAddtoCart(this.state)} className="btn btn-info"> Add to Cart <i className="fas fa-cart-plus"></i></button>
                 <button type="button" className="btn btn-warning" style={{marginLeft:"20px"}}>Add to Watch List</button>
