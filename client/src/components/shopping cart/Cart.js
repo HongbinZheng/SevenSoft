@@ -106,15 +106,14 @@ class Cart extends React.Component {
 
     render() {
         return(
-            /** tring to fix the holding problem */
-            this.state.hide ? <i className="fas fa-shopping-cart" onClick={this.hideIt}>Cart ({this.getTotalQyt(this.state.cartItems)}) </i> :
-             <div>
-             {/* <div className="nav-item dropdown">
-                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> */}
+              <div className="nav-item dropdown">
+                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i className="fas fa-shopping-cart" onClick={this.hideIt}> Cart ({this.getTotalQyt(this.state.cartItems)}) </i> 
-                {/* </a> */}
+                 </a> 
                  <div  aria-labelledby="navbarDropdown">
-            <div className="Cart card shadow rounded float-right " style={{position:"relative", border:"1px solid #000000", right:"10px", top: "10px"}}> 
+                <div className="Cart card shadow rounded float-right " style={{position:"relative", border:"1px solid #000000", right:"10px", top: "10px"}}> 
+                <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <div className="Cart card shadow rounded float-right " style={{position:"relative", border:"1px solid #000000", right:"10px", top: "10px"}}>
                     <h1 className="card-header text-center">Shopping Cart</h1>
             
                     
@@ -129,7 +128,8 @@ class Cart extends React.Component {
                     </div>
             </div>
             </div>
-            // </div>
+            </div>
+            </div>
 
         )
     }
