@@ -12,7 +12,8 @@ class OrdersPage extends Component {
             username:'',
             orders:{},
             quantityInCart:0,
-            rating:0
+            ratingNum:'',
+            avgRating:''
         }
         this.Auth = new Authserver();
     }
@@ -117,7 +118,7 @@ class OrdersPage extends Component {
                                                     value={item.myRate}
                                                     size={24}
                                                     onChange={this.ratingChanged.bind(this,item,key,index)}
-                                                    color2={'#ffd700'} /></h5>
+                                                    edit={true}/></h5>
                                                 </div>
                                                 : 
                                                 <div>
