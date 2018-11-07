@@ -58,11 +58,12 @@ class Item extends Component {
         <div className="container" style={{minHeight:window.innerHeight-245}}>
             <div className="row">
             <div className="col-sm">
-              <img style={{width:"75%",height:"75%",left:"50px",top:"55%"}} src={`/images/aisle/${this.state.name}.png`} alt="Card cap"></img>
+              <img style={{width:"418px",height:"279.03px", marginTop:'100px'}} src={`/images/aisle/${this.state.name}.png`} alt="Card cap"></img>
               </div>
-              <div className="col align-self-end" style={{top:"100px"}}>
-                <h2>{this.state.name}</h2>
-                <h4>Aisle:{this.state.aisle}</h4>
+              <div className="col align-self-end" style={{position:'relative', top:"40px", marginLeft:'100px'}}>
+                <h2 style = {{fontSize:55}}>{this.state.name}</h2>
+                <p style = {{display:'inline', fontSize: 19}}>Aisle: </p>
+                <p style = {{display:'inline', color: '#7FDBFF', fontSize: 19}}>{this.state.aisle}</p>
                 <h5><ReactStars
                     count={5}
                     value={this.state.avgstars}
@@ -87,8 +88,8 @@ class Item extends Component {
 
                 <h5>description:{this.state.description}</h5>
                 <br/>
-                <h3><button type="button" onClick={()=>this.handleAddtoCart(this.state)} className="btn btn-primary"> Add to Cart <i className="fas fa-cart-plus"></i></button>
-                <button type="button" className="btn btn-primary" style={{marginLeft:"20px"}}>Add to Watch List</button>
+                <h3 style = {{width:'400px'}}><button type="button" onClick={()=>this.handleAddtoCart(this.state)} className="btn btn-info"> Add to Cart <i className="fas fa-cart-plus"></i></button>
+                <button type="button" className="btn btn-warning" style={{marginLeft:"20px"}}>Add to Watch List</button>
                 </h3>
                 
               </div>

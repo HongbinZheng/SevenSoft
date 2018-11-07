@@ -66,32 +66,32 @@ class OrdersPage extends Component {
     }
 
     ratingChanged = (item,key,index,newRating) => {
-        console.log(item)
-        console.log(key)
-        console.log(index)
-        console.log(newRating)
-        axios.get(`/api/getOneItem?item=${item.name}`)
-            .then(res =>{
-                console.log(res.data[0])
-                this.setState({ratingNum:res.data[0].nrates, avgRating:res.data[0].avgstars})
+       console.log(item)
+       console.log(key)
+       console.log(index)
+       console.log(newRating)
+       axios.get(`/api/getOneItem?item=${item.name}`)
+           .then(res =>{
+               console.log(res.data[0])
+               this.setState({ratingNum:res.data[0].nrates, avgRating:res.data[0].avgstars})
 
-        console.log(this.state.ratingNum)
-        console.log(this.state.avgRating)
-        let totalRate = this.state.ratingNum * this.state.avgRating;
-        item.myRate = newRating;
-        let user = this.state.username
-        totalRate = totalRate + newRating
-        let ratingNumber = this.state.ratingNum + 1;
-        let itemName = item.name;
-        let newAvgRates = totalRate / ratingNumber;
-        firebaseDB.ref(`/orders/${user}/${key}/${index}`).update({myRate:newRating})
+       console.log(this.state.ratingNum)
+       console.log(this.state.avgRating)
+       let totalRate = this.state.ratingNum * this.state.avgRating;
+       item.myRate = newRating;
+       let user = this.state.username
+       totalRate = totalRate + newRating
+       let ratingNumber = this.state.ratingNum + 1;
+       let itemName = item.name;
+       let newAvgRates = totalRate / ratingNumber;
+       firebaseDB.ref(`/orders/${user}/${key}/${index}`).update({myRate:newRating})
 
-        axios.post('/api/updateRating',{ratingNumber,itemName,newAvgRates})
-        .then(res=>console.log(res))
-        window.location.reload()
-            })
+       axios.post('/api/updateRating',{ratingNumber,itemName,newAvgRates})
+       .then(res=>console.log(res))
+       window.location.reload()
+           })
 
-      }
+     }
 
 
     render() {        
