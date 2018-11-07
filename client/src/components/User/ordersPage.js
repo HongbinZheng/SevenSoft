@@ -12,7 +12,8 @@ class OrdersPage extends Component {
             username:'',
             orders:{},
             quantityInCart:0,
-            rating:0
+            ratingNum:'',
+            avgRating:''
         }
         this.Auth = new Authserver();
     }
@@ -65,30 +66,31 @@ class OrdersPage extends Component {
     }
 
     ratingChanged = (item,key,index,newRating) => {
-        let totalRate = item.nrates * item.avgStars;
+        console.log(item)
+        console.log(key)
+        console.log(index)
+        console.log(newRating)
+        axios.get(`/api/getOneItem?item=${item.name}`)
+            .then(res =>{
+                console.log(res.data[0])
+                this.setState({ratingNum:res.data[0].nrates, avgRating:res.data[0].avgstars})
+
+        console.log(this.state.ratingNum)
+        console.log(this.state.avgRating)
+        let totalRate = this.state.ratingNum * this.state.avgRating;
         item.myRate = newRating;
         let user = this.state.username
         totalRate = totalRate + newRating
-        let ratingNumber = item.nrates + 1;
+        let ratingNumber = this.state.ratingNum + 1;
         let itemName = item.name;
         let newAvgRates = totalRate / ratingNumber;
         firebaseDB.ref(`/orders/${user}/${key}/${index}`).update({myRate:newRating})
 
-        Object.keys(this.state.orders).map((keys) => {
-            this.state.orders[keys].map((itemss,index)=>{
-                firebaseDB.ref(`orders/${user}/${keys}/${index}`).once('value', function (snapshot) {
-                    console.log(snapshot.val())
-                    if (snapshot.val().name === itemName) {
-                        firebaseDB.ref(`orders/${user}/${keys}/${index}`).update({ nrates: ratingNumber })
-                    }
-                })
-                itemss.nrates = ratingNumber
-            })
-        })
-
         axios.post('/api/updateRating',{ratingNumber,itemName,newAvgRates})
         .then(res=>console.log(res))
-        window.location.reload();
+        window.location.reload()
+            })
+
       }
 
 
@@ -116,7 +118,7 @@ class OrdersPage extends Component {
                                                     value={item.myRate}
                                                     size={24}
                                                     onChange={this.ratingChanged.bind(this,item,key,index)}
-                                                    color2={'#ffd700'} /></h5>
+                                                    edit={true}/></h5>
                                                 </div>
                                                 : 
                                                 <div>
