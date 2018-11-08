@@ -9,6 +9,7 @@ const CartItem =(props)=> {
             handleIncrease={props.handleIncrease}
             handleDecrease={props.handleDecrease}
             />
+            
         )
       });
         if(props.items.length === 0) {
@@ -21,7 +22,7 @@ const CartItem =(props)=> {
             )
           } else {
             return(
-            <div>
+            <div style={{height:"auto", maxHeight:400,overflowY:"scroll"}}> 
               {items}
             </div>
             )

@@ -76,8 +76,10 @@ class NavBar extends Component {
                         : <a href="/profile" className ="btn btn-primary text-center" role="button" aria-pressed="true">Login</a>}
                         
                  </div>
-                 <Cart />
              </nav>
+             <div className="float-right" style={{top:200}}>
+             <Cart />
+             </div>
              </div>                    
         );
         }

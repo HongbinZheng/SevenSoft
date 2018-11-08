@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import Cart from '../shopping cart/Cart';
 
 class Aisle extends Component {
    constructor(){
@@ -70,7 +71,7 @@ render() {
                </Link>
                <div className='card-body'>
                <Link to={`/${items.aisle}/${items.name}`}>
-               <h2 className='card-title' style={{textAlign:'center', height: '50px', color: ' 	#708090'}}>{items.name}</h2>
+               <h2 className='card-title' style={{textAlign:'center', height: '50px', color:'#708090'}}>{items.name}</h2>
                </Link>
       
                {items.discount !== 1 ?
