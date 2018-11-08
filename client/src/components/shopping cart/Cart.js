@@ -1,6 +1,7 @@
 import React from 'react';
 import CartItem from './CartItem';
 import { withRouter } from "react-router-dom";
+import style from "./Cart.css"
 
 class Cart extends React.Component {
     constructor(props) {
@@ -112,9 +113,10 @@ class Cart extends React.Component {
     
     render() {
         return(
-              <div className="nav-item">
-                <button className="btn btn-success" role="button" data-toggle="collapse" data-target="#cartopen" aria-expanded="false" aria-controls="#cartopen">
-                <i className="fas fa-shopping-cart"> Cart ({this.getTotalQyt(this.state.cartItems)}) </i> 
+              <div className = "CartDiv" style = {{position:'absolute', right:'45px', top:'100px'}}>
+                <button className="btn btn-success" role="button" data-toggle="collapse" data-target="#cartopen" aria-expanded="false" aria-controls="#cartopen" aria-haspopup="true" text-align="center" margin = "auto" style={{width:'80px', height:'80px', borderRadius:'50%'}}>
+                    <i className="fas fa-shopping-cart fa-2x"> {this.getTotalQyt(this.state.cartItems)}</i>
+                   
                  </button> 
                  <div className="collapse" id="cartopen" style={{border:"1px solid #C2C2C2", backgroundColor:"#ffffff"}}>
                 {/* <div className="Cart card shadow rounded float-right " style={{position:"relative", border:"1px solid #000000", right:"10px", top: "10px"}}>  */}

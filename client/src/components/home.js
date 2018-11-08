@@ -47,6 +47,8 @@ class Home extends Component {
                         <span className="sr-only">Next</span>
                     </a>
                 </div>
+
+            
                 {this.state.isLogged ? 
                 <div>
                 <h1>This is order history</h1><br/>
