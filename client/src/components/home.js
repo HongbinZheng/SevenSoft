@@ -19,8 +19,10 @@ class Home extends Component {
             var username = this.Auth.getUserName()
             axios.get(`/api/getLastOrder?username=${username}`)
                 .then(res=>{
+                    if(res.data.length > 0){
                     const orders = Object.values(res.data[0]);
                     this.setState({order:orders})
+                    }
                 })
         }
     }
@@ -62,7 +64,7 @@ class Home extends Component {
                 <div>
                     <div style={{marginTop:"30px"}}>
                 <h1>Most Recent Order</h1><br/>
-                {this.state.order ?
+                {this.state.order.length > 0 ?
                      <div className="col-lg-12 col-md-12 col-sm-12 d-flex p-2" style={{maxHeight:"400px", overflowX:"scroll",border:'1px solid #C2C2C2', backgroundColor:"#D5E6E8"}}>
                        {this.state.order.map((items) =>{
                            return(
@@ -84,7 +86,9 @@ class Home extends Component {
                       </div>
                       }
                     </div>
+                    <div style={{marginTop:30}}>
                 <h1>This is watch lits</h1><br/>  
+                </div>
                 </div>: null}
                
             </div>
