@@ -20,8 +20,8 @@ class Home extends Component {
 
     render() {
         return (
-            <div style = {{marginTop: "30px", marginLeft: "30px"}}>
-                <div id="carouselExampleIndicators" className="carousel slide w-75 h-75" data-ride="carousel">
+            <div style = {{marginTop: "30px", marginLeft: "50px", marginRight:"50px"}}>
+                <div id="carouselExampleIndicators" className="carousel slide w-100" style={{maxHeight:'400px'}} data-ride="carousel">
                     <ol className="carousel-indicators">
                         <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
                         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
