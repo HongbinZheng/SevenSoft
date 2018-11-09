@@ -38,8 +38,8 @@ class NavBar extends Component {
     
         render(){
         return (
-            <div className="sticky-top">
-             <nav className="navbar  navbar-expand-lg navbar-light bg-light center" id = "navBar">
+            <div className="sticky-top" style={{marginTop:'0px'}}>
+             <nav className="navbar  navbar-expand-lg navbar-light bg-light" id = "navBar">
                  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                      <span className="navbar-toggler-icon"></span>
                  </button>
@@ -58,7 +58,7 @@ class NavBar extends Component {
                         {this.state.isLogged ? 
                         <div >
                             <div className="nav-item dropdown ">
-                                <a className="nav-link dropdown-toggle keep-open" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a className="nav-link dropdown-toggle keep-open" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Hello {this.state.username}
                                 </a>
                                 <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
