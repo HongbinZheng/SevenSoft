@@ -54,10 +54,7 @@ class NavBar extends Component {
                      </ul>
                         
             
-                        <form className="form-inline">
-                            <Search />
-                            <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                        </form>
+                        
                         {this.state.isLogged ? 
                         <div >
                             <div className="nav-item dropdown ">
@@ -80,6 +77,16 @@ class NavBar extends Component {
              <div className="float-right" style={{top:200}}>
              <Cart />
              </div>
+            <div className="nav-item text-center" style={{marginLeft:'40%'}}>
+                 <form className="form-inline">
+                            <div>
+                            <Search />
+                            </div>
+                            <div style={{position: "relative", marginLeft:'10px'}}>
+                                <button className="btn btn-outline-success" type="submit">Search</button>
+                            </div>    
+                </form>
+            </div>
              </div>                    
         );
         }
