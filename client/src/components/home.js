@@ -13,6 +13,7 @@ class Home extends Component {
     componentWillMount(){
         if(this.Auth.loggedIn()){
             this.setState({isLogged: true})
+            console.log(this.Auth.getUserName())
         }
     }
 

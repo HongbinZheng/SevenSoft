@@ -19,18 +19,6 @@ class Cart extends React.Component {
          this.handleDecrease = this.handleDecrease.bind(this)
     }
 
-    componentDidUpdate(prevState,prevProps){
-        console.log(this.props)
-        console.log(prevProps)
-        if(prevState.cartItems !== this.state.cartItems){
-        if(localStorage.getItem('cart') != null) {
-            var cartString = localStorage.getItem('cart')
-            var cart = JSON.parse(cartString)
-            this.state ={cartItems: this.getItemsFromCart(cart), totalPrice: 0,hide:false}
-          } else {
-            this.state = {cartItems: [], totalPrice: 0,hide:false}
-          }}
-    }
 
     getItemsFromCart = (cart) => {
         var cartItems = []
