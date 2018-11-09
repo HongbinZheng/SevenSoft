@@ -106,7 +106,7 @@ class Cart extends React.Component {
                     <i className="fas fa-shopping-cart fa-2x"> {this.getTotalQyt(this.state.cartItems)}</i>
                    
                  </button> 
-                 <div className="collapse" id="cartopen" style={{border:"1px solid #C2C2C2", backgroundColor:"#ffffff"}}>
+                 <div className="collapse" id="cartopen" style={{border:"1px solid #C2C2C2", backgroundColor:"#ffffff", width:'300px'}}>
                 {/* <div className="Cart card shadow rounded float-right " style={{position:"relative", border:"1px solid #000000", right:"10px", top: "10px"}}>  */}
                 <div>
                 {/* <div className="Cart card shadow rounded float-right " style={{position:"relative", border:"1px solid #000000", right:"10px", top: "10px"}}> */}
@@ -119,7 +119,7 @@ class Cart extends React.Component {
                     />
                     </div>
                     <h2 className="card-text text-left" style={{marginLeft:10}} >Total: <div className="text-right" style={{marginRight:10}}>${this.getTotalPrice(this.state.cartItems).toFixed(2)}</div></h2>
-                        <button className="fas fa-shopping-cart fa-5x btn btn-info" style={{textAlign:"center",fontSize:30, marginLeft:10}} onClick={()=>this.handleCheckoutClick(this.state.cartItems)}> CheckOut </button>
+                        <button className="fas fa-shopping-cart fa-5x btn btn-info" style={{textAlign:"center",fontSize:30, marginLeft: '50px', marginBottom:'10px', marginTop:'10px'}} onClick={()=>this.handleCheckoutClick(this.state.cartItems)}> CheckOut </button>
                     </div>
             </div>
             </div>
