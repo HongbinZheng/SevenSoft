@@ -103,8 +103,9 @@ app.get('/api/getOneItem',(req,res)=>{
 
 app.get('/api/getLastOrder', (req,res)=>{
   let username = req.query.username
-  firebaseDB.ref(`/orders/${username}`).limitToLast(1).on('value', (snapshot)=>{
+  firebaseDB.ref(`/orders/${username}`).limitToLast(1).once('value', (snapshot)=>{
     const order = [];
+    console.log(snapshot)
     snapshot.forEach((childSnapshot)=>{
       order.push({
         ...childSnapshot.val()
@@ -112,6 +113,7 @@ app.get('/api/getLastOrder', (req,res)=>{
     })
     console.log(order)
     res.send(order)
+  
   })
 })
 
