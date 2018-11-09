@@ -1,5 +1,6 @@
 import decode from 'jwt-decode';
 import axios from 'axios'
+import jwt from'jsonwebtoken'
 
 export default class Authserver{
     constructor() { 
@@ -57,6 +58,14 @@ export default class Authserver{
         return decode(this.getToken());
     }
 
+    getUserName = () =>{
+        var SERECT = "superserect"
+        const token = localStorage.getItem('id_token')
+        var decoded = jwt.verify(token, SERECT);
+        return decoded;
+    }
+
+
     _checkStatus(response) {
         // raises an error in case response status is not a success
         if (response.status >= 200 && response.status < 300) { // Success status lies between 200 to 300
@@ -67,6 +76,8 @@ export default class Authserver{
             throw error
         }
     }
+
+
 };
 
 // export default Authserver;

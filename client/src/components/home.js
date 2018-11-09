@@ -1,18 +1,27 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 import Authserver from './authserver';
+import axios from 'axios';
 
 class Home extends Component {
     constructor(){
         super()
         this.state={
-            isLogged:false
+            isLogged:false,
+            order:[]
         }
         this.Auth = new Authserver()
     }
 
-    componentWillMount(){
+    componentDidMount(){
         if(this.Auth.loggedIn()){
             this.setState({isLogged: true})
+            var username = this.Auth.getUserName()
+            axios.get(`/api/getLastOrder?username=${username}`)
+                .then(res=>{
+                    const orders = Object.values(res.data[0]);
+                    this.setState({order:orders})
+                })
         }
     }
 
@@ -20,8 +29,8 @@ class Home extends Component {
 
     render() {
         return (
-            <div style = {{marginTop: "30px", marginLeft: "50px", marginRight:"50px"}}>
-                <div id="carouselExampleIndicators" className="carousel slide w-100" style={{maxHeight:'400px'}} data-ride="carousel">
+            <div style = {{marginTop: "30px", marginLeft: "30px",minHeight:window.innerHeight-245}}>
+                <div id="carouselExampleIndicators" className="carousel slide w-75 h-75" data-ride="carousel">
                     <ol className="carousel-indicators">
                         <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
                         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -51,56 +60,30 @@ class Home extends Component {
             
                 {this.state.isLogged ? 
                 <div>
-                <h1>This is order history</h1><br/>
-                <h1>This is watch lits</h1><br/> 
-                <h1>This is watch lits</h1><br/> 
-                <h1>This is watch lits</h1><br/> 
-                <h1>This is watch lits</h1><br/> 
-                <h1>This is watch lits</h1><br/> 
-                <h1>This is watch lits</h1><br/> 
-                <h1>This is watch lits</h1><br/> 
-                <h1>This is watch lits</h1><br/> 
-                <h1>This is watch lits</h1><br/> 
-                <h1>This is watch lits</h1><br/> 
-                <h1>This is watch lits</h1><br/> 
-                <h1>This is watch lits</h1><br/> 
-                <h1>This is watch lits</h1><br/> 
-                <h1>This is watch lits</h1><br/> 
-                <h1>This is watch lits</h1><br/> 
-                <h1>This is watch lits</h1><br/> 
-                <h1>This is watch lits</h1><br/> 
-                <h1>This is watch lits</h1><br/> 
-                <h1>This is watch lits</h1><br/> 
-                <h1>This is watch lits</h1><br/> 
-                <h1>This is watch lits</h1><br/> 
-                <h1>This is watch lits</h1><br/> 
-                <h1>This is watch lits</h1><br/> 
-                <h1>This is watch lits</h1><br/> 
-                <h1>This is watch lits</h1><br/> 
-                <h1>This is watch lits</h1><br/> 
-                <h1>This is watch lits</h1><br/> 
-                <h1>This is watch lits</h1><br/> 
-                <h1>This is watch lits</h1><br/> 
-                <h1>This is watch lits</h1><br/> 
-                <h1>This is watch lits</h1><br/> 
-                <h1>This is watch lits</h1><br/> 
-                <h1>This is watch lits</h1><br/> 
-                <h1>This is watch lits</h1><br/> 
-                <h1>This is watch lits</h1><br/> 
-                <h1>This is watch lits</h1><br/> 
-                <h1>This is watch lits</h1><br/> 
-                <h1>This is watch lits</h1><br/> 
-                <h1>This is watch lits</h1><br/> 
-                <h1>This is watch lits</h1><br/> 
-                <h1>This is watch lits</h1><br/> 
-                <h1>This is watch lits</h1><br/> 
-                <h1>This is watch lits</h1><br/> 
-                <h1>This is watch lits</h1><br/> 
-                <h1>This is watch lits</h1><br/> 
-                <h1>This is watch lits</h1><br/> 
-                <h1>This is watch lits</h1><br/> 
-                <h1>This is watch lits</h1><br/> 
-                <h1>This is watch lits</h1><br/>  <h1>This is watch lits</h1><br/> 
+                    <div style={{marginTop:"30px"}}>
+                <h1>Most Recent Order</h1><br/>
+                {this.state.order ?
+                     <div className="col-lg-12 col-md-12 col-sm-12 d-flex p-2" style={{maxHeight:"400px", overflowX:"scroll",border:'1px solid #C2C2C2', backgroundColor:"#D5E6E8"}}>
+                       {this.state.order.map((items) =>{
+                           return(
+                           <div key={items.itemid}>
+                           <Link to={`/${items.aisle}/${items.name}`}>
+                               <div className="card" style={{width:"15rem",height:"auto",margin:"10px",border:'1px solid #C2C2C2' }}>
+                                <img className="card-img-top" src={`/images/aisle/${items.name}.png`} style={{textAlign:'center',width:"100%",height:"100%"}} alt="Card cap"/>
+                                <div className="card-body">
+                                <p className="card-text" style={{textAlign:'center'}}>{items.name}</p>
+                                </div>
+                           </div>
+                           </Link>
+                           </div>)}
+                       )}
+                     </div>
+                      :
+                      <div>
+                          <h3>Never bought anything yet</h3>
+                      </div>
+                      }
+                    </div>
                 <h1>This is watch lits</h1><br/>  
                 </div>: null}
                

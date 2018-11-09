@@ -6,10 +6,11 @@ var bcrypt = require('bcryptjs');
 var salt = bcrypt.genSaltSync(10);
 const jwt = require('jsonwebtoken');
 var localStorage = require('localStorage');
+var firebase = require('firebase');
 
 // const urlencodeParser = bodyParser.urlencoded({extended:false})
  const jsonParser = bodyParser.json();
-
+////////////////MYSql config//////////////////////////////////
 var connect = mysql.createConnection({
     host: 'lancedb.cjgoraxv1j8k.us-west-1.rds.amazonaws.com',
     user: 'lanceypants',
@@ -26,7 +27,20 @@ connect.connect(function(err){
 });
 global.db = connect;
 
+////////////////Firebase config///////////////////////////////
+const config = {
+  apiKey: "AIzaSyCEK08XguV4CVa4balQ05DD-zj1L8I57QY",
+  authDomain: "minisafeway-ac266.firebaseapp.com",
+  databaseURL: "https://minisafeway-ac266.firebaseio.com",
+  projectId: "minisafeway-ac266",
+  storageBucket: "minisafeway-ac266.appspot.com",
+  messagingSenderId: "1031101506009"
+};
 
+firebase.initializeApp(config);
+const firebaseDB = firebase.database();
+
+/////////////////USE//////////////////////
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
@@ -86,6 +100,21 @@ app.get('/api/getOneItem',(req,res)=>{
     }
   })
 })
+
+app.get('/api/getLastOrder', (req,res)=>{
+  let username = req.query.username
+  firebaseDB.ref(`/orders/${username}`).limitToLast(1).on('value', (snapshot)=>{
+    const order = [];
+    snapshot.forEach((childSnapshot)=>{
+      order.push({
+        ...childSnapshot.val()
+      })
+    })
+    console.log(order)
+    res.send(order)
+  })
+})
+
 
 ////////POST///////////
 app.post('/api/login',(req,res)=>{
