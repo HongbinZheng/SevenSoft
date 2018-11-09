@@ -31,8 +31,8 @@ class Home extends Component {
 
     render() {
         return (
-            <div style = {{marginTop: "30px", marginLeft: "30px",minHeight:window.innerHeight-245}}>
-                <div id="carouselExampleIndicators" className="carousel slide w-75 h-75" data-ride="carousel">
+            <div style = {{marginTop: "5px", marginLeft: "30px", marginRight:"30px", minHeight:window.innerHeight-245}}>
+                <div id="carouselExampleIndicators" className="carousel slide w-100 h-50" data-ride="carousel">
                     <ol className="carousel-indicators">
                         <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
                         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
