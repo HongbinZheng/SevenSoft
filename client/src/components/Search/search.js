@@ -106,7 +106,7 @@ class Search extends Component {
         {this.renderRedirect()}
         <button onClick={this.setRedirect}>Go</button>
         {this.state.query ? (
-          <div class="dropdown">
+          <div className="dropdown">
             <Suggestions suggests={this.state.filtered.slice(0, 4)} />
           </div>
         ) : null}
