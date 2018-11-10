@@ -6,10 +6,11 @@ var bcrypt = require('bcryptjs');
 var salt = bcrypt.genSaltSync(10);
 const jwt = require('jsonwebtoken');
 var localStorage = require('localStorage');
+var firebase = require('firebase');
 
 // const urlencodeParser = bodyParser.urlencoded({extended:false})
  const jsonParser = bodyParser.json();
-
+////////////////MYSql config//////////////////////////////////
 var connect = mysql.createConnection({
     host: 'lancedb.cjgoraxv1j8k.us-west-1.rds.amazonaws.com',
     user: 'lanceypants',
@@ -26,7 +27,20 @@ connect.connect(function(err){
 });
 global.db = connect;
 
+////////////////Firebase config///////////////////////////////
+const config = {
+  apiKey: "AIzaSyCEK08XguV4CVa4balQ05DD-zj1L8I57QY",
+  authDomain: "minisafeway-ac266.firebaseapp.com",
+  databaseURL: "https://minisafeway-ac266.firebaseio.com",
+  projectId: "minisafeway-ac266",
+  storageBucket: "minisafeway-ac266.appspot.com",
+  messagingSenderId: "1031101506009"
+};
 
+firebase.initializeApp(config);
+const firebaseDB = firebase.database();
+
+/////////////////USE//////////////////////
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
@@ -84,6 +98,51 @@ app.get('/api/getOneItem',(req,res)=>{
         })
       }
     }
+  })
+})
+
+app.get('/api/getLastOrder', (req,res)=>{
+  let username = req.query.username
+  firebaseDB.ref(`/orders/${username}`).limitToLast(1).once('value', (snapshot)=>{
+    const order = [];
+    snapshot.forEach((childSnapshot)=>{
+      order.push({
+        ...childSnapshot.val()
+      })
+    })
+    console.log(order)
+    res.send(order)
+  
+  })
+})
+
+app.get('/api/getWatchList', (req,res)=>{
+  let username = req.query.username;
+  let item = req.query.item;
+  console.log(username)
+  console.log(item)
+  firebaseDB.ref(`/watchList/${username}`).orderByChild('name').equalTo(`${item}`).once('value',(snapshot)=>{
+    console.log(snapshot.val())
+    const item =[];
+    snapshot.forEach((childSnapshot)=>{
+      item.push({
+        ...childSnapshot.val()
+      })
+      res.send(item)
+    })
+  })
+})
+
+app.get('/api/getAllWatchList', (req,res)=>{
+  let username = req.query.username;
+  firebaseDB.ref(`/watchList/${username}`).orderByChild('discount').endAt(1).once('value',(snapshot)=>{
+    const items = [];
+    snapshot.forEach((childSnapshot)=>{
+      items.push({
+        ...childSnapshot.val()
+      })
+    })
+    res.send(items)
   })
 })
 
@@ -174,6 +233,18 @@ app.post('/api/updateRating', (req,res)=>{
       res.send({message})
     }
   })
+})
+
+app.post('/api/addToWatchList',(req,res)=>{
+  let username = req.body.username;
+  let item = req.body.item;
+  console.log(item)
+  firebaseDB.ref(`/watchList/${username}`).push(item)
+    .then(
+      res.send({
+        'success':'success addede'
+      })
+    )
 })
 
 //////////////////////////////////////////////

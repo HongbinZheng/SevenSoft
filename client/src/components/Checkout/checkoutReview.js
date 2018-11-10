@@ -7,15 +7,29 @@ class CheckoutReview extends Component {
     constructor(props) {
         super(props)
         this.state={
-
+            promoCode:"",
+            promo:''
         }
         if(localStorage.getItem('cart') != null) {
             var cartString = localStorage.getItem('cart')
             var cart = JSON.parse(cartString)
-            this.state ={cartItems: this.getItemsFromCart(cart), totalPrice: 0,qty:0}
+            this.state ={cartItems: this.getItemsFromCart(cart), totalPrice: 0,qty:0,promoCode:"",promo:''}
           } 
           this.getTotalPrice(this.state.cartItems);
+          this.handleOnClick = this.handleOnClick.bind(this)
           this.Auth = new Authserver();
+    }
+
+    handleOnChange=(event)=>{
+        this.setState({promoCode:event.target.value})
+    }
+
+    handleOnClick(){
+        if(this.state.promoCode === 'SAVE30'){
+            this.setState({promo:true})
+        }else{
+            this.setState({promo:false})
+        }
     }
 
     getItemsFromCart = (cart) => {
@@ -43,7 +57,17 @@ class CheckoutReview extends Component {
         items.forEach((item) => {
             tPrice += item.price * item.discount * item.quantityInCart
         })
+        if(this.state.promo){
+            tPrice = tPrice * 0.7;
+        }
         return tPrice
+    }
+    errorMessage(){
+        let errorMessage = ""
+        if(this.state.promo === false){
+            errorMessage = "Wrong Promo Code"
+        }
+        return errorMessage
     }
 
 
@@ -81,6 +105,16 @@ class CheckoutReview extends Component {
                   </div>
                     )
                 })}
+                    <div>
+                    <input 
+                    type="text" 
+                    placeholder="Enter Promo Code" 
+                    value={this.state.promoCode}
+                    onChange={this.handleOnChange}
+                    ></input>
+                    <button onClick={this.handleOnClick}>Apply</button>
+                    {this.state.promo === null ? null : this.errorMessage()}
+                    </div>
                 <div className="col" style={{marginTop:"50px"}}>
                 <h2 className="card-text text-right" >Subtotal: ${this.getTotalPrice(this.state.cartItems).toFixed(2)}</h2>
                 <button className="check out button" onClick={()=>this.handleCheckOut(this.state.cartItems)}> Check Out</button>

@@ -8,15 +8,16 @@ class Cart extends React.Component {
         if(localStorage.getItem('cart') != null) {
           var cartString = localStorage.getItem('cart')
           var cart = JSON.parse(cartString)
-          this.state ={cartItems: this.getItemsFromCart(cart), totalPrice: 0,redirect:false}
+          this.state ={cartItems: this.getItemsFromCart(cart), totalPrice: 0,hide:false}
         } else {
-          this.state = {cartItems: [], totalPrice: 0,redirect:false}
+          this.state = {cartItems: [], totalPrice: 0,hide:false}
         }
          this.getTotalPrice(this.state.cartItems);
          this.handleRemove = this.handleRemove.bind(this)
          this.handleIncrease = this.handleIncrease.bind(this)
          this.handleDecrease = this.handleDecrease.bind(this)
     }
+
 
     getItemsFromCart = (cart) => {
         var cartItems = []
@@ -97,32 +98,33 @@ class Cart extends React.Component {
          }
       }
     
-
     render() {
         return(
-             <div>
-             <div className="nav-item dropdown">
-                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i className="fas fa-shopping-cart"></i> Cart ({this.getTotalQyt(this.state.cartItems)})
-                </a>
-                <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <div className="Cart card shadow rounded float-right " style={{position:"relative", border:"1px solid #000000", right:"10px", top: "10px"}}>
-                    <h1 className="card-header text-center">Shopping Cart</h1>
-            
-                    
+            this.state.cartItems.length > 0 ?
+              <div className = "CartDiv" style = {{position:'absolute', right:'45px', top:'100px'}}>
+                <button className="btn btn-success" role="button" data-toggle="collapse" data-target="#cartopen" aria-expanded="false" aria-controls="#cartopen" aria-haspopup="true" text-align="center" margin = "auto" style={{width:'80px', height:'80px', borderRadius:'50%'}}>
+                    <i className="fas fa-shopping-cart fa-2x"> {this.getTotalQyt(this.state.cartItems)}</i>
+                   
+                 </button> 
+                 <div className="collapse" id="cartopen" style={{border:"1px solid #C2C2C2", backgroundColor:"#ffffff", width:'300px'}}>
+                {/* <div className="Cart card shadow rounded float-right " style={{position:"relative", border:"1px solid #000000", right:"10px", top: "10px"}}>  */}
+                <div>
+                {/* <div className="Cart card shadow rounded float-right " style={{position:"relative", border:"1px solid #000000", right:"10px", top: "10px"}}> */}
+                    <h3 className="card-header text-center" style={{backgroundColor:"#74E1E7"}}>Shopping Cart</h3>
+                    <div> 
                     <CartItem items={this.state.cartItems}
                             handleRemove={(itemID) => this.handleRemove(itemID)}
                             handleIncrease={(itemID) => this.handleIncrease(itemID)}
                             handleDecrease={(itemID) => this.handleDecrease(itemID)}
                     />
-
-                    <h2 className="card-text text-left" >Total: <div className="text-right">${this.getTotalPrice(this.state.cartItems).toFixed(2)}</div></h2>
-                        <i className="fas fa-shopping-cart fa-5x" style = {{textAlign: "center"}} onClick={()=>this.handleCheckoutClick(this.state.cartItems)} />
+                    </div>
+                    <h2 className="card-text text-left" style={{marginLeft:10}} >Total: <div className="text-right" style={{marginRight:10}}>${this.getTotalPrice(this.state.cartItems).toFixed(2)}</div></h2>
+                        <button className="fas fa-shopping-cart fa-5x btn btn-info" style={{textAlign:"center",fontSize:30, marginLeft: '50px', marginBottom:'10px', marginTop:'10px'}} onClick={()=>this.handleCheckoutClick(this.state.cartItems)}> CheckOut </button>
                     </div>
             </div>
-            </div>
-            </div>
-
+            </div> : null
+           // </div>
+           // </div>
         )
     }
 }
