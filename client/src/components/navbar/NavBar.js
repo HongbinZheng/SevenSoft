@@ -57,16 +57,16 @@ class NavBar extends Component {
                         
                         {this.state.isLogged ? 
                         <div >
-                            <div className="nav-item dropdown ">
+                            <div className="nav-item dropdown btn btn-info">
                                 <a className="nav-link dropdown-toggle keep-open" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Hello {this.state.username}
                                 </a>
                                 <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a className="dropdown-item" href="#">My Profile</a>
-                                    <a className="dropdown-item" href="/orders">My Orders</a>
-                                    <a className="dropdown-item" href="#">Watch list</a>
+                                    <a className="dropdown-item" href="#" style={{borderBottom:'1px solid #C2C2C2'}}>My Profile</a>
+                                    <a className="dropdown-item" href="/orders" style={{borderBottom:'1px solid #C2C2C2'}}>My Orders</a>
+                                    <a className="dropdown-item" href="/watchList">Watch list</a>
                                     <div className="dropdown-divider"></div>
-                                    <button type="button" onClick={this.handleLogout.bind(this)}>Logout</button>
+                                    <button type="button" onClick={this.handleLogout.bind(this)} className="btn btn-info" style={{marginLeft:20}}>Logout</button>
                                 </div >
                             </div >
                         </div >
