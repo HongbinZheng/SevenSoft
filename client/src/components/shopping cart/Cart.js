@@ -110,7 +110,7 @@ class Cart extends React.Component {
                 {/* <div className="Cart card shadow rounded float-right " style={{position:"relative", border:"1px solid #000000", right:"10px", top: "10px"}}>  */}
                 <div>
                 {/* <div className="Cart card shadow rounded float-right " style={{position:"relative", border:"1px solid #000000", right:"10px", top: "10px"}}> */}
-                    <h3 className="card-header text-center" style={{backgroundColor:"#74E1E7"}}>Shopping Cart</h3>
+                    <h3 className="card-header text-center" style={{backgroundColor:"#5cb85c"}}>Shopping Cart</h3>
                     <div> 
                     <CartItem items={this.state.cartItems}
                             handleRemove={(itemID) => this.handleRemove(itemID)}

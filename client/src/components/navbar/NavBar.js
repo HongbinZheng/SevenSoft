@@ -78,7 +78,7 @@ class NavBar extends Component {
              <Cart />
              </div>
             <div className="nav-item text-center" style={{marginLeft:'40%'}}>
-                 <form className="form-inline">
+                 <form className="form-inline" style={{width:'1000px'}}>
                             <div>
                             <Search />
                             </div>
