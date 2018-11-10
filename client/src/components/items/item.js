@@ -11,7 +11,8 @@ class Item extends Component {
             username:'',
             quantityInCart:0,
             watchList:[],
-            onWatchList:false
+            onWatchList:false,
+            isLogged:false
         }
         this.Auth = new Authserver()
     }
@@ -25,6 +26,7 @@ class Item extends Component {
                 item = res.data[0];
             })
         if (this.Auth.loggedIn()) {
+            this.setState({isLogged:true})
             var username = this.Auth.getUserName()
             console.log(item)
             this.setState({ username: username });
@@ -76,6 +78,7 @@ class Item extends Component {
   }
 
   handleAddtoWatchLish(){
+    if(this.state.isLogged){
     let username = this.state.username;
     let item = this.state.item
     axios.post(`/api/addToWatchList`,{username,item})
@@ -83,6 +86,7 @@ class Item extends Component {
             console.log(res.data)
             this.setState({onWatchList:true})
             })
+        }
   }
 
     render() {
