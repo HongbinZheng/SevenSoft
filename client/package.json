@@ -48,6 +48,7 @@
     "react-bootstrap": "^0.32.4",
     "react-dev-utils": "^6.0.4",
     "react-dom": "^16.5.2",
+    "react-dropdown-input": "^0.1.11",
     "react-fontawesome": "^1.6.1",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
