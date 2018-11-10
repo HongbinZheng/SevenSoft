@@ -8,6 +8,7 @@ import Aisle from './components/items/aisle'
 import Item from './components/items/item'
 import CheckoutReview from './components/Checkout/checkoutReview'
 import OrdersPage from './components/User/ordersPage'
+import WatchList from './components/User/watchList'
 //////////testing//////////
 import Profile from './components/User/profile';
 /////////////////////////////////////////
@@ -22,6 +23,7 @@ class Router extends Component {
                     <Route path='/profile' exact component={Profile}/>
                     <Route path='/review' exact component={CheckoutReview} />
                     <Route path='/orders' exact component={OrdersPage} />
+                    <Route path='/watchList' exact component={WatchList} />
                     <Route path='/:aisle' exact component={Aisle} />
                     <Route path='/:aisle/:item' exact component={Item} />
                 </Switch>

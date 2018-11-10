@@ -12,6 +12,7 @@ class Aisle extends Component {
    };
    this.handleAddtoCart = this.handleAddtoCart.bind(this)
    }
+   
 componentWillMount(){
   let items = this.props.match.params.aisle; 
   axios.get(`/api/getItems?aisle=${items}`)

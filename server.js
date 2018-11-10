@@ -116,6 +116,35 @@ app.get('/api/getLastOrder', (req,res)=>{
   })
 })
 
+app.get('/api/getWatchList', (req,res)=>{
+  let username = req.query.username;
+  let item = req.query.item;
+  console.log(username)
+  console.log(item)
+  firebaseDB.ref(`/watchList/${username}`).orderByChild('name').equalTo(`${item}`).once('value',(snapshot)=>{
+    console.log(snapshot.val())
+    const item =[];
+    snapshot.forEach((childSnapshot)=>{
+      item.push({
+        ...childSnapshot.val()
+      })
+      res.send(item)
+    })
+  })
+})
+
+app.get('/api/getAllWatchList', (req,res)=>{
+  let username = req.query.username;
+  firebaseDB.ref(`/watchList/${username}`).orderByChild('discount').endAt(1).once('value',(snapshot)=>{
+    const items = [];
+    snapshot.forEach((childSnapshot)=>{
+      items.push({
+        ...childSnapshot.val()
+      })
+    })
+    res.send(items)
+  })
+})
 
 ////////POST///////////
 app.post('/api/login',(req,res)=>{
@@ -204,6 +233,18 @@ app.post('/api/updateRating', (req,res)=>{
       res.send({message})
     }
   })
+})
+
+app.post('/api/addToWatchList',(req,res)=>{
+  let username = req.body.username;
+  let item = req.body.item;
+  console.log(item)
+  firebaseDB.ref(`/watchList/${username}`).push(item)
+    .then(
+      res.send({
+        'success':'success addede'
+      })
+    )
 })
 
 //////////////////////////////////////////////
