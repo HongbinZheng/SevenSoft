@@ -59,14 +59,14 @@ class NavBar extends Component {
                         <div >
                             <div className="nav-item dropdown btn btn-info">
                                 <a className="nav-link dropdown-toggle keep-open" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Hello {this.state.username}
+                                   <h7><b> Hello {this.state.username} </b> </h7>
                                 </a>
                                 <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a className="dropdown-item" href="#" style={{borderBottom:'1px solid #C2C2C2'}}>My Profile</a>
-                                    <a className="dropdown-item" href="/orders" style={{borderBottom:'1px solid #C2C2C2'}}>My Orders</a>
-                                    <a className="dropdown-item" href="/watchList">Watch list</a>
+                                    <a className="dropdown-item" href="#" style={{borderBottom:'1px solid #C2C2C2',fontFamily:'Roboto',height:'40px',textAlign:'center'}}><b>My Profile</b></a>
+                                    <a className="dropdown-item" href="/orders" style={{borderBottom:'1px solid #C2C2C2',fontFamily:'Roboto',height:'45px',textAlign:'center'}}><b>My Orders</b></a>
+                                    <a className="dropdown-item" href="/watchList" style={{fontFamily:'Roboto',textAlign:'center'}}><b>Watch list</b></a>
                                     <div className="dropdown-divider"></div>
-                                    <button type="button" onClick={this.handleLogout.bind(this)} className="btn btn-info" style={{marginLeft:20}}>Logout</button>
+                                    <button type="button" onClick={this.handleLogout.bind(this)} className="btn btn-info col-sm"><b>Logout</b></button>
                                 </div >
                             </div >
                         </div >

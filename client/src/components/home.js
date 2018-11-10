@@ -81,7 +81,7 @@ class Home extends Component {
                 {this.state.isLogged ? 
                 <div>
                     <div style={{marginTop:"30px"}}>
-                <h1>Most Recent Order</h1><br/>
+                <h1 style={{fontFamily:'Roboto'}}>Most Recent Order</h1><br/>
                 {this.state.order.length > 0 ?
                      <div className="col-lg-12 col-md-12 col-sm-12 d-flex p-2" style={{maxHeight:"400px", overflowX:"scroll",border:'1px solid #C2C2C2', backgroundColor:"#D5E6E8"}}>
                        {this.state.order.map((items) =>{
@@ -91,7 +91,7 @@ class Home extends Component {
                                <div className="card" style={{width:"15rem",height:"auto",margin:"10px",border:'1px solid #C2C2C2' }}>
                                 <img className="card-img-top" src={`/images/aisle/${items.name}.png`} style={{textAlign:'center',width:"100%",height:"100%"}} alt="Card cap"/>
                                 <div className="card-body">
-                                <p className="card-text" style={{textAlign:'center'}}>{items.name}</p>
+                                <p className="card-title" style={{textAlign:'center',color:'#708090'}}><b>{items.name}</b></p>
                                 </div>
                            </div>
                            </Link>
@@ -100,12 +100,12 @@ class Home extends Component {
                      </div>
                       :
                       <div>
-                          <h3>Never bought anything yet</h3>
+                          <h3 style={{fontFamily:'Roboto'}}>Never bought anything yet</h3>
                       </div>
                       }
                     </div>
                     <div style={{marginTop:30}}>
-                <h1>On Sales Items In You Watch List</h1><br/>
+                <h1 style={{fontFamily:'Roboto'}}>On Sales Items In You Watch List</h1><br/>
                 {this.state.watchList.length > 0 ?
                 <div className="col-lg-12 col-md-12 col-sm-12 d-flex p-2" style={{maxHeight:"400px", overflowX:"scroll",border:'1px solid #C2C2C2', backgroundColor:"#D5E6E8"}}>
                     {this.state.onSale.length > 0 ? 
@@ -117,7 +117,7 @@ class Home extends Component {
                                     <div className="card" style={{width:"15rem",height:"auto",margin:"10px",border:'1px solid #C2C2C2' }}>
                                      <img className="card-img-top" src={`/images/aisle/${items.name}.png`} style={{textAlign:'center',width:"100%",height:"100%"}} alt="Card cap"/>
                                      <div className="card-body">
-                                     <p className="card-text" style={{textAlign:'center'}}>{items.name}</p>
+                                     <p className="card-title" style={{textAlign:'center',color:'#708090'}}><b>{items.name}</b></p>
                                      </div>
                                 </div>
                                 </Link>
@@ -127,12 +127,12 @@ class Home extends Component {
                     </div>
                     : 
                     <div>
-                        <h2>Nothing in your watch list in on sales</h2>
+                        <h2 style={{fontFamily:'Roboto'}}>Nothing in your watch list in on sales</h2>
                     </div>}
                 </div>
                 :
                 <div>
-                    <h3>Nothing in your Watch List</h3>
+                    <h3 style={{fontFamily:'Roboto'}}>Nothing in your Watch List</h3>
                 </div>
                     }
                 </div>

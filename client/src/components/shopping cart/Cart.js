@@ -118,7 +118,7 @@ class Cart extends React.Component {
                             handleDecrease={(itemID) => this.handleDecrease(itemID)}
                     />
                     </div>
-                    <h2 className="card-text text-left" style={{marginLeft:10}} >Total: <div className="text-right" style={{marginRight:10}}>${this.getTotalPrice(this.state.cartItems).toFixed(2)}</div></h2>
+                    <h2 className="card-text text-left" style={{marginLeft:10,fontFamily:'cursive'}} >Total: <div className="text-right" style={{marginRight:10,fontFamily:'cursive'}}>${this.getTotalPrice(this.state.cartItems).toFixed(2)}</div></h2>
                         <button className="fas fa-shopping-cart fa-5x btn btn-info" style={{textAlign:"center",fontSize:30, marginLeft: '50px', marginBottom:'10px', marginTop:'10px'}} onClick={()=>this.handleCheckoutClick(this.state.cartItems)}> CheckOut </button>
                     </div>
             </div>
