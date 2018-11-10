@@ -54,7 +54,6 @@ class NavBar extends Component {
               <span className="navbar-toggler-icon" />
             </button>
 
-<<<<<<< HEAD
             <div
               className="collapse navbar-collapse mx-auto"
               id="navbarSupportedContent"
@@ -159,7 +158,6 @@ class NavBar extends Component {
       </div>
     );
   }
-=======
         handleLogout(e){
             e.preventDefault();
             this.Auth.logout();
@@ -223,7 +221,6 @@ class NavBar extends Component {
         );
         }
     
->>>>>>> 51c28533abd43cc6715e7dc26586557fc5496fda
 }
 
 export default withRouter(NavBar);
