@@ -48,6 +48,7 @@ class Home extends Component {
    
 
     render() {
+        console.log(this.props);
         return (
             <div style = {{marginTop: "5px", marginLeft: "30px", marginRight:"30px", minHeight:window.innerHeight-245}}>
                 <div id="carouselExampleIndicators" className="carousel slide w-100 h-50" data-ride="carousel">
