@@ -2,16 +2,22 @@ import React, { Component } from "react";
 import axios from "axios";
 import Suggestions from "./suggestions";
 import Fuse from "fuse.js";
+import { Redirect } from "react-router-dom";
 
 class Search extends Component {
-  state = {
-    query: "",
-    allItems: [],
-    filtered: []
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      query: "",
+      redirect: false,
+      allItems: [],
+      filtered: []
+    };
+    //this.handleChange = this.handleChange.bind(this);
+    this.keyPress = this.keyPress.bind(this);
+  }
 
   componentWillMount() {
-    //let searchTerm = this.props.
     axios.get(`/api/allItems`).then(response => {
       const item = response.data;
       this.setState({ allItems: response.data });
@@ -27,11 +33,21 @@ class Search extends Component {
       distance: 50,
       maxPatternLength: 25,
       minMatchCharLength: 2,
-      keys: ["name", "description"]
+      keys: ["name"]
     };
 
     var fuse = new Fuse(this.state.allItems, options);
     this.setState({ filtered: fuse.search(this.state.query) });
+  };
+
+  setRedirect = () => {
+    this.setState({ redirect: true });
+  };
+
+  renderRedirect = () => {
+    if (this.state.redirect) {
+      return <Redirect to="/searchResult" />;
+    }
   };
 
   handleInputChange = () => {
@@ -49,6 +65,23 @@ class Search extends Component {
     );
   };
 
+  keyPress(e) {
+    if (e.keyCode == 13) {
+      this.context.router.push({
+        pathname: "/searchResult",
+        state: { filtered: this.state.filtered }
+      });
+    }
+  }
+
+  handleSubmit(e) {
+    //localStorage.setItem("items", JSON.stringify(this.state.filtered));
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    localStorage.setItem("items", JSON.stringify(nextState.filtered));
+  }
+
   /*render() {
     var FuzzySearch = require("react-fuzzy-search");
     return (
@@ -65,12 +98,17 @@ class Search extends Component {
     return (
       <div>
         <input
+          onKeyDown={this.keyPress}
           placeholder="Search for..."
           ref={input => (this.search = input)}
           onChange={this.handleInputChange}
         />
+        {this.renderRedirect()}
+        <button onClick={this.setRedirect}>Go</button>
         {this.state.query ? (
-          <Suggestions suggests={this.state.filtered.slice(0, 4)} />
+          <div class="dropdown">
+            <Suggestions suggests={this.state.filtered.slice(0, 4)} />
+          </div>
         ) : null}
       </div>
     );
