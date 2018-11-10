@@ -86,7 +86,7 @@ class Item extends Component {
   }
 
     render() {
-        console.log(this.state)
+        console.log(this.state.item)
         return (
         <div className="container" style={{minHeight:window.innerHeight-245}}>
             <div className="row">
@@ -105,7 +105,7 @@ class Item extends Component {
                     color2={'#ffd700'} /></h5>
                 <br/>
                 <div style={{marginBottom:'10px'}}>
-                {this.state.discount !== 1 ? 
+                {this.state.item.discount !== 1 ? 
                 <div>
                 <h2 style={{display:'inline',textDecorationLine:"line-through", fontSize:26, color:'grey'}}>${this.state.item.price} </h2>
            
@@ -118,14 +118,14 @@ class Item extends Component {
             </div>
                 :
                 <div>
-                <h2 style={{display:'inline'}}>${this.state.price * this.state.discount}</h2>
-                <h6 style={{display:'inline'}}>  per {this.state.per}</h6>
+                <h2 style={{display:'inline'}}>${this.state.item.price * this.state.item.discount}</h2>
+                <h6 style={{display:'inline'}}>  per {this.state.item.per}</h6>
                 </div>
                 }
                 </div>
                 
                 
-                <h5>{this.state.description}</h5>
+                <h5>{this.state.item.description}</h5>
                 <br/>
                 <h3 style = {{width:'400px'}}><button type="button" onClick={()=>this.handleAddtoCart(this.state.item)} className="btn btn-info"> Add to Cart <i className="fas fa-cart-plus"></i></button>
                 {this.state.onWatchList ? 
