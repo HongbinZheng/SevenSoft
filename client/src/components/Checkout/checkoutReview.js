@@ -1,18 +1,35 @@
 import React, { Component } from 'react';
 import {firebaseDB} from '../../firebase';
 import Authserver from'../authserver'
+<<<<<<< HEAD
+import jwt from'jsonwebtoken';
+
+=======
 import jwt from'jsonwebtoken'
+>>>>>>> fetch_head
 
 class CheckoutReview extends Component {
     constructor(props) {
         super(props)
         this.state={
+<<<<<<< HEAD
+
+=======
             promoCode:"",
             promo:''
+>>>>>>> fetch_head
         }
         if(localStorage.getItem('cart') != null) {
             var cartString = localStorage.getItem('cart')
             var cart = JSON.parse(cartString)
+<<<<<<< HEAD
+            this.state ={cartItems: this.getItemsFromCart(cart), totalPrice: 0,qty:0}
+          }
+          this.getTotalPrice(this.state.cartItems);
+          this.Auth = new Authserver();
+    }
+
+=======
             this.state ={cartItems: this.getItemsFromCart(cart), totalPrice: 0,qty:0,promoCode:"",promo:''}
           } 
           this.getTotalPrice(this.state.cartItems);
@@ -32,6 +49,7 @@ class CheckoutReview extends Component {
         }
     }
 
+>>>>>>> fetch_head
     getItemsFromCart = (cart) => {
         var cartItems = []
         for(var itemID in cart) {
@@ -41,6 +59,17 @@ class CheckoutReview extends Component {
       }
 
       handleCheckOut(items){
+<<<<<<< HEAD
+        // if(this.Auth.loggedIn()){
+        //     var SERECT = "superserect"
+        //     const token = localStorage.getItem('id_token')
+        //     var decoded = jwt.verify(token, SERECT);
+        //     items.forEach(item=>{item.myRate = 0});
+        //     console.log(items);
+        //     firebaseDB.ref(`/orders/${decoded}`).push(items);
+        // }
+        this.props.history.push('/Checkout')
+=======
         if(this.Auth.loggedIn()){
             var SERECT = "superserect"
             const token = localStorage.getItem('id_token')
@@ -50,6 +79,7 @@ class CheckoutReview extends Component {
             firebaseDB.ref(`/orders/${decoded}`).push(items);
         }
         this.props.history.push('/')
+>>>>>>> fetch_head
       }
 
       getTotalPrice(items) {
@@ -57,6 +87,16 @@ class CheckoutReview extends Component {
         items.forEach((item) => {
             tPrice += item.price * item.discount * item.quantityInCart
         })
+<<<<<<< HEAD
+        return tPrice
+    }
+
+
+    render() {
+        console.log(this.state)
+        return (
+            <div className="container" style={{marginTop:"50px",marginBottom:"300px",width:"750px",textAlign:"center"}}>
+=======
         if(this.state.promo){
             tPrice = tPrice * 0.7;
         }
@@ -75,6 +115,7 @@ class CheckoutReview extends Component {
         console.log(this.state)
         return (
             <div className="container" style={{marginTop:"50px",marginBottom:"300px",width:"750px",textAlign:"center"}}> 
+>>>>>>> fetch_head
                 <div className="row">
                       <div className="col">
                         Item Name
@@ -105,6 +146,8 @@ class CheckoutReview extends Component {
                   </div>
                     )
                 })}
+<<<<<<< HEAD
+=======
                     <div>
                     <input 
                     type="text" 
@@ -115,6 +158,7 @@ class CheckoutReview extends Component {
                     <button onClick={this.handleOnClick}>Apply</button>
                     {this.state.promo === null ? null : this.errorMessage()}
                     </div>
+>>>>>>> fetch_head
                 <div className="col" style={{marginTop:"50px"}}>
                 <h2 className="card-text text-right" >Subtotal: ${this.getTotalPrice(this.state.cartItems).toFixed(2)}</h2>
                 <button className="check out button" onClick={()=>this.handleCheckOut(this.state.cartItems)}> Check Out</button>
@@ -124,4 +168,8 @@ class CheckoutReview extends Component {
     }
 }
 
+<<<<<<< HEAD
 export default CheckoutReview;
+=======
+export default CheckoutReview;
+>>>>>>> fetch_head
