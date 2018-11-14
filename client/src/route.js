@@ -9,13 +9,6 @@ import Item from "./components/items/item";
 import CheckoutReview from "./components/Checkout/checkoutReview";
 import OrdersPage from "./components/User/ordersPage";
 import SearchResult from "./components/items/searchResult";
-import Home from "./components/home";
-import User from "./components/User/User";
-import Layout from "./hoc/layout/layout";
-import Aisle from "./components/items/aisle";
-import Item from "./components/items/item";
-import CheckoutReview from "./components/Checkout/checkoutReview";
-import OrdersPage from "./components/User/ordersPage";
 import WatchList from "./components/User/watchList";
 //////////testing//////////
 import Profile from "./components/User/profile";
