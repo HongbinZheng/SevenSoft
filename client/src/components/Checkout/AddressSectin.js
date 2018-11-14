@@ -46,7 +46,8 @@ class AddressSection extends Component {
           <div className="form-row">
             <div className="form-group col-md-6">
             <label htmlFor="validationServer01">First name</label>
-            <input type="text" className="form-control" name="firstname" onChange={this.onChange} placeholder="First name" required/>
+            <input type="text" className="form-control" name="firstname" id="validationServer01" onChange={this.onChange} placeholder="First name" required/>
+
             </div>
             <div className="form-group col-md-6">
               <label htmlFor="inputLastName">Last Name</label>
@@ -132,7 +133,6 @@ class AddressSection extends Component {
             </div>
           </form>
         </div>
-
       </div>
 
     );
