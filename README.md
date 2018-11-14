@@ -32,3 +32,13 @@ basic validation for login. able to display error message if user enter wrong pa
 10/24/2018 update
 update basic look for aisle, and rating star
 new depencies: react-stars
+
+11/14/2018 update
+MAC users, if you cannot git pull due to the existance of .DS_Store file
+run the following command
+
+rm .DS_Store
+git add -A
+git commit -m "Added .gitignore file"
+
+then git pull
