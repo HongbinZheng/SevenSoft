@@ -97,6 +97,7 @@ class Search extends Component {
   render() {
     return (
       <div>
+      <div className="input-group mb-3">
         <input
           onKeyDown={this.keyPress}
           placeholder="Search for..."
@@ -104,9 +105,12 @@ class Search extends Component {
           onChange={this.handleInputChange}
         />
         {this.renderRedirect()}
-        <button onClick={this.setRedirect}>Go</button>
+        <div class="input-group-append">
+        <button className="btn btn-outline-success" type='button' style={{position: "relative"}} onClick={this.setRedirect}>Search</button>
+        </div>
+        </div>
         {this.state.query ? (
-          <div class="dropdown">
+          <div>
             <Suggestions suggests={this.state.filtered.slice(0, 4)} />
           </div>
         ) : null}
