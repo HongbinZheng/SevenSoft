@@ -88,7 +88,7 @@ class OrdersPage extends Component {
 
        axios.post('/api/updateRating',{ratingNumber,itemName,newAvgRates})
        .then(res=>console.log(res))
-       //window.location.reload()
+       window.location.reload()
            })
 
      }
@@ -98,18 +98,19 @@ class OrdersPage extends Component {
         return (
             this.state.orders ?
             <div>
-                <div className="container" style={{display:"flex", marginTop: "50px", marginBottom: "300px", width: "750px", textAlign: "center" }}>
+                <div className="container-fluid" style={{display:"", marginTop: "50px", marginBottom: "300px", width: "auto", textAlign: "center"}}>
                 {/* get each orders. */}
                     {Object.keys(this.state.orders).map((key) => {
                         return (
-                            <div key={key} className="container" style={{border: "2px solid #000000", width: "700px", height: "150px", alignItems: 'center', backgroundColor: "white" }}>
+                            <div key={key} className="container-fluid" style={{marginBottom:20, border: "2px solid #c2c2c2",borderRadius:"25px", width: "900px", height: "auto", alignItems: 'center',backgroundColor: "white" }}>
                                {/** get each items orders  */}
+                               <h3>Order Number: {key} </h3>
                                 {this.state.orders[key].map((item,index) => {
                                     return (
-                                        <div className="row" style={{ marginTop: "30px",textAlign:"center" }} key={item.itemid}>
-                                           <div className="col">
-                                                <img className="card-img-top" style={{ width: '40%', height: '40%' }} src={`/images/aisle/${item.name}.png`} alt='Card cap' />
-                                                <h5>{item.name}</h5>
+                                        <div className="row" style={{ margin: "30px",textAlign:"center",backgroundColor: "white",height:'150px',borderBottom:"1px solid #c2c2c2" }} key={item.itemid}>
+                                           <div className="col" style={{margin:20, width:"100px"}}>
+                                                <img className="card-img-top" style={{ width: '50%', height: '50%' }} src={`/images/aisle/${item.name}.png`} alt='Card cap' />
+                                                <h6>{item.name}</h6>
                                                 {/** if user already rated the item, it will display the rating user give, if not, they can rate the item the purchase */}
                                                 {item.myRate === 0 ?
                                                 <div>
@@ -131,14 +132,14 @@ class OrdersPage extends Component {
                                                 </div>
                                             }
                                             </div>
-                                            <div className="col">
+                                            <div className="col" style={{margin:30}}>
                                                 <h3>
                                                     {item.quantityInCart}</h3>
                                             </div>
-                                            <div className="col">
+                                            <div className="col" style={{margin:30}}>
                                                 <h3 className="card-text">${(item.price * item.discount * item.quantityInCart).toFixed(2)}</h3>
                                             </div>
-                                            <div className="col">
+                                            <div className="col" style={{margin:30}}>
                                                 <button onClick={()=>this.handleAddToCart(item)}>Add To Cart</button>
                                             </div>
                                         </div>

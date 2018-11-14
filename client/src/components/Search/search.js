@@ -105,8 +105,8 @@ class Search extends Component {
           onChange={this.handleInputChange}
         />
         {this.renderRedirect()}
-        <div class="input-group-append">
-        <button className="btn btn-outline-success" type='button' style={{position: "relative"}} onClick={this.setRedirect}>Search</button>
+        <div className="input-group-append">
+        <button className="btn btn-outline-success" type='button' style={{position: "relative"}} onClick={this.setRedirect}><i class="fas fa-search"></i></button>
         </div>
         </div>
         {this.state.query ? (
