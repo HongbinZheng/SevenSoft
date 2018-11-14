@@ -43,17 +43,15 @@ class NavBar extends Component {
                         <span className="navbar-toggler-icon"></span>
                     </button>
 
-                    <div className="collapse navbar-collapse mx-auto" id="navbarSupportedContent">
-                        <ul className="navbar-nav mr-auto btn-group-lg">
+                    <div className="collapse navbar-collapse mx-auto" id="navbarSupportedContent" >
+                        <ul className="navbar-nav mr-auto btn-group-lg" style={{textAlign:"center"}}>
                             <a href="/produce" className="btn btn-light text-center" role="button" aria-pressed="true">Produce</a>
                             <a href="/meats" className="btn btn-light text-center" role="button" aria-pressed="true">Meats</a>
                             <a href="/beverages" className="btn btn-light text-center" role="button" aria-pressed="true">Beverages</a>
                             <a href="/dairy" className="btn btn-light text-center" role="button" aria-pressed="true">Dairy</a>
                             <a href="/" className="btn btn-light text-center" role="button" aria-pressed="true">More>></a>
                         </ul>
-
-
-
+                   
                         {this.state.isLogged ?
                             <div >
                                 <div className="nav-item dropdown btn btn-info">
@@ -61,7 +59,7 @@ class NavBar extends Component {
                                         <b> Hello {this.state.username} </b>
                                     </a>
                                     <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                        <a className="dropdown-item" href="#" style={{ borderBottom: '1px solid #C2C2C2', fontFamily: 'Roboto', height: '40px', textAlign: 'center' }}><b>My Profile</b></a>
+                                        <a className="dropdown-item" href="/profile" style={{ borderBottom: '1px solid #C2C2C2', fontFamily: 'Roboto', height: '40px', textAlign: 'center' }}><b>My Profile</b></a>
                                         <a className="dropdown-item" href="/orders" style={{ borderBottom: '1px solid #C2C2C2', fontFamily: 'Roboto', height: '45px', textAlign: 'center' }}><b>My Orders</b></a>
                                         <a className="dropdown-item" href="/watchList" style={{ fontFamily: 'Roboto', textAlign: 'center' }}><b>Watch list</b></a>
                                         <div className="dropdown-divider"></div>
@@ -70,7 +68,6 @@ class NavBar extends Component {
                                 </div >
                             </div >
                             : <a href="/profile" className="btn btn-primary text-center" role="button" aria-pressed="true">Login</a>}
-
                     </div>
                 </nav>
                 <div className="float-right" style={{ top: 200 }}>
