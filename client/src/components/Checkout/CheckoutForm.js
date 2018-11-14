@@ -41,7 +41,7 @@ class CheckoutForm extends Component {
 
   render() {
     if (this.state.complete) return <h1>Purchase Complete</h1>;
-    return ( 
+    return (
         <div>
             <div >
                 <h3>Shipping Address</h3>
@@ -54,14 +54,14 @@ class CheckoutForm extends Component {
                   </label>
                 </div>
               </div>
-              {this.state.checked ? null : 
+              {this.state.checked ? null :
               <div>
                   <h3>Billing Address</h3>
               <AddressSection />
               </div>
                }
               <div>
-                <CardSection />     
+                <CardSection />
             </div>
             </div>
         </div>
