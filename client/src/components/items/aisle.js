@@ -61,11 +61,12 @@ handleAddtoCart(stuff){
 render() {
   return (
       this.state  ?
-      <div className = "container-fluid" style={{minHeight:window.innerHeight-245}}>
+      <div className = "container-fluid" style={{minHeight:window.innerHeight-245,textAlign:"center"}}>
+      <div style={{marginLeft:"5%",marginRight:"5%"}}>
        <h1>
        {this.state.item.map(items =>
 
-       <div key={items.itemNo} className='rounded float-left' style={{margin:'10px',border:'1px solid #C2C2C2'}}>
+       <div key={items.itemNo} className='rounded' style={{margin:'10px',border:'1px solid #C2C2C2',display:"inline-block"}}>
            <div className='card' style={{width:'20rem', height:'28rem'}} >
                <Link to={`/${items.aisle}/${items.name}`}>
                <img className='card-img-top' style={{width:'318px',height:'212.28px'}} src={`/images/aisle/${items.name}.png`} alt='Card cap'></img>
@@ -78,12 +79,12 @@ render() {
                 
                {items.discount !== 1 ?
                <div style = {{position: 'relative', textAlign:'center', marginBottom:'23px'}}>
-               <p className='card-text' style={{textAlign:'center',textDecorationLine:'line-through', fontSize: 25, color:'grey', display:'inline'}}>${items.price}</p>
-               <p className='card-text' style={{textAlign:'center',color:'red',fontStyle:'bold', display:'inline', fontSize: 30}}>${items.price * items.discount}</p>
+               <p className='card-text' style={{textAlign:'center',textDecorationLine:'line-through', fontSize: 25, color:'grey', display:'inline'}}>${items.price.toFixed(2)}</p>
+               <p className='card-text' style={{textAlign:'center',color:'red',fontStyle:'bold', display:'inline', fontSize: 30}}>${(items.price * items.discount).toFixed(2)}</p>
                </div>
                :
                 <div style={{marginBottom:'24px'}}>
-               <p className='card-text' style={{textAlign:'center', fontSize: 30, fontStyle:'bold'}}>${items.price * items.discount}</p>
+               <p className='card-text' style={{textAlign:'center', fontSize: 30, fontStyle:'bold'}}>${(items.price * items.discount).toFixed(2)}</p>
                 </div>
                }
                
@@ -93,6 +94,7 @@ render() {
        )
        }
        </h1>
+       </div>
       </div> : <div>
           This is nothing page
       </div>

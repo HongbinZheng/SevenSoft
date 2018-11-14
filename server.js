@@ -146,6 +146,14 @@ app.get('/api/getAllWatchList', (req,res)=>{
   })
 })
 
+app.get('/api/getAddress', (req,res)=>{
+  let username= req.query.username;
+  firebaseDB.ref(`/address/${username}`).once('value', (snapshot)=>{
+    console.log(snapshot.val())
+    res.send(snapshot.val())
+  })
+})
+
 ////////POST///////////
 app.post('/api/login',(req,res)=>{
     var username = req.body.username;
@@ -243,6 +251,17 @@ app.post('/api/addToWatchList',(req,res)=>{
     .then(
       res.send({
         'success':'success addede'
+      })
+    )
+})
+
+app.post('/api/changeAddress',(req,res)=>{
+  let username = req.body.username;
+  let address = req.body.address
+  firebaseDB.ref(`/address/${username}`).set(address)
+    .then(
+      res.send({
+        'success':"success change"
       })
     )
 })

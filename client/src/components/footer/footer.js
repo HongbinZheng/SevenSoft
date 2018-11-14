@@ -8,11 +8,9 @@ const Footer = () => {
         <h2>
           <p>Contact Us</p>
         </h2>
-        <a href="https://www.google.com">Terms and Conditions</a>
+        <a href="/terms">Terms and Conditions</a>
         <p>
-          <a href="https://www.safeway.com/ShopStores/Privacy-Policy.page">
-            Privacy Policy
-          </a>
+          <a href="/privacy">Privacy Policy</a>
         </p>
       </div>
     </div>

@@ -8,19 +8,32 @@ class SearchResult extends Component {
       itemResults: [],
       quantityInCart: 0
     };
+    if(localStorage.getItem('items') !== null) {
+      var cartString = localStorage.getItem('items')
+      var items = JSON.parse(cartString)
+      this.state ={itemResults: this.getItems(items), quantityInCart:0}
+    } 
+
     this.handleAddtoCart = this.handleAddtoCart.bind(this);
   }
-
-  componentWillMount() {
-    localStorage.getItem("items") &&
-      this.setState({
-        itemResults: JSON.parse(localStorage.getItem("items"))
-      });
+  getItems(item){
+    var cartItems = []
+        for(var itemID in item) {
+          cartItems.push(item[itemID])
+        }
+        return cartItems
   }
 
-  componentDidMount() {
-    localStorage.removeItem("items");
-  }
+  // componentWillMount() {
+  //   localStorage.getItem("items")
+  //     this.setState({
+  //       itemResults: JSON.parse(localStorage.getItem("items"))
+  //     });
+  //     if(this.state.itemResults.length > 0){
+  //     localStorage.removeItem("items");
+  //     }
+  // }
+
 
   handleAddtoCart(stuff) {
     console.log(stuff);
@@ -60,7 +73,7 @@ class SearchResult extends Component {
 
   render() {
     console.log(this.state.itemResults);
-    return this.state ? (
+    return this.state.itemResults.length > 0 ? (
       <div
         className="container-fluid"
         style={{ minHeight: window.innerHeight - 245 }}
@@ -148,7 +161,7 @@ class SearchResult extends Component {
         </h1>
       </div>
     ) : (
-      <div>This is nothing page</div>
+      <div style={{minHeight:window.innerHeight-245}}> <h1 style={{fontFamily:'Roboto',marginTop:30}}><b>Cannot found you item</b></h1></div>
     );
   }
 }

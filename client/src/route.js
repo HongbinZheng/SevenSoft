@@ -10,8 +10,11 @@ import CheckoutReview from "./components/Checkout/checkoutReview";
 import OrdersPage from "./components/User/ordersPage";
 import SearchResult from "./components/items/searchResult";
 import WatchList from "./components/User/watchList";
+import CheckoutApp from "./components/Checkout/CheckoutApp";
+import Privacy from "./components/footer/privacy";
+import Terms from "./components/footer/terms";
 //////////testing//////////
-import Profile from "./components/User/profile";
+import Profile from "./components/User/profile/profile";
 /////////////////////////////////////////
 
 class Router extends Component {
@@ -24,7 +27,11 @@ class Router extends Component {
           <Route path="/profile" exact component={Profile} />
           <Route path="/review" exact component={CheckoutReview} />
           <Route path="/orders" exact component={OrdersPage} />
+          <Route path="/watchList" exact component={WatchList} />
           <Route path="/searchResult" exact component={SearchResult} />
+          <Route path="/checkout" exact component={CheckoutApp} />
+          <Route path="/privacy" exact component={Privacy} />
+          <Route path="/terms" exact component={Terms} />
           <Route path="/:aisle" exact component={Aisle} />
           <Route path="/:aisle/:item" exact component={Item} />
         </Switch>
