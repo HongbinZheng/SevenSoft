@@ -115,14 +115,14 @@ class Item extends Component {
            
                 <h2 style={{display:'inline', color:"red",fontStyle:"italic"}}>  On Sale!!</h2>
             <div>
-                <h2 style={{display:'inline', color:"red"}}> ${this.state.item.price * this.state.item.discount}</h2>
+                <h2 style={{display:'inline', color:"red"}}> ${(this.state.item.price * this.state.item.discount).toFixed(2)}</h2>
             
                 <h6 style={{display:'inline'}}>  per {this.state.item.per}</h6>
                 </div>
             </div>
                 :
                 <div>
-                <h2 style={{display:'inline'}}>${this.state.item.price * this.state.item.discount}</h2>
+                <h2 style={{display:'inline'}}>${(this.state.item.price * this.state.item.discount).toFixed(2)}</h2>
                 <h6 style={{display:'inline'}}>  per {this.state.item.per}</h6>
                 </div>
                 }
