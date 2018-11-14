@@ -11,6 +11,7 @@ import OrdersPage from "./components/User/ordersPage";
 import SearchResult from "./components/items/searchResult";
 import WatchList from "./components/User/watchList";
 import CheckoutApp from './components/Checkout/CheckoutApp';
+import ConfirmationPage from './components/Checkout/ConfirmationPage';
 //////////testing//////////
 import Profile from "./components/User/profile/profile";
 /////////////////////////////////////////
@@ -29,6 +30,7 @@ class Router extends Component {
           <Route path="/watchList" exact component={WatchList} />
           <Route path='/searchResult' exact component={SearchResult} />
           <Route path='/checkout' exact component={CheckoutApp} />
+          <Route path='/Confirm' exact component={ConfirmationPage} />
           <Route path="/:aisle" exact component={Aisle} />
           <Route path="/:aisle/:item" exact component={Item} />
         </Switch>

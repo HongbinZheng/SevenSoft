@@ -95,7 +95,7 @@ class CheckoutReview extends Component {
                 })}
                 <div className="col" style={{marginTop:"50px"}}>
                 <h2 className="card-text text-right" >Subtotal: ${this.getTotalPrice(this.state.cartItems).toFixed(2)}</h2>
-                <button className="check out button" onClick={()=>this.handleCheckOut(this.state.cartItems)}> Check Out</button>
+                <button className="check out button" onClick={()=>this.handleCheckOut(this.state.cartItems)}> Continue to Checkout</button>
                 </div>
             </div>
         );
