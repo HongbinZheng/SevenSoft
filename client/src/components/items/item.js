@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import Favorite from '@material-ui/icons/Favorite';
+import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
+
 import ReactStars from 'react-stars';
 import Authserver from '../authserver';
 
@@ -135,7 +140,13 @@ class Item extends Component {
                 {this.state.onWatchList ? 
                 <button type="button" className="btn btn-danger" style={{marginLeft:"20px"}}> <i className="fas fa-heart"></i> Added to Watch List</button>
                 : 
-                 <button type="button" className="btn btn-warning" style={{marginLeft:"20px"}} onClick={()=>this.handleAddtoWatchLish()}> <i className="far fa-heart"></i> Add to Watch List</button>
+            // <button type="button" className="btn btn-warning" style={{marginLeft:"20px"}} onClick={()=>this.handleAddtoWatchLish()}> <i className="far fa-heart"></i> Add to Watch List</button>
+                 <FormControlLabel
+                 control={
+                   <Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} value={this.state.onWatchList} onChange={()=>this.handleAddtoWatchLish()} />
+                 }
+                 label="Custom icon"
+               />
                 }
                 </h3>
                 
