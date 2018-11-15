@@ -90,7 +90,7 @@ export default class SimpleMap extends React.PureComponent {
   render() {
     return (
         <div>
-        <div className="container" style={{border:"2px solid #c2c2c2",borderRadius:"25px",backgroundColor:"#ffffff",textAlign:"center"}}>
+        <div className="container" style={{border:"2px solid #c2c2c2",borderRadius:"25px",backgroundColor:"#ffffff",textAlign:"center",marginTop:"50px",marginBottom:"50px"}}>
         <div style={{textAlign:"center",margin:50}}>
         <div className="input-group">
             <input
