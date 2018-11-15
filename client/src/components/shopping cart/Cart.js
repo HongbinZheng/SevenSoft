@@ -16,6 +16,7 @@ class Cart extends React.Component {
          this.handleRemove = this.handleRemove.bind(this)
          this.handleIncrease = this.handleIncrease.bind(this)
          this.handleDecrease = this.handleDecrease.bind(this)
+         this.forceUpdate();
     }
 
 

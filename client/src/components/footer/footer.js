@@ -12,6 +12,9 @@ const Footer = () => {
         <p>
           <a href="/privacy">Privacy Policy</a>
         </p>
+        <p>
+          <a href="/maps">Locator</a>
+        </p>
       </div>
     </div>
   );
