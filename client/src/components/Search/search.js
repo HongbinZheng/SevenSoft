@@ -97,7 +97,7 @@ class Search extends Component {
   render() {
     return (
       <div>
-      <div className="input-group" style={{marginLeft:'0px'}}>
+      <div className="input-group" style={{marginLeft:'0px', marginTop:'8px'}}>
         <input
           style={{width:'500px', height:"48px", borderRadius:'20px', border:'2px solid green', marginRight:'10px', backgroundColor:'rgba(255, 255, 255, 0.7)'}}
           onKeyDown={this.keyPress}

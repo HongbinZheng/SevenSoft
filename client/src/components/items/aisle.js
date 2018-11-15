@@ -61,7 +61,7 @@ handleAddtoCart(stuff){
 render() {
   return (
       this.state  ?
-      <div className = "container-fluid" style={{minHeight:window.innerHeight-245, marginTop:'54px'}}>
+      <div className = "container-fluid" style={{minHeight:window.innerHeight-245, marginTop:'4%'}}>
       <div style={{margin:'auto'}}>
        <h1>
        {this.state.item.map(items =>
