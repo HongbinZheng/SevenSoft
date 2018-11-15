@@ -43,16 +43,16 @@ class NavBar extends Component {
                         <span className="navbar-toggler-icon"></span>
                     </button>
 
-                    <div className="collapse navbar-collapse mx-auto" id="navbarSupportedContent" >
-                        <ul className="navbar-nav mr-auto btn-group-lg" style={{textAlign:"center"}}>
+                    <div className="collapse navbar-collapse mx-auto" id="navbarSupportedContent" style={{width:'100%'}}>
+                        <ul className="navbar-nav mr-auto btn-group-lg" style={{marginLeft:'35%'}}>
                             <a href="/produce" className="btn btn-light text-center" role="button" aria-pressed="true">Produce</a>
                             <a href="/meats" className="btn btn-light text-center" role="button" aria-pressed="true">Meats</a>
                             <a href="/beverages" className="btn btn-light text-center" role="button" aria-pressed="true">Beverages</a>
                             <a href="/dairy" className="btn btn-light text-center" role="button" aria-pressed="true">Dairy</a>
                             <a href="/" className="btn btn-light text-center" role="button" aria-pressed="true">More>></a>
                         </ul>
-                   
-                        {this.state.isLogged ?
+                    </div>
+                            {this.state.isLogged ?
                             <div >
                                 <div className="nav-item dropdown btn btn-info">
                                     <a className="nav-link dropdown-toggle keep-open" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -68,14 +68,13 @@ class NavBar extends Component {
                                 </div >
                             </div >
                             : <a href="/profile" className="btn btn-primary text-center" role="button" aria-pressed="true">Login</a>}
-                    </div>
                 </nav>
                 <div className="float-right" style={{ top: 200 }}>
                     <Cart />
                 </div>
-                <div className="nav-item text-center" style={{ marginLeft: '40%' }}>
+                <div className="nav-item" style={{position:'absolute', width:'100%'}}>
                     <form className="form-inline">
-                        <div>
+                        <div style={{position:'relative', margin:'auto'}}>
                             <Search />
                         </div>
                     </form>
