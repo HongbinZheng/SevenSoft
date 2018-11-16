@@ -79,27 +79,32 @@ class Register extends Component {
     }
 render(){
     return (
-        <div className="register_container" >
+        <div className="register_container" style={{marginTop:'25px', marginBottom:'25px', marginLeft:'75px'}}>
         <form onSubmit={this.submitRegister}>
-        <h2>Registation here</h2>
+        <h4 style={{marginTop:'5px'}}>Username</h4>
         <div className="form_element">
-            <input 
+            <input
+                style={{width:'200px', height:"30px", borderRadius:'10px'}}
                 type="text"
-                placeholder="Enter your username"
+                placeholder="Enter a username"
                 value={this.state.username}
                 onChange={this.handleInputUsername}
             />
         </div>
+        <h4 style={{marginTop:'15px'}}>Email</h4>
         <div className="form_element">
-            <input 
+            <input
+                style={{width:'200px', height:"30px", borderRadius:'10px'}}
                 type="email"
                 placeholder="Enter your email"
                 value={this.state.email}
                 onChange={this.handleInputEmail}
             />
         </div>
+        <h4 style={{marginTop:'15px'}}>Password</h4>
         <div className="form_element">
-            <input 
+            <input
+                style={{width:'200px', height:"30px", borderRadius:'10px'}}
                 type="password"
                 placeholder="Enter your password"
                 value={this.state.password}
@@ -107,14 +112,15 @@ render(){
             />
         </div>
         <div className="form_element">
-            <input 
+            <input
+                style={{marginTop:'5px', width:'200px', height:"30px", borderRadius:'10px'}}
                 type="password"
                 placeholder="Confirm your password"
                 value={this.state.confirmPassword}
                 onChange={this.handleInputConfirmPassword}
             />
         </div>   
-        <button type="submit">Create account</button>
+        <button className="btn btn-primary"type="submit" style={{marginLeft:'117px', marginTop:'20px'}}>Register</button>
         </form>
         {this.state.code ? this.showValidation(this.state) : null }
         </div>
