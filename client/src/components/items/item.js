@@ -102,11 +102,13 @@ class Item extends Component {
                 this.setState({onWatchList:false})
             })
         }
+    }else{
+        this.setState({error:"you need to login to add to watch list"})
     }
   }
 
     render() {
-        console.log(this.state.item)
+        console.log(this.state)
         return (
         <div className="container" style={{minHeight:window.innerHeight-245, marginBottom:'165px'}}>
             <div className="row">
@@ -148,7 +150,7 @@ class Item extends Component {
                 <h5>{this.state.item.description}</h5>
                 <br/>
                 <h3 style = {{width:'400px'}}><button type="button" onClick={()=>this.handleAddtoCart(this.state.item)} className="btn btn-info"> Add to Cart <i className="fas fa-cart-plus"></i></button>
-                <h3 style={{marginLeft:20,display:"inline-block"}}>
+                <div style={{marginLeft:20,display:"inline-block"}}>
                 {this.state.onWatchList ? 
                 //<button type="button" className="btn btn-danger" style={{marginLeft:"20px"}}> <i className="fas fa-heart"></i> Added to Watch List</button>
                 <FormControlLabel
@@ -166,11 +168,15 @@ class Item extends Component {
                  label="Add to watch list"
                />
                 }
-                </h3>
+                </div>
                 </h3>
                 
               </div>
               <div className="col align-self-end">
+              {this.state.error ?
+              <div class="alert alert-danger" role="alert">
+                {this.state.error}
+              </div> : null}
               </div>
             </div>
           </div>
