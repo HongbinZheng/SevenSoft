@@ -49,16 +49,16 @@ class NavBar extends Component {
 
               <div className="collapse navbar-collapse mx-auto" id="navbarSupportedContent" style={{ width: "100%" }}>
                 <ul className="navbar-nav mr-auto btn-group-lg" style={{ marginLeft: "35%" }}>
-                  <a href="/produce" className="btn btn-light text-center" role="button" aria-pressed="true">
+                  <a href="/aisle/produce" className="btn btn-light text-center" role="button" aria-pressed="true">
                     Produce
                   </a>
-                  <a href="/meats" className="btn btn-light text-center" role="button" aria-pressed="true">
+                  <a href="/aisle/meats" className="btn btn-light text-center" role="button" aria-pressed="true">
                     Meats
                   </a>
-                  <a href="/beverages" className="btn btn-light text-center" role="button" aria-pressed="true">
+                  <a href="/aisle/beverages" className="btn btn-light text-center" role="button" aria-pressed="true">
                     Beverages
                   </a>
-                  <a href="/dairy" className="btn btn-light text-center" role="button" aria-pressed="true">
+                  <a href="/aisle/dairy" className="btn btn-light text-center" role="button" aria-pressed="true">
                     Dairy
                   </a>
                   <a href="/" className="btn btn-light text-center" role="button" aria-pressed="true">

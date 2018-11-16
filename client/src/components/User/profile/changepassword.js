@@ -72,7 +72,7 @@ class Changepassword extends Component {
                         axios.post(`/api/resetPassword`,{username,newpw})
                             .then(res=>{
                                 console.log(res.data)
-                                this.setState({error:res.data.message})
+                                this.setState({success:res.data.message})
                                 setTimeout(5000);
                                 this.Auth.logout();
                                 window.location = '/'
@@ -133,6 +133,11 @@ class Changepassword extends Component {
                     </div>
                     :
                     null}
+                {this.state.success ?
+                <div class="alert alert-success" role="alert">
+                    {this.state.success}
+                </div>
+                    : null}
             </div>
         );
     }
