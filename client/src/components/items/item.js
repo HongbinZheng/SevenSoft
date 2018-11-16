@@ -17,7 +17,8 @@ class Item extends Component {
             quantityInCart:0,
             watchList:[],
             onWatchList:false,
-            isLogged:false
+            isLogged:false,
+            index:''
         }
         this.Auth = new Authserver()
     }
@@ -37,9 +38,9 @@ class Item extends Component {
             this.setState({ username: username });
             axios.get(`/api/getWatchList?username=${username}&item=${item}`)
             .then(res=>{
-                console.log(res.data)
+                console.log(res.data[0])
                 if(res.data.length > 0){
-                    this.setState({onWatchList:true})
+                    this.setState({onWatchList:true,index:res.data[0].itemIndex})
                 }
             })
         }
@@ -85,13 +86,23 @@ class Item extends Component {
   handleAddtoWatchLish(){
     if(this.state.isLogged){
     let username = this.state.username;
-    let item = this.state.item
+    let item = this.state.item;
+    let index = this.state.index;
+    if(!this.state.onWatchList){
     axios.post(`/api/addToWatchList`,{username,item})
         .then(res=>{
             console.log(res.data)
             this.setState({onWatchList:true})
             })
         }
+        else{
+    axios.post(`/api/removeFromWatchList`,{username,index})
+            .then(res=>{
+                console.log(res.data)
+                this.setState({onWatchList:false})
+            })
+        }
+    }
   }
 
     render() {
@@ -137,17 +148,25 @@ class Item extends Component {
                 <h5>{this.state.item.description}</h5>
                 <br/>
                 <h3 style = {{width:'400px'}}><button type="button" onClick={()=>this.handleAddtoCart(this.state.item)} className="btn btn-info"> Add to Cart <i className="fas fa-cart-plus"></i></button>
+                <h3 style={{marginLeft:20,display:"inline-block"}}>
                 {this.state.onWatchList ? 
-                <button type="button" className="btn btn-danger" style={{marginLeft:"20px"}}> <i className="fas fa-heart"></i> Added to Watch List</button>
+                //<button type="button" className="btn btn-danger" style={{marginLeft:"20px"}}> <i className="fas fa-heart"></i> Added to Watch List</button>
+                <FormControlLabel
+                 control={
+                   <Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} checked={this.state.onWatchList} onChange={()=>this.handleAddtoWatchLish()} />
+                    } 
+                 label="Added to watch list"
+               />
                 : 
             // <button type="button" className="btn btn-warning" style={{marginLeft:"20px"}} onClick={()=>this.handleAddtoWatchLish()}> <i className="far fa-heart"></i> Add to Watch List</button>
                  <FormControlLabel
                  control={
-                   <Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} value={this.state.onWatchList} onChange={()=>this.handleAddtoWatchLish()} />
+                   <Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} checked={this.state.onWatchList} onChange={()=>this.handleAddtoWatchLish()} />
                  }
-                 label="Custom icon"
+                 label="Add to watch list"
                />
                 }
+                </h3>
                 </h3>
                 
               </div>
