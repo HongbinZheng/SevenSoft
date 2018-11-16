@@ -88,8 +88,7 @@ class NavBar extends Component {
                     </div>
                   </div>
                 </div> : <div>
-                  <Popup trigger={<button className="btn btn-primary"> Login</button>} modal contentStyle={{width:'350px'}}>
-                    {" "}
+                  <Popup trigger={<button className="btn btn-primary"> Login/Sign Up</button>} modal contentStyle={{width:'250px'}}>
                     <div>
                         <ul className="nav nav-tabs" id="myTab" role="tablist">
                             <li className="nav-item">

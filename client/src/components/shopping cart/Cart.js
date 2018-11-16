@@ -1,6 +1,7 @@
 import React from 'react';
 import CartItem from './CartItem';
 import { withRouter } from "react-router-dom";
+import CustomizedBadge from './cartButton';
 
 class Cart extends React.Component {
     constructor(props) {
@@ -16,7 +17,6 @@ class Cart extends React.Component {
          this.handleRemove = this.handleRemove.bind(this)
          this.handleIncrease = this.handleIncrease.bind(this)
          this.handleDecrease = this.handleDecrease.bind(this)
-         this.forceUpdate();
     }
 
 
@@ -103,10 +103,9 @@ class Cart extends React.Component {
         return(
             this.state.cartItems.length > 0 ?
               <div className = "CartDiv" style = {{position:'absolute', right:'45px', top:'100px'}}>
-                <button className="btn btn-success" role="button" data-toggle="collapse" data-target="#cartopen" aria-expanded="false" aria-controls="#cartopen" aria-haspopup="true" text-align="center" margin = "auto" style={{width:'80px', height:'80px', borderRadius:'50%'}}>
-                    <i className="fas fa-shopping-cart fa-2x"> {this.getTotalQyt(this.state.cartItems)}</i>
-                   
-                 </button> 
+                <span className="btn btn-success" role="button" data-toggle="collapse" data-target="#cartopen" aria-expanded="false" aria-controls="#cartopen" aria-haspopup="true" text-align="center" margin = "auto" style={{width:'70px', height:'70px', borderRadius:'50%'}}>
+                   <CustomizedBadge qty={this.getTotalQyt(this.state.cartItems)}/>
+                 </span> 
                  <div className="collapse" id="cartopen" style={{border:"1px solid #C2C2C2", backgroundColor:"#ffffff", width:'300px'}}>
                 {/* <div className="Cart card shadow rounded float-right " style={{position:"relative", border:"1px solid #000000", right:"10px", top: "10px"}}>  */}
                 <div>

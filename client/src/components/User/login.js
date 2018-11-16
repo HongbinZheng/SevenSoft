@@ -1,5 +1,27 @@
 import React, { Component } from 'react';
 import axios from 'axios'
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import { withStyles } from '@material-ui/core/styles';
+import MenuItem from '@material-ui/core/MenuItem';
+import TextField from '@material-ui/core/TextField';
+
+const styles = theme => ({
+    container: {
+      display: 'flex',
+      flexWrap: 'wrap',
+    },
+    textField: {
+      marginLeft: theme.spacing.unit,
+      marginRight: theme.spacing.unit,
+    },
+    dense: {
+      marginTop: 16,
+    },
+    menu: {
+      width: 200,
+    },
+  });
 
 class Login extends Component {
 
@@ -14,17 +36,15 @@ class Login extends Component {
             token:''
         }
         this.submitLogin = this.submitLogin.bind(this)
-        //this.Auth = new Authserver();
 	}
 
     
     ////////////////Login ////////////////////
-    handleInputUsername = (event) => {
-        this.setState({username:event.target.value})
-    }
-    handleInputPassword = (event) => {
-        this.setState({password:event.target.value})
-    }
+    handleChange = ({ target: { name, value } }) => {
+        this.setState({
+          [name]:value
+        });
+      };
 
 
     submitLogin = (e) =>{
@@ -76,35 +96,47 @@ class Login extends Component {
     
 
 render(){
+    const { classes } = this.props;
     return (
-        <div className="login_container" style={{marginTop:'15px', marginBottom:'15px'}}>
-        <form onSubmit={this.submitLogin}>
+        <div className="login_container">
+        <form className={classes.container} noValidate autoComplete="off" onSubmit={this.submitLogin} style={{textAlign:"center"}}>
             <div className="form_element">
-                <h3 style={{marginLeft:'70px',}}>Username</h3>
-                <input
-                    style={{marginLeft:'70px', width:'200px', height:"30px", borderRadius:'10px'}}
-                    type="text"
-                    placeholder="Username"
-                    value={this.state.username}
-                    onChange={this.handleInputUsername}
-                />
+                <TextField
+                        id="outlined-username-input"
+                        label="Username"
+                        name="username"
+                        className={classes.textField}
+                        margin="normal"
+                        variant="outlined"
+                        onChange={this.handleChange}
+                    />
             </div>
             <div className="form_element">
-                <h3 style={{marginLeft:'70px', marginTop:'15px'}}>Password</h3>
-                <input
-                    style={{marginLeft:'70px', width:'200px', height:"30px", borderRadius:'10px'}}
-                    type="password"
-                    placeholder="Password"
-                    value={this.state.password}
-                    onChange={this.handleInputPassword}
-                />
+                    <TextField
+                        id="outlined-password-input"
+                        label="Password"
+                        name="password"
+                        className={classes.textField}
+                        type="password"
+                        margin="normal"
+                        variant="outlined"
+                        onChange={this.handleChange}
+                    />
             </div>
-            <button className="btn btn-primary" type="submit" style={{marginLeft:'207px', marginTop:'20px'}}>Login</button>
+            <button className="btn btn-primary" type="submit" style={{marginLeft:'117px', marginTop:'20px'}}>Login</button>
             </form>
-            {this.state.data ? this.showValidation(this.state.data) : null }
+            {this.state.data ?
+                <div className="alert alert-danger" role="alert">
+                    {this.showValidation(this.state.data)}
+                </div>
+                 : null }
             </div>
     );
 }   
 };
 
-export default Login;
+Login.propTypes = {
+    classes: PropTypes.object.isRequired,
+  };
+
+export default  withStyles(styles)(Login);

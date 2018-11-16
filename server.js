@@ -241,6 +241,21 @@ app.post('/api/updateRating', (req,res)=>{
   })
 })
 
+app.post('/api/resetPassword',(req,res)=>{
+  var username = req.body.username;
+  var password = req.body.newpw;
+  password = bcrypt.hashSync(password, salt)
+  connect.query(`UPDATE members SET password = '${password}' WHERE username = '${username}'`, function(err,result){
+    if(err){
+      res.send(err)
+    }else{
+      message = "successfully change password"
+      res.send({message})
+    }
+  })
+
+})
+
 app.post('/api/addToWatchList',(req,res)=>{
   let username = req.body.username;
   let item = req.body.item;
