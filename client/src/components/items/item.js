@@ -92,7 +92,7 @@ class Item extends Component {
     render() {
         console.log(this.state.item)
         return (
-        <div className="container" style={{minHeight:window.innerHeight-245}}>
+        <div className="container" style={{minHeight:window.innerHeight-245, marginBottom:'165px'}}>
             <div className="row">
             <div className="col-sm">
               <img style={{width:"418px",height:"279.03px", marginTop:'100px'}} src={`/images/aisle/${this.state.item.name}.png`} alt="Card cap"></img>
