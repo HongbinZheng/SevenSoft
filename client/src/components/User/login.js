@@ -77,26 +77,29 @@ class Login extends Component {
 
 render(){
     return (
-        <div className="login_container">
+        <div className="login_container" style={{marginTop:'15px', marginBottom:'15px'}}>
         <form onSubmit={this.submitLogin}>
-            <h2>Log in here</h2>
             <div className="form_element">
-                <input 
+                <h3 style={{marginLeft:'70px',}}>Username</h3>
+                <input
+                    style={{marginLeft:'70px', width:'200px', height:"30px", borderRadius:'10px'}}
                     type="text"
-                    placeholder="Enter your username"
+                    placeholder="Username"
                     value={this.state.username}
                     onChange={this.handleInputUsername}
                 />
             </div>
             <div className="form_element">
-                <input 
+                <h3 style={{marginLeft:'70px', marginTop:'15px'}}>Password</h3>
+                <input
+                    style={{marginLeft:'70px', width:'200px', height:"30px", borderRadius:'10px'}}
                     type="password"
-                    placeholder="Enter your password"
+                    placeholder="Password"
                     value={this.state.password}
                     onChange={this.handleInputPassword}
                 />
             </div>
-            <button type="submit">Log in</button>
+            <button className="btn btn-primary" type="submit" style={{marginLeft:'207px', marginTop:'20px'}}>Login</button>
             </form>
             {this.state.data ? this.showValidation(this.state.data) : null }
             </div>
