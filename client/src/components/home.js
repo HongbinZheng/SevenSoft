@@ -147,6 +147,11 @@ class Home extends Component {
                 </div>
                 </div>: null}
                
+                <div className="float-left" style={{border:'1px solid red', marginTop:'5%', marginBottom: '3%'}}>
+                    <img src="/images/home/Weekly-Ad.png" alt="Weekly-Ad"></img>
+                    <h2 style={{textAlign:'center', marginTop:'10px', fontSize:'28pt', fontFamily:'Lucida Handwriting'}}>Weekly Sales</h2>
+                </div>
+
             </div>
         );
     }
