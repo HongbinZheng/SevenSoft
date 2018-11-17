@@ -56,6 +56,7 @@ class Home extends Component {
                         <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
                         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                         <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
                     </ol>
                     <div className="carousel-inner">
                         <div className="carousel-item active">
@@ -66,6 +67,9 @@ class Home extends Component {
                         </div>
                         <div className="carousel-item">
                             <img className="d-block w-100" src="/images/home/Ad3.png" alt="Third Ads"></img>
+                        </div>
+                        <div className="carousel-item">
+                            <img className="d-block w-100" src="/images/home/Ad4.png" alt="Fourth Ads"></img>
                         </div>
                     </div>
                     <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
