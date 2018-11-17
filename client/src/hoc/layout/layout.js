@@ -17,7 +17,9 @@ class Layout extends Component {
             <div>
                 <Header/>
                     <NavBar/>
+                    <div style={{minHeight:window.innerHeight-245}}>
                     {this.props.children}
+                    </div>
                 <Footer/>
             </div>
         );

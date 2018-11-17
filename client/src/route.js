@@ -36,8 +36,8 @@ class Router extends Component {
           <Route path="/terms" exact component={Terms} />
           <Route path='/confirm' exact component={ConfirmationPage} />
           <Route path="/maps" exact component={SimpleMap} />
-          <Route path="/:aisle" exact component={Aisle} />
-          <Route path="/:aisle/:item" exact component={Item} />
+          <Route path="/aisle/:aisle" exact component={Aisle} />
+          <Route path="/aisle/:aisle/:item" exact component={Item} />
         </Switch>
       </Layout>
     );

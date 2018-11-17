@@ -50,11 +50,11 @@ class WatchList extends Component {
           return(
             <div key={items.itemNo} className='rounded float-left' style={{margin:'10px',border:'1px solid #C2C2C2'}}>
                 <div className='card' style={{width:'14rem', height:'20rem'}} >
-                    <Link to={`/${items.aisle}/${items.name}`}>
+                    <Link to={`/aisle/${items.aisle}/${items.name}`}>
                     <img className='card-img-top' style={{width:'100%',height:'100%'}} src={`/images/aisle/${items.name}.png`} alt='Card cap'></img>
                     </Link>
                     <div className='card-body col-sm'>
-                    <Link to={`/${items.aisle}/${items.name}`}>
+                    <Link to={`/aisle/${items.aisle}/${items.name}`}>
                     <p className='card-title' style={{textAlign:'center',color:'#708090', marginTop:'20px'}}><b>{items.name}</b></p>
                     </Link>
                     </div>
@@ -76,7 +76,7 @@ class WatchList extends Component {
              )})}
             </div>
         : 
-        <div className="w-100" style={{marginTop:20,fontFamily:'Roboto',marginLeft:30}}>
+        <div className="w-100" style={{marginTop:20,fontFamily:'Roboto',marginLeft:30,marginBottom:30}}>
             Sorry, nothing in your list is on sale.
         </div> }
         </div>
@@ -92,11 +92,11 @@ class WatchList extends Component {
             return(
             <div key={items.itemNo} className='rounded float-left' style={{margin:'10px',border:'1px solid #C2C2C2'}}>
                 <div className='card' style={{width:'14rem', height:'20rem'}} >
-                    <Link to={`/${items.aisle}/${items.name}`}>
+                    <Link to={`/aisle/${items.aisle}/${items.name}`}>
                     <img className='card-img-top' style={{width:'100%',height:'100%'}} src={`/images/aisle/${items.name}.png`} alt='Card cap'></img>
                     </Link>
                     <div className='card-body col-sm'>
-                    <Link to={`/${items.aisle}/${items.name}`}>
+                    <Link to={`/aisle/${items.aisle}/${items.name}`}>
                     <p className='card-title' style={{textAlign:'center',color:'#708090', marginTop:'20px'}}><b>{items.name}</b></p>
                     </Link>
                     </div>
@@ -121,7 +121,7 @@ class WatchList extends Component {
         </div> 
         </div>: 
         <div>
-        <h1 style={{fontFamily:'Roboto',marginLeft:30}}>You nerver add anything in your watchlist!</h1>
+        <h1 style={{fontFamily:'Roboto',marginLeft:30,marginBottom:30}}>You nerver add anything in your watchlist!</h1>
         </div>}
        </div>
         );

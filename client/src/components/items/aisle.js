@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+
 import Cart from '../shopping cart/Cart';
 
 class Aisle extends Component {
@@ -68,11 +69,11 @@ render() {
 
        <div key={items.itemNo} className='rounded' style={{margin:'10px',border:'1px solid #C2C2C2',display:"inline-block"}}>
            <div className='card' style={{width:'20rem', height:'28rem'}} >
-               <Link to={`/${items.aisle}/${items.name}`}>
+               <Link to={`/aisle/${items.aisle}/${items.name}`}>
                <img className='card-img-top' style={{width:'318px',height:'212.28px'}} src={`/images/aisle/${items.name}.png`} alt='Card cap'></img>
                </Link>
                <div className='card-body'>
-               <Link to={`/${items.aisle}/${items.name}`}>
+               <Link to={`/aisle/${items.aisle}/${items.name}`}>
                <h2 className='card-title' style={{textAlign:'center', height: '50px', color:'#708090', marginTop:'20px'}}>{items.name}</h2>
                </Link>
                </div>

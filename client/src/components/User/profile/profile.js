@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-
+import Popup from "reactjs-popup";
 
 import Authserver from '../../authserver'
 import Address from './address'
+import Changepassword from './changepassword'
 
 
 class Profile extends Component {
@@ -34,8 +35,12 @@ class Profile extends Component {
         return (
             <div>
                <h2 style={{fontFamily:"roboto",margin:30}}> Hello {this.state.username} </h2>
-               <Address username={this.state.username}/>
-
+               <Address username={this.state.username}/> 
+                <Popup trigger={<button style={{backgroundColor:"#F2F259",margin:30,borderRadius:"25px"}}> Change My Password</button>} modal contentStyle={{width:'350px'}}>
+                    <div>
+                        <Changepassword username={this.state.username} />
+                    </div>
+                </Popup>              
                 <p className="App-intro">
             <button type="button" className='btn btn-info' onClick={this.handleLogout.bind(this)} style={{margin:30}}>Logout</button>
                  </p>

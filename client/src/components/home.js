@@ -88,7 +88,7 @@ class Home extends Component {
                        {this.state.order.map((items) =>{
                            return(
                            <div key={items.itemid}>
-                           <Link to={`/${items.aisle}/${items.name}`}>
+                           <Link to={`/aisle/${items.aisle}/${items.name}`}>
                                <div className="card" style={{width:"200px",height:'180px',margin:"10px",border:'1px solid #C2C2C2',textAlign:'center' }}>
                                <div>
                                 <img className="card-img-top" src={`/images/aisle/${items.name}.png`} style={{textAlign:'center',width:"197px",height:"100px"}} alt="Card cap"/>
@@ -112,11 +112,11 @@ class Home extends Component {
                 {this.state.watchList.length > 0 ?
                     this.state.onSale.length > 0 ? 
                     <div>
-                    <div className="col-lg-12 col-md-12 col-sm-12 d-flex p-2" style={{maxHeight:"240px", overflowX:"scroll",border:'1px solid #C2C2C2', backgroundColor:"#D5E6E8"}}>
+                    <div className="col-lg-12 col-md-12 col-sm-12 d-flex p-2" style={{maxHeight:"240px", overflowX:"scroll",border:'1px solid #C2C2C2', backgroundColor:"#D5E6E8",marginBottom:30}}>
                         {this.state.onSale.map((items)=>{
                             return(
                                 <div key={items.itemid}>
-                                <Link to={`/${items.aisle}/${items.name}`}>
+                                <Link to={`/aisle/${items.aisle}/${items.name}`}>
                                     <div className="card" style={{width:"200px",height:'180px',margin:"10px",border:'1px solid #C2C2C2',textAlign:'center' }}>
                                     <div>
                                      <img className="card-img-top" src={`/images/aisle/${items.name}.png`} style={{textAlign:'center',width:"197px",height:"100px"}} alt="Card cap"/>
