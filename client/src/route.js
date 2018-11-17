@@ -15,8 +15,8 @@ import Privacy from "./components/footer/privacy";
 import Terms from "./components/footer/terms";
 import ConfirmationPage from './components/Checkout/ConfirmationPage';
 import SimpleMap from './components/footer/SimpleMap'
-//////////testing//////////
 import Profile from "./components/User/profile/profile";
+import AllAisle from './components/items/allAisle'
 /////////////////////////////////////////
 
 class Router extends Component {
@@ -36,6 +36,7 @@ class Router extends Component {
           <Route path="/terms" exact component={Terms} />
           <Route path='/confirm' exact component={ConfirmationPage} />
           <Route path="/maps" exact component={SimpleMap} />
+          <Route path='/aisle' exact component={AllAisle} />
           <Route path="/aisle/:aisle" exact component={Aisle} />
           <Route path="/aisle/:aisle/:item" exact component={Item} />
         </Switch>

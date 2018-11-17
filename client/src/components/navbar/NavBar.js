@@ -61,7 +61,7 @@ class NavBar extends Component {
                   <a href="/aisle/dairy" className="btn btn-light text-center" role="button" aria-pressed="true">
                     Dairy
                   </a>
-                  <a href="/" className="btn btn-light text-center" role="button" aria-pressed="true">
+                  <a href="/aisle" className="btn btn-light text-center" role="button" aria-pressed="true">
                     More>>
                   </a>
                 </ul>

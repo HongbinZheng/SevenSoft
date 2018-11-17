@@ -13,8 +13,57 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import TextField from '@material-ui/core/TextField';
+import MenuItem from '@material-ui/core/MenuItem';
 
 const TAX_RATE = 0.09;
+
+const quantityInCarts = [
+    {
+        value: 0,
+        label: '0',
+      },
+    {
+      value: 1,
+      label: '1',
+    },
+    {
+      value: 2,
+      label: '2',
+    },
+    {
+      value: 3,
+      label: '3',
+    },
+    {
+        value: 4,
+        label: '4',
+      },
+      {
+        value: 5,
+        label: '5',
+      },
+      {
+        value: 6,
+        label: '6',
+      },
+      {
+        value: 7,
+        label: '7',
+      },
+      {
+        value: 8,
+        label: '8',
+      },
+      {
+        value: 9,
+        label: '9',
+      },
+      {
+        value: 10,
+        label: '10',
+      },
+  ];
 
 const styles = theme => ({
   root: {
@@ -59,16 +108,10 @@ class CheckoutReview extends Component {
         return cartItems
       }
 
-      handleCheckOut(items){
-        // if(this.Auth.loggedIn()){
-        //     var SERECT = "superserect"
-        //     const token = localStorage.getItem('id_token')
-        //     var decoded = jwt.verify(token, SERECT);
-        //     items.forEach(item=>{item.myRate = 0});
-        //     console.log(items);
-        //     firebaseDB.ref(`/orders/${decoded}`).push(items);
-        // }
-       // this.props.history.push('/Checkout')
+      handleCheckOut(){
+          if(this.getTotalPrice(this.state.cartItems) === 0){
+              this.props.history.push('/')
+          }
        this.setState({redirect:true})
       }
 
@@ -84,6 +127,26 @@ class CheckoutReview extends Component {
       handleOnChange(e){
         this.setState({promocode:e.target.value})
       }
+
+      handleChange = prop => event => {
+        if(localStorage.getItem('cart') != null) {
+            var cartString = localStorage.getItem('cart')
+            var cart = JSON.parse(cartString)
+            var itemID = prop.itemid;
+            if(cart.hasOwnProperty(itemID)) {
+                if(event.target.value === 0){
+                    delete cart[itemID]
+                }else{
+                var item = cart[itemID]
+                item.quantityInCart = event.target.value
+                cart[itemID] = item
+            }
+            localStorage.setItem('cart', JSON.stringify(cart))
+            this.setState({cartItems: this.getItemsFromCart(cart)})
+            }
+            }
+      };
+
 
       getTotalPrice(items) {
         var tPrice = 0
@@ -113,7 +176,7 @@ class CheckoutReview extends Component {
     const invoiceTotal = invoiceTaxes + invoiceSubtotal;
     return ( 
         <div style={{textAlign:"center"}}>
-            <div className="container" style={{width:"1000px",textAlign:"center",marginTop:"100px"}}>    
+            <div className="container" style={{width:"1000px",textAlign:"center",marginTop:"100px",marginBottom:"100px"}}>    
                 <div style={{textAlign:"center"}}>            
                 <Paper className={classes.root} style={{border:"2px solid #c2c2c2",borderRadius:"25px"}}>
                     <Table className={classes.table}>
@@ -129,8 +192,31 @@ class CheckoutReview extends Component {
                             {this.state.cartItems.map((item, index) => {
                                 return (
                                         <TableRow key={item.itemid}>
-                                            <TableCell>{item.name}</TableCell>
-                                            <TableCell numeric>{item.quantityInCart}</TableCell>
+                                            <TableCell><img 
+                                            style={{width:"90px",height:"60px"}}
+                                            src={`/images/aisle/${item.name}.png`}/>{item.name}</TableCell>
+                                            <TableCell numeric>
+                                            <TextField
+                                                id="standard-select-currency"
+                                                select
+                                                className={classes.textField}
+                                                value={item.quantityInCart}
+                                                onChange={this.handleChange(item)}
+                                                SelectProps={{
+                                                    MenuProps: {
+                                                        className: classes.menu,
+                                                    },
+                                                }}
+                                                margin="normal"
+                                            >
+                                                {quantityInCarts.map(option => (
+                                                    <MenuItem key={option.value} value={option.value}>
+                                                        {option.label}
+                                                    </MenuItem>
+                                                ))}
+                                            </TextField>
+                                            
+                                            </TableCell>
                                             <TableCell numeric>{ccyFormat(item.price * item.discount)}</TableCell>
                                             <TableCell numeric>{ccyFormat((item.price * item.discount)*item.quantityInCart)}</TableCell>
                                         </TableRow>
