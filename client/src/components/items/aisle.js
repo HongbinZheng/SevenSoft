@@ -2,7 +2,31 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-import Cart from '../shopping cart/Cart';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import Grow from '@material-ui/core/Zoom';
+ const styles = theme => ({
+    root: {
+        height: 180,
+      },
+      wrapper: {
+        width: 100 + theme.spacing.unit * 2,
+      },
+    paper: {
+      margin: theme.spacing.unit,
+    },
+    svg: {
+      width: 100,
+      height: 100,
+    },
+    polygon: {
+      fill: theme.palette.common.white,
+      stroke: theme.palette.divider,
+      strokeWidth: 1,
+    },
+  });
+  
 
 class Aisle extends Component {
    constructor(){
@@ -60,13 +84,20 @@ handleAddtoCart(stuff){
 }
 
 render() {
+    var count = 0;
   return (
       this.state  ?
       <div className = "container-fluid" style={{minHeight:window.innerHeight-245, marginTop:'54px'}}>
       <div style={{margin:'auto'}}>
        <h1>
-       {this.state.item.map(items =>
-
+       {this.state.item.map(items =>{
+            count = count + 200;
+        return(
+            <Grow
+                in={true}
+                style={{ transformOrigin: '0 0 0' }}
+                {...({ timeout: count + 1000 })}
+            >
        <div key={items.itemNo} className='rounded' style={{margin:'10px',border:'1px solid #C2C2C2',display:"inline-block"}}>
            <div className='card' style={{width:'20rem', height:'28rem'}} >
                <Link to={`/aisle/${items.aisle}/${items.name}`}>
@@ -92,15 +123,20 @@ render() {
                <button onClick={()=>this.handleAddtoCart(items)} className='btn btn-info' style={{position:'relative', marginBottom:'0px'}} >Add to cart  <i className="fas fa-cart-plus"></i></button>
            </div>
        </div>
-       )
-       }
+       </Grow>
+        )})}
        </h1>
        </div>
-      </div> : <div>
+      </div>
+      : <div>
           This is nothing page
       </div>
   );
 }
 }
 
-export default Aisle;
+Aisle.propTypes = {
+    classes: PropTypes.object.isRequired,
+  };
+  
+  export default withStyles(styles)(Aisle); 
