@@ -86,7 +86,7 @@ class Home extends Component {
                 {this.state.isLogged ? 
                 <div>
                     <div style={{marginTop:"30px"}}>
-                <h1 style={{fontFamily:'Roboto'}}>Most Recent Order</h1><br/>
+                <h1 style={{fontFamily: "Lucida Handwriting", fontStyle:'bold'}}>Most Recent Order</h1><br/>
                 {this.state.order.length > 0 ?
                      <div className="col-lg-12 col-md-12 col-sm-12 d-flex p-2" style={{height:"240px", overflowX:"scroll",border:'1px solid #C2C2C2', backgroundColor:"#D5E6E8",borderRadius:"25px"}}>
                        {this.state.order.map((items) =>{
@@ -97,7 +97,7 @@ class Home extends Component {
                                <div>
                                 <img className="card-img-top" src={`/images/aisle/${items.name}.png`} style={{textAlign:'center',width:"197px",height:"100px"}} alt="Card cap"/>
                                 <div className="card-body">
-                                <p className="card-title" style={{color:'#708090'}}><b>{items.name}</b></p>
+                                <p className="card-title" style={{color:'#708090'}}><b style={{fontFamily: "Lucida Handwriting"}}>{items.name}</b></p>
                                 </div>
                                 </div>
                            </div>
@@ -107,12 +107,12 @@ class Home extends Component {
                      </div>
                       :
                       <div>
-                          <h3 style={{fontFamily:'Roboto'}}>Never bought anything yet</h3>
+                          <h3 style={{fontFamily: "Lucida Handwriting"}}>Never bought anything yet</h3>
                       </div>
                       }
                     </div>
                     <div style={{marginTop:'30px'}}>
-                <h1 style={{fontFamily:'Roboto'}}>On Sales Items In You Watch List</h1><br/>
+                <h1 style={{fontFamily: "Lucida Handwriting", fontStyle:'bold'}}>On Sales Items In You Watch List</h1><br/>
                 {this.state.watchList.length > 0 ?
                     this.state.onSale.length > 0 ? 
                     <div>
@@ -125,7 +125,7 @@ class Home extends Component {
                                     <div>
                                      <img className="card-img-top" src={`/images/aisle/${items.name}.png`} style={{textAlign:'center',width:"197px",height:"100px"}} alt="Card cap"/>
                                      <div className="card-body">
-                                     <p className="card-title" style={{textAlign:'center',color:'#708090'}}><b>{items.name}</b></p>
+                                     <p className="card-title" style={{textAlign:'center',color:'#708090'}}><b style={{fontFamily: "Lucida Handwriting"}}>{items.name}</b></p>
                                      </div>
                                      </div>
                                 </div>
@@ -137,19 +137,25 @@ class Home extends Component {
                     </div>
                     : 
                     <div>
-                        <h2 style={{fontFamily:'Roboto'}}>Nothing in your watch list in on sales</h2>
+                        <h2 style={{fontFamily: "Lucida Handwriting"}}>Nothing in your watch list in on sales</h2>
                     </div>
                 :
                 <div>
-                    <h3 style={{fontFamily:'Roboto'}}>Nothing in your Watch List</h3>
+                    <h3 style={{fontFamily: "Lucida Handwriting"}}>Nothing in your Watch List</h3>
                 </div>
                     }
                 </div>
                 </div>: null}
                
-                <div className="float-left" style={{border:'1px solid red', marginTop:'5%', marginBottom: '3%'}}>
+                <div className="float-left" style={{maxWidth:'805px', marginTop:'5%', marginBottom: '3%'}}>
                     <img src="/images/home/Weekly-Ad.png" alt="Weekly-Ad"></img>
-                    <h2 style={{textAlign:'center', marginTop:'10px', fontSize:'28pt', fontFamily:'Lucida Handwriting'}}>Weekly Sales</h2>
+                
+                    <a style={{marginTop:'10px', fontStyle:'bold', fontFamily:'Lucida Handwriting'}} href="#" className="btn btn-success btn-lg btn-block" role="button" aria-pressed="true">Weekly Sales</a>
+                </div>
+                <div className="float-right" style={{maxWidth:'805px', marginTop:'5%', marginBottom: '3%'}}>
+                    <img style={{width:'100%', maxHeight:'400px'}} src="/images/home/Home-Aisle-pic.png" alt="All Aisle pic"></img>
+                
+                    <a style={{marginTop:'10px', fontStyle:'bold', fontFamily:'Lucida Handwriting'}} href="/aisle" className="btn btn-warning btn-lg btn-block" role="button" aria-pressed="true">All Aisles</a>
                 </div>
 
             </div>

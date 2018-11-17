@@ -136,7 +136,7 @@ class Cart extends React.Component {
     render() {
         return(
             this.state.cartItems.length > 0 ?
-              <div className = "CartDiv" style = {{position:'absolute', right:'45px', top:'100px'}}>
+              <div className = "CartDiv" style = {{position:'absolute', right:'45px', top:'100px', fontFamily:'Lucida Handwriting'}}>
                 <span className="btn btn-success" role="button" data-toggle="collapse" data-target="#cartopen" aria-expanded="false" aria-controls="#cartopen" aria-haspopup="true" text-align="center" margin = "auto" style={{width:'60px', height:'60px', borderRadius:'50%',textAlign:"center"}}>
                    <CustomizedBadge qty={this.getTotalQyt()}/>
                  </span> 
@@ -152,8 +152,8 @@ class Cart extends React.Component {
                             handleDecrease={(itemID) => this.handleDecrease(itemID)}
                     />
                     </div>
-                    <h2 className="card-text text-left" style={{marginLeft:10,fontFamily:'cursive'}} >Total: <div className="text-right" style={{marginRight:10,fontFamily:'cursive'}}>${this.getTotalPrice(this.state.cartItems).toFixed(2)}</div></h2>
-                        <button className="fas fa-shopping-cart fa-5x btn btn-info" style={{textAlign:"center",fontSize:30, marginLeft: '50px', marginBottom:'10px', marginTop:'10px'}} onClick={()=>this.handleCheckoutClick(this.state.cartItems)}> CheckOut </button>
+                    <h2 className="card-text text-left" style={{marginLeft:10,fontFamily:'Lucida Handwriting'}} >Total: <div className="text-right" style={{marginRight:10,fontFamily:'Lucida Handwriting'}}>${this.getTotalPrice(this.state.cartItems).toFixed(2)}</div></h2>
+                        <button className="fas fa-shopping-cart fa-5x btn btn-info" style={{textAlign:"center",fontSize:30, marginLeft: '50px', marginBottom:'10px', marginTop:'10px', fontFamily:'Lucida Handwriting'}} onClick={()=>this.handleCheckoutClick(this.state.cartItems)}> CheckOut </button>
                     </div>
             </div>
             </div> : null

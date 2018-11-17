@@ -3,7 +3,7 @@ import style from "./footer.css";
 
 const Footer = () => {
   return (
-    <div className={style.footer}>
+    <div className={style.footer} style={{fontFamily:'Lucida Handwriting'}}>
       <div className={style.info}>
         <h2>
           <p>Contact Us</p>

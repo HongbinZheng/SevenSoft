@@ -85,7 +85,7 @@ class Register extends Component {
 render(){
     const { classes } = this.props;
     return (
-        <div className="register_container">
+        <div className="register_container" style={{fontFamily:'Lucida Handwriting'}}>
         <form onSubmit={this.submitRegister} className={classes.container} noValidate autoComplete="off">
         <div className="form_element">
                     <TextField

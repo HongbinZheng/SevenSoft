@@ -33,8 +33,8 @@ class CartItemlist extends Component {
         return (
             <div>
             <li className="list-group-item CartItem">
-                <h3 className="card-title text-left" style= {{width:"200px",fontFamily:'cursive'}}><strong>{this.props.item.name}  <i className="fas fa-trash-alt" style={{marginLeft:'5px', color:'red'}} onClick={()=>this.props.handleRemove(this.props.item.itemid)} /></strong></h3>
-                <h5 className="card-text text-left" style={{display:'inline',fontFamily:'cursive'}}>Qty: {this.props.item.quantityInCart}</h5>
+                <h3 className="card-title text-left" style= {{width:"200px",fontFamily:'Lucida Handwriting'}}><strong>{this.props.item.name}  <i className="fas fa-trash-alt" style={{marginLeft:'5px', color:'red'}} onClick={()=>this.props.handleRemove(this.props.item.itemid)} /></strong></h3>
+                <h5 className="card-text text-left" style={{display:'inline',fontFamily:'Lucida Handwriting'}}>Qty: {this.props.item.quantityInCart}</h5>
                 <i className="far fa-minus-square" style={{display:'inline', marginLeft:'10px'}} onClick={()=> this.props.handleDecrease(this.props.item.itemid)} /> 
                 <i onClick={() => this.props.handleIncrease(this.props.item.itemid)} className="far fa-plus-square" style={{marginLeft:'5px'}}></i>
                 <h4 className="card-text text-right" style={{fontFamily:'cursive'}}>${(this.props.item.price * this.props.item.discount * this.props.item.quantityInCart).toFixed(2)}</h4>

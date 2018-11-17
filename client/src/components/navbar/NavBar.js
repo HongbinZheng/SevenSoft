@@ -49,19 +49,19 @@ class NavBar extends Component {
 
               <div className="collapse navbar-collapse mx-auto" id="navbarSupportedContent" style={{ width: "100%" }}>
                 <ul className="navbar-nav mr-auto btn-group-lg" style={{ marginLeft: "35%" }}>
-                  <a href="/aisle/produce" className="btn btn-light text-center" role="button" aria-pressed="true">
+                  <a style={{fontFamily: "Lucida Handwriting"}} href="/aisle/produce" className="btn btn-light text-center" role="button" aria-pressed="true">
                     Produce
                   </a>
-                  <a href="/aisle/meats" className="btn btn-light text-center" role="button" aria-pressed="true">
+                  <a style={{fontFamily: "Lucida Handwriting"}} href="/aisle/meats" className="btn btn-light text-center" role="button" aria-pressed="true">
                     Meats
                   </a>
-                  <a href="/aisle/beverages" className="btn btn-light text-center" role="button" aria-pressed="true">
+                  <a style={{fontFamily: "Lucida Handwriting"}} href="/aisle/beverages" className="btn btn-light text-center" role="button" aria-pressed="true">
                     Beverages
                   </a>
-                  <a href="/aisle/dairy" className="btn btn-light text-center" role="button" aria-pressed="true">
+                  <a style={{fontFamily: "Lucida Handwriting"}} href="/aisle/dairy" className="btn btn-light text-center" role="button" aria-pressed="true">
                     Dairy
                   </a>
-                  <a href="/aisle" className="btn btn-light text-center" role="button" aria-pressed="true">
+                  <a style={{fontFamily: "Lucida Handwriting"}} href="/aisle" className="btn btn-light text-center" role="button" aria-pressed="true">
                     More>>
                   </a>
                 </ul>
@@ -69,27 +69,27 @@ class NavBar extends Component {
               {this.state.isLogged ? <div>
                   <div className="nav-item dropdown btn btn-info">
                     <a className="nav-link dropdown-toggle keep-open" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <b> Hello {this.state.username} </b>
+                      <b style={{fontFamily: "Lucida Handwriting"}}> Hello {this.state.username} </b>
                     </a>
                     <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                      <a className="dropdown-item" href="/profile" style={{ borderBottom: "1px solid #C2C2C2", fontFamily: "Roboto", height: "40px", textAlign: "center" }}>
-                        <b>My Profile</b>
+                      <a className="dropdown-item" href="/profile" style={{ borderBottom: "1px solid #C2C2C2", fontFamily: "Lucida Handwriting", height: "40px", textAlign: "center" }}>
+                        <b style={{fontFamily: "Lucida Handwriting"}}>My Profile</b>
                       </a>
-                      <a className="dropdown-item" href="/orders" style={{ borderBottom: "1px solid #C2C2C2", fontFamily: "Roboto", height: "45px", textAlign: "center" }}>
-                        <b>My Orders</b>
+                      <a className="dropdown-item" href="/orders" style={{ borderBottom: "1px solid #C2C2C2", fontFamily: "Lucida Handwriting", height: "45px", textAlign: "center" }}>
+                        <b style={{fontFamily: "Lucida Handwriting"}}>My Orders</b>
                       </a>
-                      <a className="dropdown-item" href="/watchList" style={{ fontFamily: "Roboto", textAlign: "center" }}>
+                      <a className="dropdown-item" href="/watchList" style={{ fontFamily: "Lucida Handwriting", textAlign: "center" }}>
                         <b>Watch list</b>
                       </a>
                       <div className="dropdown-divider" />
                       <button type="button" onClick={this.handleLogout.bind(this)} className="btn btn-info col-sm">
-                        <b>Logout</b>
+                        <b style={{fontFamily: "Lucida Handwriting"}}>Logout</b>
                       </button>
                     </div>
                   </div>
                 </div> : <div>
-                  <Popup trigger={<button className="btn btn-primary"> Login/Sign Up</button>} modal contentStyle={{width:'250px'}}>
-                    <div>
+                  <Popup trigger={<button style={{fontFamily: "Lucida Handwriting"}} className="btn btn-primary"> Login/Sign Up</button>} modal contentStyle={{width:'250px'}}>
+                    <div style={{fontFamily: "Lucida Handwriting"}}>
                         <ul className="nav nav-tabs" id="myTab" role="tablist">
                             <li className="nav-item">
                                 <a className="nav-link active" id="home-tab" data-toggle="tab" href="#login" role="tab"
