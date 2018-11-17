@@ -50,7 +50,7 @@ class Home extends Component {
     render() {
         console.log(this.props);
         return (
-            <div style = {{marginTop: "5%", marginLeft: "30px", marginRight:"30px", minHeight:window.innerHeight-245}}>
+            <div style = {{marginTop: "5%", marginLeft: "50px", marginRight:"50px", minHeight:window.innerHeight-245}}>
                 <div id="carouselExampleIndicators" className="carousel slide w-100 h-50" data-ride="carousel">
                     <ol className="carousel-indicators">
                         <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
