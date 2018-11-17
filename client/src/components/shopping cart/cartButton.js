@@ -7,8 +7,10 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
 const styles = theme => ({
   badge: {
-    top: 5,
-    right: -15,
+    top: 20,
+    right: 0,
+    height:20,
+    width:20,
     // The border color match the background color.
     border: `2px solid ${
       theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[900]
@@ -18,11 +20,11 @@ const styles = theme => ({
 
 function CustomizedBadge(props) {
   const { classes } = props;
-    console.log(props)
+
   return (
-    <IconButton aria-label="Cart">
+    <IconButton aria-label="Cart" style={{left:-13,bottom:10}}>
       <Badge badgeContent={props.qty} color="primary" classes={{ badge: classes.badge }}>
-        <ShoppingCartIcon />
+        <ShoppingCartIcon style={{height:40,width:40}}/>
       </Badge>
     </IconButton>
   );

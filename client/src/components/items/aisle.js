@@ -48,14 +48,14 @@ handleAddtoCart(stuff){
        cart[stuff.itemNo] = item
        localStorage.setItem('cart', JSON.stringify(cart))
        this.setState({quantityInCart: quantityInCart})
-       window.location.reload()
+      // window.location.reload()
         } else {
        var cart = {}
        item.quantityInCart = ++quantityInCart
        cart[stuff.itemNo] = item
        localStorage.setItem('cart', JSON.stringify(cart))
        this.setState({quantityInCart: quantityInCart})
-       window.location.reload()
+       //window.location.reload()
    }
 }
 
