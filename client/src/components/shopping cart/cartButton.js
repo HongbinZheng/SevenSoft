@@ -7,10 +7,12 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
 const styles = theme => ({
   badge: {
-    top: 20,
-    right: 0,
-    height:20,
-    width:20,
+    top: 10,
+    right: -10,
+    height:30,
+    width:30,
+    'font-size':15,
+    'font-weight':'bold',
     // The border color match the background color.
     border: `2px solid ${
       theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[900]
