@@ -27,6 +27,9 @@ class CartItemlist extends Component {
 
 
     render() {
+      if(this.props.item.quantityInCart === 0){
+        this.props.handleRemove(this.props.item.itemid)
+      }
         return (
             <div>
             <li className="list-group-item CartItem">

@@ -108,7 +108,10 @@ class CheckoutReview extends Component {
         return cartItems
       }
 
-      handleCheckOut(items){
+      handleCheckOut(){
+          if(this.getTotalPrice(this.state.cartItems) === 0){
+              this.props.history.push('/')
+          }
        this.setState({redirect:true})
       }
 
@@ -131,34 +134,19 @@ class CheckoutReview extends Component {
             var cart = JSON.parse(cartString)
             var itemID = prop.itemid;
             if(cart.hasOwnProperty(itemID)) {
-                if(event.target.value === "0"){
-                    this.handleRemove(prop.itemid);
+                if(event.target.value === 0){
+                    delete cart[itemID]
                 }else{
                 var item = cart[itemID]
                 item.quantityInCart = event.target.value
                 cart[itemID] = item
-                localStorage.setItem('cart', JSON.stringify(cart))
-                this.setState({cartItems: this.getItemsFromCart(cart)})
-                var event = new Event('cartChanged');
-                window.dispatchEvent(event);
             }
+            localStorage.setItem('cart', JSON.stringify(cart))
+            this.setState({cartItems: this.getItemsFromCart(cart)})
             }
             }
       };
 
-      handleRemove = (itemID) => {
-        if (localStorage.getItem('cart') != null) {
-            var cartString = localStorage.getItem('cart')
-            var cart = JSON.parse(cartString)
-            if (cart.hasOwnProperty(itemID)) {
-                delete cart[itemID]
-                localStorage.setItem('cart', JSON.stringify(cart))
-                this.setState({ cartItems: this.getItemsFromCart(cart) })
-                var event = new Event('cartChanged');
-                window.dispatchEvent(event);
-            }
-        }
-    }
 
       getTotalPrice(items) {
         var tPrice = 0
