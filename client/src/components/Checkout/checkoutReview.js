@@ -114,13 +114,14 @@ class CheckoutReview extends Component {
           }
        this.setState({redirect:true})
       }
-
+      
       handleOnClick(){
-          if(this.state.promocode === "SAVE30"){
-              this.setState({promo:true,error:null})
-        }
-            else{
-                this.setState({error:"Wrong Promo Code"})
+          if(this.state.promocode !== "SAVE15"){
+              this.setState({error:"Wrong Promo Code"})
+        }else if( this.state.promocode === "SAVE15" && this.getTotalPrice(this.state.cartItems) < 25){
+            this.setState({error:"Not qualify for using this code"})
+        }else{
+                this.setState({promo:true,error:null})
             }
       }
 
@@ -232,7 +233,7 @@ class CheckoutReview extends Component {
                                     {this.state.promo ?
                                     <div> 
                                     <TableCell>Promo Code: </TableCell>
-                                    <TableCell>SAVE30</TableCell></div>
+                                    <TableCell>SAVE15</TableCell></div>
                                      : null}
                                 </TableRow>
                             <TableRow>
