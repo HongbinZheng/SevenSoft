@@ -110,7 +110,7 @@ class Item extends Component {
     render() {
         console.log(this.state)
         return (
-        <div className="container" style={{minHeight:window.innerHeight-245, marginBottom:'165px'}}>
+        <div className="container" style={{marginTop:'5%', minHeight:window.innerHeight-245, marginBottom:'5%', fontFamily: "Lucida Handwriting"}}>
             <div className="row">
             <div className="col-sm">
               <img style={{width:"418px",height:"279.03px", marginTop:'100px'}} src={`/images/aisle/${this.state.item.name}.png`} alt="Card cap"></img>
@@ -149,7 +149,7 @@ class Item extends Component {
                 
                 <h5>{this.state.item.description}</h5>
                 <br/>
-                <h3 style = {{width:'400px'}}><button type="button" onClick={()=>this.handleAddtoCart(this.state.item)} className="btn btn-info"> Add to Cart <i className="fas fa-cart-plus"></i></button>
+                <h3 style = {{width:'400px'}}><button type="button" onClick={()=>this.handleAddtoCart(this.state.item)} className="btn btn-info" style={{fontFamily: "Lucida Handwriting"}}> Add to Cart <i className="fas fa-cart-plus"></i></button>
                 <div style={{marginLeft:20,display:"inline-block"}}>
                 {this.state.onWatchList ? 
                 //<button type="button" className="btn btn-danger" style={{marginLeft:"20px"}}> <i className="fas fa-heart"></i> Added to Watch List</button>

@@ -147,15 +147,18 @@ class Home extends Component {
                 </div>
                 </div>: null}
                
-                <div className="float-left" style={{maxWidth:'805px', marginTop:'5%', marginBottom: '3%'}}>
-                    <img src="/images/home/Weekly-Ad.png" alt="Weekly-Ad"></img>
+                
+                <div className="row">
+                <div className="col float-left" style={{maxWidth:'50%', marginTop:'5%', marginBottom: '3%'}}>
+                    <img style={{width:'100%'}} src="/images/home/Weekly-Ad.png" alt="Weekly-Ad"></img>
                 
                     <a style={{marginTop:'10px', fontStyle:'bold', fontFamily:'Lucida Handwriting'}} href="#" className="btn btn-success btn-lg btn-block" role="button" aria-pressed="true">Weekly Sales</a>
                 </div>
-                <div className="float-right" style={{maxWidth:'805px', marginTop:'5%', marginBottom: '3%'}}>
-                    <img style={{width:'100%', maxHeight:'400px'}} src="/images/home/Home-Aisle-pic.png" alt="All Aisle pic"></img>
+                <div className="col float-right" style={{marginTop:'5%', marginBottom: '3%'}}>
+                    <img style={{width:'100%', maxHeight:'307px'}} src="/images/home/Home-Aisle-pic.png" alt="All Aisle pic"></img>
                 
                     <a style={{marginTop:'10px', fontStyle:'bold', fontFamily:'Lucida Handwriting'}} href="/aisle" className="btn btn-warning btn-lg btn-block" role="button" aria-pressed="true">All Aisles</a>
+                </div>
                 </div>
 
             </div>

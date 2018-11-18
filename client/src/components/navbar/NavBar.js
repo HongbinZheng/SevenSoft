@@ -41,14 +41,20 @@ class NavBar extends Component {
 
 
     render() {
-        return <div className="sticky-top" style={{ marginTop: "0px" }}>
+        return <div className="sticky-top" style={{ marginTop: "0px", boxShadow:'0 10px 20px -8px rgba(0, 0, 0,.7)' }}>
             <nav className="navbar  navbar-expand-lg navbar-light bg-light" id="navBar">
               <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon" />
               </button>
 
-              <div className="collapse navbar-collapse mx-auto" id="navbarSupportedContent" style={{ width: "100%" }}>
-                <ul className="navbar-nav mr-auto btn-group-lg" style={{ marginLeft: "35%" }}>
+                        
+                        
+                      
+
+
+              <div className="collapse navbar-collapse mx-auto" id="navbarSupportedContent" style={{ width: "100%"}}>
+                  <a style={{fontFamily: "Lucida Handwriting", boxShadow:'0 10px 20px -8px rgba(0, 0, 0,.7)', fontSize:20}} href="/" className="btn btn-info text-center float-left" role="button" aria-pressed="true">Home</a>
+                <ul className="navbar-nav mr-auto btn-group-lg" style={{marginLeft:'306px'}}>
                   <a style={{fontFamily: "Lucida Handwriting"}} href="/aisle/produce" className="btn btn-light text-center" role="button" aria-pressed="true">
                     Produce
                   </a>
@@ -62,11 +68,11 @@ class NavBar extends Component {
                     Dairy
                   </a>
                   <a style={{fontFamily: "Lucida Handwriting"}} href="/aisle" className="btn btn-light text-center" role="button" aria-pressed="true">
-                    More>>
+                    More
                   </a>
                 </ul>
-              </div>
-              {this.state.isLogged ? <div>
+              
+              {this.state.isLogged ? <div style={{boxShadow:'0 10px 20px -8px rgba(0, 0, 0,.7)'}}>
                   <div className="nav-item dropdown btn btn-info">
                     <a className="nav-link dropdown-toggle keep-open" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <b style={{fontFamily: "Lucida Handwriting"}}> Hello {this.state.username} </b>
@@ -88,7 +94,7 @@ class NavBar extends Component {
                     </div>
                   </div>
                 </div> : <div>
-                  <Popup trigger={<button style={{fontFamily: "Lucida Handwriting"}} className="btn btn-primary"> Login/Sign Up</button>} modal contentStyle={{width:'250px'}}>
+                  <Popup trigger={<button style={{fontFamily: "Lucida Handwriting", boxShadow:'0 10px 20px -8px rgba(0, 0, 0,.7)', fontSize:20}} className="btn btn-info"> Login/Sign Up</button>} modal contentStyle={{width:'250px'}}>
                     <div style={{fontFamily: "Lucida Handwriting"}}>
                         <ul className="nav nav-tabs" id="myTab" role="tablist">
                             <li className="nav-item">
@@ -111,13 +117,14 @@ class NavBar extends Component {
                     </div>
                   </Popup>
                 </div>}
+</div>
             </nav>
             <div className="float-right" style={{ top: 200 }}>
               <Cart />
             </div>
             <div className="nav-item" style={{ position: "absolute", width: "100%" }}>
               <form className="form-inline">
-                <div style={{ position: "relative", margin: "auto" }}>
+                <div style={{ position: "relative", margin: "auto"}}>
                   <Search />
                 </div>
               </form>
