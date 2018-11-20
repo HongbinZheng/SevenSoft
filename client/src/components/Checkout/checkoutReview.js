@@ -1,9 +1,5 @@
-import React, { Component } from 'react';
-import { Redirect, Link } from 'react-router-dom'
-
-import {firebaseDB} from '../../firebase';
-import Authserver from'../authserver'
-import jwt from'jsonwebtoken';
+import React, { Component } from "react";
+import { Redirect, Link } from "react-router-dom";
 
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -99,6 +95,9 @@ class CheckoutReview extends Component {
           this.handleOnChange=this.handleOnChange.bind(this)
           this.handleOnClick=this.handleOnClick.bind(this)
     }
+    this.getTotalPrice(this.state.cartItems);
+    this.Auth = new Authserver();
+  }
 
     getItemsFromCart = (cart) => {
         var cartItems = []
@@ -114,7 +113,7 @@ class CheckoutReview extends Component {
           }
        this.setState({redirect:true})
       }
-      
+
       handleOnClick(){
         if(this.state.promocode !== "SAVE15" && this.state.promocode !== "XMAS18"){
               this.setState({error:"Wrong Promo Code"})
@@ -156,18 +155,44 @@ class CheckoutReview extends Component {
         })
         return tPrice
     }
+    return cartItems;
+  };
 
+  handleCheckOut(items) {
+    // if(this.Auth.loggedIn()){
+    //     var SERECT = "superserect"
+    //     const token = localStorage.getItem('id_token')
+    //     var decoded = jwt.verify(token, SERECT);
+    //     items.forEach(item=>{item.myRate = 0});
+    //     console.log(items);
+    //     firebaseDB.ref(`/orders/${decoded}`).push(items);
+    // }
+    // this.props.history.push('/Checkout')
+    this.setState({ redirect: true });
+  }
+
+  getTotalPrice(items) {
+    var tPrice = 0;
+    items.forEach(item => {
+      tPrice += item.price * item.discount * item.quantityInCart;
+    });
+    return tPrice;
+  }
 
     render() {
         const { redirect, carItems } = this.state
         const { classes } = this.props;
 
-        if (redirect){
-            var obj = {...this.state.cartItems}
-        return (<Redirect to={{
-            pathname: '/checkout',
+    if (redirect) {
+      var obj = { ...this.state.cartItems };
+      return (
+        <Redirect
+          to={{
+            pathname: "/checkout",
             state: { referrer: obj }
-        }} />)
+          }}
+        />
+      );
     }
     var invoiceSubtotal = this.getTotalPrice(this.state.cartItems)
     if(this.state.promo && this.state.promocode === "SAVE15"){
@@ -177,10 +202,10 @@ class CheckoutReview extends Component {
     }
     var invoiceTaxes = TAX_RATE * invoiceSubtotal;
     const invoiceTotal = invoiceTaxes + invoiceSubtotal;
-    return ( 
+    return (
         <div style={{textAlign:"center"}}>
-            <div className="container" style={{width:"1000px",textAlign:"center",marginTop:"100px",marginBottom:"100px"}}>    
-                <div style={{textAlign:"center"}}>            
+            <div className="container" style={{width:"1000px",textAlign:"center",marginTop:"100px",marginBottom:"100px"}}>
+                <div style={{textAlign:"center"}}>
                 <Paper className={classes.root} style={{border:"2px solid #c2c2c2",borderRadius:"25px"}}>
                     <Table className={classes.table}>
                         <TableHead>
@@ -195,7 +220,7 @@ class CheckoutReview extends Component {
                             {this.state.cartItems.map((item, index) => {
                                 return (
                                         <TableRow key={item.itemid}>
-                                            <TableCell><img 
+                                            <TableCell><img
                                             style={{width:"90px",height:"60px"}}
                                             src={`/images/aisle/${item.name}.png`}/>{item.name}</TableCell>
                                             <TableCell numeric>
@@ -218,7 +243,7 @@ class CheckoutReview extends Component {
                                                     </MenuItem>
                                                 ))}
                                             </TextField>
-                                            
+
                                             </TableCell>
                                             <TableCell numeric>{ccyFormat(item.price * item.discount)}</TableCell>
                                             <TableCell numeric>{ccyFormat((item.price * item.discount)*item.quantityInCart)}</TableCell>
@@ -233,7 +258,7 @@ class CheckoutReview extends Component {
                                         </div>
                                     </TableCell> : null}
                                     {this.state.promo ?
-                                    <div> 
+                                    <div>
                                     <TableCell>Promo Code: </TableCell>
                                     <TableCell>{this.state.promocode}</TableCell></div>
                                      : null}
@@ -270,12 +295,12 @@ class CheckoutReview extends Component {
                 </div>
                 </div>
                 </div>
-        )   
+        )
     }
 }
 
 CheckoutReview.propTypes = {
     classes: PropTypes.object.isRequired,
   };
-  
+
   export default withStyles(styles)(CheckoutReview);
