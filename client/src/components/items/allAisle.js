@@ -40,7 +40,7 @@ class AllAisle extends React.Component {
     var count = 0;
     return (
       <div className={classes.root} >
-      <div className="container" style={{margin:90}}>
+      <div className="container-fluid" style={{minHeight:window.innerHeight-245, marginTop:'54px'}}>
         <div className={classes.container}>
           {aisle.map(items => {
             count = count + 200;
