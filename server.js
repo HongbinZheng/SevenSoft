@@ -101,6 +101,24 @@ app.get('/api/getOneItem',(req,res)=>{
   })
 })
 
+app.get('/api/getOnSale', (req,res)=>{
+  connect.query('SELECT * FROM items WHERE discount < 1',function(error,result){
+    if(error){
+      res.send(error)
+    }else{
+      if(result.length > 0){
+        res.send(result)
+      }else{
+        res.send({
+          "code": 204,
+          "success" : "cannot find items"
+        })
+      }
+    }
+  })
+})
+
+
 app.get('/api/getLastOrder', (req,res)=>{
   let username = req.query.username
   firebaseDB.ref(`/orders/${username}`).limitToLast(1).once('value', (snapshot)=>{

@@ -116,7 +116,7 @@ class CheckoutReview extends Component {
       }
       
       handleOnClick(){
-          if(this.state.promocode !== "SAVE15"){
+        if(this.state.promocode !== "SAVE15" && this.state.promocode !== "XMAS18"){
               this.setState({error:"Wrong Promo Code"})
         }else if( this.state.promocode === "SAVE15" && this.getTotalPrice(this.state.cartItems) < 25){
             this.setState({error:"Not qualify for using this code"})
@@ -170,8 +170,10 @@ class CheckoutReview extends Component {
         }} />)
     }
     var invoiceSubtotal = this.getTotalPrice(this.state.cartItems)
-    if(this.state.promo){
-        invoiceSubtotal = invoiceSubtotal * 0.7
+    if(this.state.promo && this.state.promocode === "SAVE15"){
+        invoiceSubtotal = invoiceSubtotal * 0.85
+    } else if(this.state.promo && this.state.promocode === "XMAS18"){
+        invoiceSubtotal = invoiceSubtotal - 10
     }
     var invoiceTaxes = TAX_RATE * invoiceSubtotal;
     const invoiceTotal = invoiceTaxes + invoiceSubtotal;
@@ -233,7 +235,7 @@ class CheckoutReview extends Component {
                                     {this.state.promo ?
                                     <div> 
                                     <TableCell>Promo Code: </TableCell>
-                                    <TableCell>SAVE15</TableCell></div>
+                                    <TableCell>{this.state.promocode}</TableCell></div>
                                      : null}
                                 </TableRow>
                             <TableRow>
@@ -242,11 +244,17 @@ class CheckoutReview extends Component {
                                 <TableCell numeric>{ccyFormat(invoiceSubtotal)}</TableCell>
                             </TableRow>
                             <TableRow>
+                                <TableCell>Shipping</TableCell>
+                                <TableCell></TableCell>
+                                <TableCell numeric>Free</TableCell>
+                            </TableRow>
+                            <TableRow>
                                 <TableCell>Tax</TableCell>
                                 <TableCell numeric>{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
                                 <TableCell numeric>{ccyFormat(invoiceTaxes)}</TableCell>
                             </TableRow>
                             <TableRow>
+                                <TableCell></TableCell>
                                 <TableCell colSpan={2}>Total</TableCell>
                                 <TableCell numeric>{ccyFormat(invoiceTotal)}</TableCell>
                             </TableRow>
