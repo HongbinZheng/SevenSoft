@@ -12,6 +12,8 @@ import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 
+import Authserver from '../authserver'
+
 const TAX_RATE = 0.09;
 
 const quantityInCarts = [
@@ -95,9 +97,7 @@ class CheckoutReview extends Component {
           this.handleOnChange=this.handleOnChange.bind(this)
           this.handleOnClick=this.handleOnClick.bind(this)
     }
-    this.getTotalPrice(this.state.cartItems);
-    this.Auth = new Authserver();
-  }
+
 
     getItemsFromCart = (cart) => {
         var cartItems = []
@@ -155,8 +155,7 @@ class CheckoutReview extends Component {
         })
         return tPrice
     }
-    return cartItems;
-  };
+
 
   handleCheckOut(items) {
     // if(this.Auth.loggedIn()){
