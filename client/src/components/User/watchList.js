@@ -121,7 +121,7 @@ class WatchList extends Component {
         </div> 
         </div>: 
         <div>
-        <h1 style={{fontFamily:'Roboto',marginLeft:30,marginBottom:30}}>You nerver add anything in your watchlist!</h1>
+        <h1 style={{fontFamily:'Roboto',marginLeft:30,marginBottom:30,marginTop:60}}>You nerver add anything in your watchlist!</h1>
         </div>}
        </div>
         );

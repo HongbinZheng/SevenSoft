@@ -149,7 +149,7 @@ class OrdersPage extends Component {
             )
         })}
                 </div>
-            </div>: <div>no history orders</div>
+            </div>: <div style={{marginTop:40}}><h1>No order histories</h1></div>
         )
     }
 }

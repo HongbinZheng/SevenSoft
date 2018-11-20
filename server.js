@@ -216,6 +216,7 @@ app.post('/api/register', (req,res)=>{
   var user = {
       username: req.body.user.username,
       email: req.body.user.email,
+      answer:req.body.user.answer,
       password:bcrypt.hashSync(password, salt)
   }
       var query = db.query('INSERT INTO members SET ?', user, function(err, result) {
@@ -228,8 +229,12 @@ app.post('/api/register', (req,res)=>{
               }else{
               message = "Succesfully! Your account has been created.";
               console.log(message)
+              var SERECT = "superserect"
+              var username = req.body.user.username;
+              var token = jwt.sign(Buffer.from(username,'utf8'),SERECT);
               res.send({
                 "code":200,
+                "token":token,
                 "success": message
               })}
            })
