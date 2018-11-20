@@ -39,10 +39,15 @@ class AllAisle extends React.Component {
     const { checked } = this.state;
     var count = 0;
     return (
+<<<<<<< HEAD
       <div className={classes.root} >
       <div className="container-fluid" style={{minHeight:window.innerHeight-245, marginTop:'54px'}}>
         <div className={classes.container}>
           {aisle.map(items => {
+=======
+      <div className = "container-fluid" style={{minHeight:window.innerHeight-245, marginTop:'54px', fontFamily:'Lucida Handwriting'}}>
+        {aisle.map(items => {
+>>>>>>> 73addfef66cea2ad3e0be8d118dee838a5aee701
             count = count + 200;
                     return (
                         <Grow
@@ -50,11 +55,9 @@ class AllAisle extends React.Component {
                             style={{ transformOrigin: "0 0 0" }}
                             {...(checked ? { timeout: 1000 + count } : {})}
                         >
-                            <Paper elevation={4} className={classes.paper}>
-
-                                <div key={items.key} className='rounded' style={{border: '1px solid #C2C2C2', display: "inline-block" }}>
+                                <div key={items.key} className='rounded' style={{border: '1px solid #C2C2C2', display: "inline-block",margin:'10px' }}>
                                 <Link to={`/aisle/${items}`}>
-                                    <div className='card' style={{ width: '15rem', height: '20rem' }} >
+                                    <div className='card' style={{ width: '20rem', height: '28rem' }} >
                                             <img className='card-img-top' style={{ width: '318px', height: '212.28px' }} src={`/images/aisle/${items}.png`} alt='Card cap'></img>
                                             <div className='card-body'>
                                                 <h2 className='card-title' style={{ textAlign: 'center', height: '50px', color: '#708090', marginTop: '20px' }}>{items}</h2>
@@ -63,14 +66,11 @@ class AllAisle extends React.Component {
                                 </Link>
                                 </div>
 
-                            </Paper>
                         </Grow>
                     );
           })}
         </div>
-        </div>
-      </div>
-    );
+      );
   }
 }
 

@@ -29,6 +29,7 @@ class Register extends Component {
         email:'',
         password:'',
         confirmPassword:'',
+        answer:'',
         error:'',
     }
 
@@ -59,15 +60,19 @@ class Register extends Component {
             username:this.state.username,
             email:this.state.email,
             password:this.state.password,
-            confirmPassword:this.state.confirmPassword
+            confirmPassword:this.state.confirmPassword,
+            answer:this.state.answer
         }
         axios.post('/api/register',{ user })
             .then(response =>{
                 if(response.data.code === 200){
                 console.log(response.data)
                 let data = response.data;
+                localStorage.setItem('id_token',response.data.token);
                 this.setState(data);
+                this.setState({error:""})
                 console.log(this.state);
+                window.location='/'
             }else{
                 console.log(response.data)
                 this.setState({error:response.data.message})
@@ -134,6 +139,19 @@ render(){
                         onChange={this.handleChange}
                     />
         </div>   
+        <h6 style={{fontFamily:"roboto"}}>Question for reset password: 
+            How are you today</h6>
+        <div className="form_element">
+                    <TextField
+                        id="outlined-answer-input1"
+                        label="Answer"
+                        name="answer"
+                        className={classes.textField}
+                        margin="normal"
+                        variant="outlined"
+                        onChange={this.handleChange}
+                    />
+        </div>
         <button className="btn btn-primary"type="submit" style={{marginLeft:'117px', marginTop:'20px'}}>Register</button>
         </form>
         {this.state.error ? 
