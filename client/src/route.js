@@ -13,8 +13,11 @@ import WatchList from "./components/User/watchList";
 import CheckoutApp from "./components/Checkout/CheckoutApp";
 import Privacy from "./components/footer/privacy";
 import Terms from "./components/footer/terms";
-//////////testing//////////
+import ConfirmationPage from './components/Checkout/ConfirmationPage';
+import SimpleMap from './components/footer/SimpleMap'
 import Profile from "./components/User/profile/profile";
+import AllAisle from './components/items/allAisle'
+import OnSale from './components/items/onSale'
 /////////////////////////////////////////
 
 class Router extends Component {
@@ -32,8 +35,12 @@ class Router extends Component {
           <Route path="/checkout" exact component={CheckoutApp} />
           <Route path="/privacy" exact component={Privacy} />
           <Route path="/terms" exact component={Terms} />
-          <Route path="/:aisle" exact component={Aisle} />
-          <Route path="/:aisle/:item" exact component={Item} />
+          <Route path='/confirm' exact component={ConfirmationPage} />
+          <Route path="/maps" exact component={SimpleMap} />
+          <Route path='/onsale' exact component={OnSale} />
+          <Route path='/aisle' exact component={AllAisle} />
+          <Route path="/aisle/:aisle" exact component={Aisle} />
+          <Route path="/aisle/:aisle/:item" exact component={Item} />
         </Switch>
       </Layout>
     );
