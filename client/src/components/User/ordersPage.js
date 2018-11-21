@@ -98,7 +98,7 @@ class OrdersPage extends Component {
         return (
             this.state.orders ?
             <div>
-                <div className="container-fluid" style={{display:"", marginTop: "50px", marginBottom: "300px", width: "auto", textAlign: "center"}}>
+                <div className="container-fluid" style={{display:"", marginTop: "4%", marginBottom: "300px", width: "auto", textAlign: "center", fontFamily:'Lucida Handwriting'}}>
                 {/* get each orders. */}
                     {Object.keys(this.state.orders).map((key) => {
                         return (
@@ -149,7 +149,7 @@ class OrdersPage extends Component {
             )
         })}
                 </div>
-            </div>: <div>no history orders</div>
+            </div>: <div style={{marginTop:40}}><h1>No order histories</h1></div>
         )
     }
 }

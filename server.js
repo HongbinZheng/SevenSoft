@@ -101,6 +101,24 @@ app.get('/api/getOneItem',(req,res)=>{
   })
 })
 
+app.get('/api/getOnSale', (req,res)=>{
+  connect.query('SELECT * FROM items WHERE discount < 1',function(error,result){
+    if(error){
+      res.send(error)
+    }else{
+      if(result.length > 0){
+        res.send(result)
+      }else{
+        res.send({
+          "code": 204,
+          "success" : "cannot find items"
+        })
+      }
+    }
+  })
+})
+
+
 app.get('/api/getLastOrder', (req,res)=>{
   let username = req.query.username
   firebaseDB.ref(`/orders/${username}`).limitToLast(1).once('value', (snapshot)=>{
@@ -110,7 +128,6 @@ app.get('/api/getLastOrder', (req,res)=>{
         ...childSnapshot.val()
       })
     })
-    console.log(order)
     res.send(order)
   
   })
@@ -119,13 +136,12 @@ app.get('/api/getLastOrder', (req,res)=>{
 app.get('/api/getWatchList', (req,res)=>{
   let username = req.query.username;
   let item = req.query.item;
-  console.log(username)
-  console.log(item)
   firebaseDB.ref(`/watchList/${username}`).orderByChild('name').equalTo(`${item}`).once('value',(snapshot)=>{
     console.log(snapshot.val())
     const item =[];
     snapshot.forEach((childSnapshot)=>{
       item.push({
+        itemIndex: childSnapshot.key,
         ...childSnapshot.val()
       })
       res.send(item)
@@ -200,6 +216,7 @@ app.post('/api/register', (req,res)=>{
   var user = {
       username: req.body.user.username,
       email: req.body.user.email,
+      answer:req.body.user.answer,
       password:bcrypt.hashSync(password, salt)
   }
       var query = db.query('INSERT INTO members SET ?', user, function(err, result) {
@@ -212,8 +229,12 @@ app.post('/api/register', (req,res)=>{
               }else{
               message = "Succesfully! Your account has been created.";
               console.log(message)
+              var SERECT = "superserect"
+              var username = req.body.user.username;
+              var token = jwt.sign(Buffer.from(username,'utf8'),SERECT);
               res.send({
                 "code":200,
+                "token":token,
                 "success": message
               })}
            })
@@ -243,6 +264,48 @@ app.post('/api/updateRating', (req,res)=>{
   })
 })
 
+app.post('/api/resetPassword',(req,res)=>{
+  var username = req.body.username;
+  var password = req.body.newpw;
+  password = bcrypt.hashSync(password, salt)
+  connect.query(`UPDATE members SET password = '${password}' WHERE username = '${username}'`, function(err,result){
+    if(err){
+      res.send(err)
+    }else{
+      message = "successfully change password"
+      res.send({message})
+    }
+  })
+
+})
+
+app.post('/api/forgetPassword', (req,res)=>{
+  let username = req.body.user.username;
+  let password = req.body.user.password
+  let answer = req.body.user.answer;
+  password = bcrypt.hashSync(password, salt)
+  connect.query(`UPDATE members SET creditcard = '${password}' WHERE username = '${username}' AND answer = '${answer}'`, function(err,result){
+    if(err){
+      res.send(err)
+    }else{
+      if(result.affectedRows === 1){
+      message = "successfully reset password"
+      res.send({
+        "code":200,
+        "message" : message
+      })
+    }else {
+      message = "user doesn't exits or answer not correct"
+      res.send({
+        "code":204,
+        "message":message
+      })
+    }
+    }
+  })
+
+})
+
 app.post('/api/addToWatchList',(req,res)=>{
   let username = req.body.username;
   let item = req.body.item;
@@ -253,6 +316,16 @@ app.post('/api/addToWatchList',(req,res)=>{
         'success':'success addede'
       })
     )
+})
+
+app.post('/api/removeFromWatchList',(req,res)=>{
+  let username = req.body.username;
+  let index = req.body.index;
+  console.log(index)
+  firebaseDB.ref(`/watchList/${username}/${index}`).remove()
+  .then(res.send({
+    'success':'success delete'
+  }))
 })
 
 app.post('/api/changeAddress',(req,res)=>{

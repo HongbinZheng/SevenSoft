@@ -86,16 +86,17 @@ class Search extends Component {
   render() {
     return (
       <div>
-      <div className="input-group mb-3">
+      <div className="input-group" style={{marginLeft:'0px', marginTop:'8px'}}>
         <input
+          style={{width:'500px', height:"48px", borderRadius:'20px', border:'2px solid green', marginRight:'10px', backgroundColor:'rgba(255, 255, 255, 0.7)'}}
           onKeyDown={this.keyPress}
           placeholder="Search for..."
           ref={input => (this.search = input)}
           onChange={this.handleInputChange}
         />
         {this.renderRedirect()}
-        <div className="input-group-append">
-        <button className="btn btn-outline-success" type='button' style={{position: "relative"}} onClick={this.setRedirect}><i class="fas fa-search"></i></button>
+        <div className="input-group-append" style={{leftMargin:'3px'}}>
+        <button className="btn btn-success" type='button' style={{position: "relative", borderRadius:'45%'}} onClick={this.setRedirect}><i className="fas fa-search"></i></button>
         </div>
         </div>
         {this.state.query ? (

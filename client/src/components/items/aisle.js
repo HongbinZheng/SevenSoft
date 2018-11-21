@@ -1,7 +1,32 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import Cart from '../shopping cart/Cart';
+
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import Grow from '@material-ui/core/Zoom';
+ const styles = theme => ({
+    root: {
+        height: 180,
+      },
+      wrapper: {
+        width: 100 + theme.spacing.unit * 2,
+      },
+    paper: {
+      margin: theme.spacing.unit,
+    },
+    svg: {
+      width: 100,
+      height: 100,
+    },
+    polygon: {
+      fill: theme.palette.common.white,
+      stroke: theme.palette.divider,
+      strokeWidth: 1,
+    },
+  });
+  
 
 class Aisle extends Component {
    constructor(){
@@ -47,32 +72,39 @@ handleAddtoCart(stuff){
        cart[stuff.itemNo] = item
        localStorage.setItem('cart', JSON.stringify(cart))
        this.setState({quantityInCart: quantityInCart})
-       window.location.reload()
+      // window.location.reload()
         } else {
        var cart = {}
        item.quantityInCart = ++quantityInCart
        cart[stuff.itemNo] = item
        localStorage.setItem('cart', JSON.stringify(cart))
        this.setState({quantityInCart: quantityInCart})
-       window.location.reload()
+       //window.location.reload()
    }
 }
 
 render() {
+    var count = 0;
   return (
       this.state  ?
-      <div className = "container-fluid" style={{minHeight:window.innerHeight-245,textAlign:"center"}}>
-      <div style={{marginLeft:"5%",marginRight:"5%"}}>
+      <div className = "container-fluid" style={{minHeight:window.innerHeight-245, marginTop:'54px', fontFamily:'Lucida Handwriting'}}>
+      <div style={{margin:'auto'}}>
        <h1>
-       {this.state.item.map(items =>
-
+       {this.state.item.map(items =>{
+            count = count + 200;
+        return(
+            <Grow
+                in={true}
+                style={{ transformOrigin: '0 0 0' }}
+                {...({ timeout: count + 1000 })}
+            >
        <div key={items.itemNo} className='rounded' style={{margin:'10px',border:'1px solid #C2C2C2',display:"inline-block"}}>
            <div className='card' style={{width:'20rem', height:'28rem'}} >
-               <Link to={`/${items.aisle}/${items.name}`}>
+               <Link to={`/aisle/${items.aisle}/${items.name}`}>
                <img className='card-img-top' style={{width:'318px',height:'212.28px'}} src={`/images/aisle/${items.name}.png`} alt='Card cap'></img>
                </Link>
                <div className='card-body'>
-               <Link to={`/${items.aisle}/${items.name}`}>
+               <Link to={`/aisle/${items.aisle}/${items.name}`}>
                <h2 className='card-title' style={{textAlign:'center', height: '50px', color:'#708090', marginTop:'20px'}}>{items.name}</h2>
                </Link>
                </div>
@@ -91,15 +123,20 @@ render() {
                <button onClick={()=>this.handleAddtoCart(items)} className='btn btn-info' style={{position:'relative', marginBottom:'0px'}} >Add to cart  <i className="fas fa-cart-plus"></i></button>
            </div>
        </div>
-       )
-       }
+       </Grow>
+        )})}
        </h1>
        </div>
-      </div> : <div>
+      </div>
+      : <div>
           This is nothing page
       </div>
   );
 }
 }
 
-export default Aisle;
+Aisle.propTypes = {
+    classes: PropTypes.object.isRequired,
+  };
+  
+  export default withStyles(styles)(Aisle); 

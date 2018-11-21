@@ -15,14 +15,14 @@ const CartItem =(props)=> {
         if(props.items.length === 0) {
             return(
             <div>
-              <div style={{textAlign: 'center', marginTop: '25%'}}>
+              <div style={{textAlign: 'center', marginTop: '25%', fontFamily:'Lucida Handwriting'}}>
                 <h3>No Items</h3>
               </div>
             </div>
             )
           } else {
             return(
-            <div style={{height:"auto", maxHeight:400,overflowY:"scroll"}}> 
+            <div style={{height:"auto", maxHeight:400,overflowY:"scroll", fontFamily:'Lucida Handwriting'}}> 
               {items}
             </div>
             )
