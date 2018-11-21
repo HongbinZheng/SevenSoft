@@ -364,13 +364,13 @@ html+=`<div>Total price: ${totalPrice}</div>`
   var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'youemail@gmail.com',
+      user: 'it.jinshan@gmail.com',
       pass: 'yourpassword'
     }
   });
   
   var mailOptions = {
-    from: 'youremail@gmail.com',
+    from: 'it.jinshan@gmail.com',
     to: `${email}`,
     subject: 'Thank you for shopping with us',
     html: `${html}`
