@@ -153,7 +153,7 @@ class Cart extends React.Component {
                     />
                     </div>
                     <h2 className="card-text text-left" style={{marginLeft:10,fontFamily:'Lucida Handwriting'}} >Total: <div className="text-right" style={{marginRight:10,fontFamily:'Lucida Handwriting'}}>${this.getTotalPrice(this.state.cartItems).toFixed(2)}</div></h2>
-                        <button className="fas fa-shopping-cart fa-5x btn btn-info" style={{textAlign:"center",fontSize:30, marginLeft: '50px', marginBottom:'10px', marginTop:'10px', fontFamily:'Lucida Handwriting'}} onClick={()=>this.handleCheckoutClick(this.state.cartItems)}> CheckOut </button>
+                        <button className="btn btn-info"  style={{textAlign:"center",fontSize:30, marginLeft: '50px', marginBottom:'10px', marginTop:'10px', fontFamily:'Lucida Handwriting'}} onClick={()=>this.handleCheckoutClick(this.state.cartItems)}><i className="fas fa-cart-arrow-down fa-1x"></i> CheckOut </button>
                     </div>
             </div>
             </div> : null

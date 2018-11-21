@@ -262,7 +262,7 @@ class CheckoutReview extends Component {
                                     {this.state.promo ?
                                     <div>
                                     <TableCell style={{fontSize:25}}>Promo Code: </TableCell>
-                                    <TableCell>{this.state.promocode}</TableCell></div>
+                                    <TableCell style={{fontSize:25}}>{this.state.promocode}</TableCell></div>
                                      : null}
                                 </TableRow>
                             <TableRow>

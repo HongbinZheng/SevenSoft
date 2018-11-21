@@ -85,32 +85,7 @@ class Home extends Component {
             
                 {this.state.isLogged ? 
                 <div>
-                    <div style={{marginTop:"30px"}}>
-                <h1 style={{fontFamily: "Lucida Handwriting", fontStyle:'bold'}}>Most Recent Order</h1><br/>
-                {this.state.order.length > 0 ?
-                     <div className="col-lg-12 col-md-12 col-sm-12 d-flex p-2" style={{height:"240px", overflowX:"scroll",border:'1px solid #C2C2C2', backgroundColor:"#D5E6E8",borderRadius:"25px"}}>
-                       {this.state.order.map((items) =>{
-                           return(
-                           <div key={items.itemid}>
-                           <Link to={`/aisle/${items.aisle}/${items.name}`}>
-                               <div className="card" style={{width:"200px",height:'180px',margin:"10px",border:'1px solid #C2C2C2',textAlign:'center' }}>
-                               <div>
-                                <img className="card-img-top" src={`/images/aisle/${items.name}.png`} style={{textAlign:'center',width:"197px",height:"100px"}} alt="Card cap"/>
-                                <div className="card-body">
-                                <p className="card-title" style={{color:'#708090'}}><b style={{fontFamily: "Lucida Handwriting"}}>{items.name}</b></p>
-                                </div>
-                                </div>
-                           </div>
-                           </Link>
-                           </div>)}
-                       )}
-                     </div>
-                      :
-                      <div>
-                          <h3 style={{fontFamily: "Lucida Handwriting"}}>Never bought anything yet</h3>
-                      </div>
-                      }
-                    </div>
+                    
                     <div style={{marginTop:'30px'}}>
                 <h1 style={{fontFamily: "Lucida Handwriting", fontStyle:'bold'}}>On Sales Items In You Watch List</h1><br/>
                 {this.state.watchList.length > 0 ?
@@ -145,6 +120,32 @@ class Home extends Component {
                 </div>
                     }
                 </div>
+<div style={{marginTop:"30px"}}>
+                <h1 style={{fontFamily: "Lucida Handwriting", fontStyle:'bold'}}>Most Recent Order</h1><br/>
+                {this.state.order.length > 0 ?
+                     <div className="col-lg-12 col-md-12 col-sm-12 d-flex p-2" style={{height:"240px", overflowX:"scroll",border:'1px solid #C2C2C2', backgroundColor:"#D5E6E8",borderRadius:"25px"}}>
+                       {this.state.order.map((items) =>{
+                           return(
+                           <div key={items.itemid}>
+                           <Link to={`/aisle/${items.aisle}/${items.name}`}>
+                               <div className="card" style={{width:"200px",height:'180px',margin:"10px",border:'1px solid #C2C2C2',textAlign:'center' }}>
+                               <div>
+                                <img className="card-img-top" src={`/images/aisle/${items.name}.png`} style={{textAlign:'center',width:"197px",height:"100px"}} alt="Card cap"/>
+                                <div className="card-body">
+                                <p className="card-title" style={{color:'#708090'}}><b style={{fontFamily: "Lucida Handwriting"}}>{items.name}</b></p>
+                                </div>
+                                </div>
+                           </div>
+                           </Link>
+                           </div>)}
+                       )}
+                     </div>
+                      :
+                      <div>
+                          <h3 style={{fontFamily: "Lucida Handwriting"}}>Never bought anything yet</h3>
+                      </div>
+                      }
+                    </div>
                 </div>: null}
                
                 
