@@ -4,8 +4,8 @@ import style from "./footer.css";
 const Terms = () => {
   return (
     <div>
-      <div>
-        <h1>
+    <div style={{marginTop:'5%', marginLeft:'4%', marginRight:'4%', marginBottom:'4%'}}>
+        <h1 style={{textAlign:'center', fontSize:50, marginBotton:'1%'}}>
           <p>Terms of Use</p>
         </h1>
         <p>

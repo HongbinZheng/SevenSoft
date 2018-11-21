@@ -203,16 +203,16 @@ class CheckoutReview extends Component {
     const invoiceTotal = invoiceTaxes + invoiceSubtotal;
     return (
         <div style={{textAlign:"center"}}>
-            <div className="container" style={{width:"1000px",textAlign:"center",marginTop:"100px",marginBottom:"100px"}}>
+            <div className="container" style={{width:"100%",textAlign:"center",marginTop:"5%",marginBottom:"4%"}}>
                 <div style={{textAlign:"center"}}>
                 <Paper className={classes.root} style={{border:"2px solid #c2c2c2",borderRadius:"25px"}}>
                     <Table className={classes.table}>
                         <TableHead>
                             <TableRow>
-                                <TableCell>Desc</TableCell>
-                                <TableCell numeric>Qty.</TableCell>
-                                <TableCell numeric>@</TableCell>
-                                <TableCell numeric>Price</TableCell>
+                                <TableCell style={{fontSize:25}}>Desc</TableCell>
+                                <TableCell numeric style={{fontSize:25}}>Qty.</TableCell>
+                                <TableCell numeric style={{fontSize:25}}>@</TableCell>
+                                <TableCell numeric style={{fontSize:25}}>Price</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -220,10 +220,13 @@ class CheckoutReview extends Component {
                                 return (
                                         <TableRow key={item.itemid}>
                                             <TableCell><img
-                                            style={{width:"90px",height:"60px"}}
-                                            src={`/images/aisle/${item.name}.png`}/>{item.name}</TableCell>
+                                            style={{width:"40%", display:'inline'}}
+                                            src={`/images/aisle/${item.name}.png`}/>
+                                            <h4 style={{fontSize:25, display:'inline', marginLeft:'20px'}}>{item.name}</h4>
+                                            </TableCell>
                                             <TableCell numeric>
                                             <TextField
+                                                style={{marginLeft:'1%', fontSize:25}}
                                                 id="standard-select-currency"
                                                 select
                                                 className={classes.textField}
@@ -244,8 +247,8 @@ class CheckoutReview extends Component {
                                             </TextField>
 
                                             </TableCell>
-                                            <TableCell numeric>{ccyFormat(item.price * item.discount)}</TableCell>
-                                            <TableCell numeric>{ccyFormat((item.price * item.discount)*item.quantityInCart)}</TableCell>
+                                            <TableCell numeric style={{fontSize:25}}>{ccyFormat(item.price * item.discount)}</TableCell>
+                                            <TableCell numeric style={{fontSize:25}}>{ccyFormat((item.price * item.discount)*item.quantityInCart)}</TableCell>
                                         </TableRow>
                                 )
                             })}
@@ -258,34 +261,34 @@ class CheckoutReview extends Component {
                                     </TableCell> : null}
                                     {this.state.promo ?
                                     <div>
-                                    <TableCell>Promo Code: </TableCell>
+                                    <TableCell style={{fontSize:25}}>Promo Code: </TableCell>
                                     <TableCell>{this.state.promocode}</TableCell></div>
                                      : null}
                                 </TableRow>
                             <TableRow>
                                 <TableCell rowSpan={3} />
-                                <TableCell colSpan={2}>Subtotal</TableCell>
-                                <TableCell numeric>{ccyFormat(invoiceSubtotal)}</TableCell>
+                                <TableCell colSpan={2} style={{fontSize:25}}>Subtotal</TableCell>
+                                <TableCell numeric style={{fontSize:25}}>{ccyFormat(invoiceSubtotal)}</TableCell>
                             </TableRow>
                             <TableRow>
-                                <TableCell>Shipping</TableCell>
+                                <TableCell style={{fontSize:25}}>Shipping</TableCell>
                                 <TableCell></TableCell>
-                                <TableCell numeric>Free</TableCell>
+                                <TableCell numeric style={{fontSize:25}}>Free</TableCell>
                             </TableRow>
                             <TableRow>
-                                <TableCell>Tax</TableCell>
-                                <TableCell numeric>{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
-                                <TableCell numeric>{ccyFormat(invoiceTaxes)}</TableCell>
+                                <TableCell style={{fontSize:25}}>Tax</TableCell>
+                                <TableCell numeric style={{fontSize:25}}>{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
+                                <TableCell numeric style={{fontSize:25}}>{ccyFormat(invoiceTaxes)}</TableCell>
                             </TableRow>
                             <TableRow>
                                 <TableCell></TableCell>
-                                <TableCell colSpan={2}>Total</TableCell>
-                                <TableCell numeric>{ccyFormat(invoiceTotal)}</TableCell>
+                                <TableCell colSpan={2} style={{fontSize:25}}>Total</TableCell>
+                                <TableCell numeric style={{fontSize:25}}>{ccyFormat(invoiceTotal)}</TableCell>
                             </TableRow>
                             <TableRow>
                             <TableCell></TableCell><TableCell></TableCell>
                             <TableCell>
-                            <button className="btn btn-info" onClick={()=>this.handleCheckOut(this.state.cartItems)} style={{marginTop:5}}> Continue to Checkout</button>
+                            <button className="btn btn-info" onClick={()=>this.handleCheckOut(this.state.cartItems)} style={{fontSize:25}}> Continue to Checkout</button>
                             </TableCell>
                             </TableRow>
                         </TableBody>
