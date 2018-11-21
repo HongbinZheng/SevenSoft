@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios'
+import { Link } from 'react-router-dom'
+
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
@@ -125,6 +127,7 @@ render(){
             </div>
             <button className="btn btn-primary" type="submit" style={{marginLeft:'117px', marginTop:'20px'}}>Login</button>
             </form>
+            <div><a href='/forgetPassword'>Foget Your Password?</a></div>
             {this.state.data ?
                 <div className="alert alert-danger" role="alert">
                     {this.showValidation(this.state.data)}

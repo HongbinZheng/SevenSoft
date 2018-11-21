@@ -279,6 +279,33 @@ app.post('/api/resetPassword',(req,res)=>{
 
 })
 
+app.post('/api/forgetPassword', (req,res)=>{
+  let username = req.body.user.username;
+  let password = req.body.user.password
+  let answer = req.body.user.answer;
+  password = bcrypt.hashSync(password, salt)
+  connect.query(`UPDATE members SET creditcard = '${password}' WHERE username = '${username}' AND answer = '${answer}'`, function(err,result){
+    if(err){
+      res.send(err)
+    }else{
+      if(result.affectedRows === 1){
+      message = "successfully reset password"
+      res.send({
+        "code":200,
+        "message" : message
+      })
+    }else {
+      message = "user doesn't exits or answer not correct"
+      res.send({
+        "code":204,
+        "message":message
+      })
+    }
+    }
+  })
+
+})
+
 app.post('/api/addToWatchList',(req,res)=>{
   let username = req.body.username;
   let item = req.body.item;

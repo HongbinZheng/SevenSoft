@@ -18,6 +18,7 @@ import SimpleMap from './components/footer/SimpleMap'
 import Profile from "./components/User/profile/profile";
 import AllAisle from './components/items/allAisle'
 import OnSale from './components/items/onSale'
+import ForgetPassword from './components/User/forgetPassword'
 /////////////////////////////////////////
 
 class Router extends Component {
@@ -38,6 +39,7 @@ class Router extends Component {
           <Route path='/confirm' exact component={ConfirmationPage} />
           <Route path="/maps" exact component={SimpleMap} />
           <Route path='/onsale' exact component={OnSale} />
+          <Route path='/forgetPassword' exact component={ForgetPassword} />
           <Route path='/aisle' exact component={AllAisle} />
           <Route path="/aisle/:aisle" exact component={Aisle} />
           <Route path="/aisle/:aisle/:item" exact component={Item} />
