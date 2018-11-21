@@ -366,7 +366,7 @@ html+='<div>You will receive your tracking number once your order is shipped</di
     service: 'gmail',
     auth: {
       user: 'Sevenfreshsjsu@gmail.com',
-      pass: ''
+      pass: 'panceylants'
     }
   });
   
