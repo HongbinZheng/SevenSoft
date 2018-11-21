@@ -17,7 +17,9 @@ const checkoutPanel = {
   maxWidth: "104rem",
   marginLeft: "25%",
   marginRight: "25%",
-  marginBottom: "30px"
+  marginBottom: "30px",
+  marginTop:"80px",
+  marginBottom:"80px"
 };
 
 class CheckoutApp extends Component {
@@ -57,43 +59,17 @@ class CheckoutApp extends Component {
     return tPrice;
   }
 
-  handleCheckOut(items) {
-    if (this.Auth.loggedIn()) {
-      var SERECT = "superserect";
-      const token = localStorage.getItem("id_token");
-      var decoded = jwt.verify(token, SERECT);
-      //items.forEach(item=>{item.myRate = 0});
-      console.log(items);
-      firebaseDB.ref(`/orders/${decoded}`).push(items);
-    }
-    localStorage.removeItem("cart");
-    this.setState({ redirect: true });
-  }
-
   render() {
-    const { redirect } = this.state;
-    console.log(this.props);
 
-    if (redirect) {
-      return (
-        <Redirect
-          to={{
-            pathname: "/Confirm"
-          }}
-        />
-      );
-    }
-
-    // this.state.stripe will either be null or a Stripe instance
-    // depending on whether Stripe.js has loaded.
     return (
       <div style={checkoutPanel}>
         <div>
-          <form onSubmit={() => this.handleCheckOut(this.state.cartItems)}>
             <Elements>
-              <CheckoutForm />
+              <CheckoutForm orders={this.state.cartItems}
+              totalPrice={this.getTotalPrice(this.state.cartItems)}
+                    onHistoryPush={() => this.props.history.push('/Confirm')}
+              />
             </Elements>
-          </form>
         </div>
       </div>
     );

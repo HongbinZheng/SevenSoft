@@ -7,6 +7,7 @@ var salt = bcrypt.genSaltSync(10);
 const jwt = require('jsonwebtoken');
 var localStorage = require('localStorage');
 var firebase = require('firebase');
+var nodemailer = require('nodemailer');
 
 // const urlencodeParser = bodyParser.urlencoded({extended:false})
  const jsonParser = bodyParser.json();
@@ -337,6 +338,51 @@ app.post('/api/changeAddress',(req,res)=>{
         'success':"success change"
       })
     )
+})
+
+app.post('/api/sentEmail',(req,res)=>{
+  var email = req.body.email;
+  var totalPrice = req.body.totalprice;
+  var orders = [];
+  req.body.orders.forEach(items=>{
+    var item = {
+      name:items.name,
+      price: (items.price * items.discount).toFixed(2)
+    }
+    orders.push(item);
+  })
+  var html = "<div>here is your orders</div>"
+  html += "<table border='1|1'>";
+for (var i = 0; i < orders.length; i++) {
+    html+="<tr>";
+    html+="<td>"+orders[i].name+"</td>";
+    html+="<td>"+orders[i].price+"</td>";
+    html+="</tr>";
+}
+html+="</table>";
+html+=`<div>Total price: ${totalPrice}</div>`
+  var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'youemail@gmail.com',
+      pass: 'yourpassword'
+    }
+  });
+  
+  var mailOptions = {
+    from: 'youremail@gmail.com',
+    to: `${email}`,
+    subject: 'Thank you for shopping with us',
+    html: `${html}`
+  };
+  
+  transporter.sendMail(mailOptions, function(error, info){
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Email sent: ' + info.response);
+    }
+  });
 })
 
 //////////////////////////////////////////////
