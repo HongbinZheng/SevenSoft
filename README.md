@@ -42,3 +42,6 @@ git add -A
 git commit -m "Added .gitignore file"
 
 then git pull
+
+11/21/2018
+Updated email reciept, need to get a new email in the youremail@gmail.com and password there
