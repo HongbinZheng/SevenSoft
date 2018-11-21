@@ -60,7 +60,8 @@ class Login extends Component {
                     let data = res.data;
                     this.setState({data})
                     console.log(this.state)
-                    window.location='/'}else{
+                    window.location.reload()
+                }else{
                     let data = res.data;
                     this.setState({data})
                     }

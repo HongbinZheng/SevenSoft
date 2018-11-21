@@ -360,19 +360,21 @@ for (var i = 0; i < orders.length; i++) {
     html+="</tr>";
 }
 html+="</table>";
-html+=`<div>Total price: ${totalPrice}</div>`
+html+=`<div>Total price: ${totalPrice}</div>`;
+html+='<div>You will receive your tracking number once your order is shipped</div>'
   var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'it.jinshan@gmail.com',
-      pass: 'yourpassword'
+      user: 'Sevenfreshsjsu@gmail.com',
+      pass: 'panceylants'
     }
   });
   
   var mailOptions = {
-    from: 'it.jinshan@gmail.com',
+
+    from: 'Sevenfreshsjsu@gmail.com',
     to: `${email}`,
-    subject: 'Thank you for shopping with us',
+    subject: '[Order Confirmation]Thank you for shopping with us',
     html: `${html}`
   };
   
