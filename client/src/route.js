@@ -15,6 +15,7 @@ import Privacy from "./components/footer/privacy";
 import Terms from "./components/footer/terms";
 //////////testing//////////
 import Profile from "./components/User/profile/profile";
+import ContactForm from "./components/footer/contactForm";
 /////////////////////////////////////////
 
 class Router extends Component {

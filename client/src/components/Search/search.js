@@ -82,17 +82,6 @@ class Search extends Component {
     localStorage.setItem("items", JSON.stringify(nextState.filtered));
   }
 
-  /*render() {
-    var FuzzySearch = require("react-fuzzy-search");
-    return (
-      <FuzzySearch
-        idField="itemNo"
-        items={this.state.allItems}
-        nameField="name"
-        searchField="name"
-      />
-    );
-  }*/
 
   render() {
     return (
