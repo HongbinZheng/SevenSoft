@@ -49,7 +49,7 @@ class WatchList extends Component {
          {this.state.onSale.map(items =>{
           return(
             <div key={items.itemNo} className='rounded float-left' style={{margin:'10px',border:'1px solid #C2C2C2'}}>
-                <div className='card' style={{width:'14rem', height:'20rem'}} >
+                <div className='card' style={{width:'20rem', height:'28rem'}} >
                     <Link to={`/aisle/${items.aisle}/${items.name}`}>
                     <img className='card-img-top' style={{width:'100%',height:'100%'}} src={`/images/aisle/${items.name}.png`} alt='Card cap'></img>
                     </Link>
@@ -91,7 +91,7 @@ class WatchList extends Component {
              {this.state.notOnSale.map(items =>{
             return(
             <div key={items.itemNo} className='rounded float-left' style={{margin:'10px',border:'1px solid #C2C2C2'}}>
-                <div className='card' style={{width:'14rem', height:'20rem'}} >
+                <div className='card' style={{width:'20rem', height:'28rem'}} >
                     <Link to={`/aisle/${items.aisle}/${items.name}`}>
                     <img className='card-img-top' style={{width:'100%',height:'100%'}} src={`/images/aisle/${items.name}.png`} alt='Card cap'></img>
                     </Link>

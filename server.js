@@ -285,7 +285,7 @@ app.post('/api/forgetPassword', (req,res)=>{
   let password = req.body.user.password
   let answer = req.body.user.answer;
   password = bcrypt.hashSync(password, salt)
-  connect.query(`UPDATE members SET creditcard = '${password}' WHERE username = '${username}' AND answer = '${answer}'`, function(err,result){
+  connect.query(`UPDATE members SET password = '${password}' WHERE username = '${username}' AND answer = '${answer}'`, function(err,result){
     if(err){
       res.send(err)
     }else{
