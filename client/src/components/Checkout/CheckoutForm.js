@@ -62,7 +62,8 @@ class CheckoutForm extends Component {
       var SERECT = "superserect";
       const token = localStorage.getItem("id_token");
       var decoded = jwt.verify(token, SERECT);
-      const items = this.props.orders
+      const items = this.props.orders;
+      items.forEach(item=>{item.myRate = 0});
       console.log(items);
       firebaseDB.ref(`/orders/${decoded}`).push(items);
     }

@@ -33,7 +33,7 @@ class Search extends Component {
       distance: 50,
       maxPatternLength: 25,
       minMatchCharLength: 2,
-      keys: ["name"]
+      keys: ["name","description"]
     };
 
     var fuse = new Fuse(this.state.allItems, options);
@@ -46,7 +46,7 @@ class Search extends Component {
 
   renderRedirect = () => {
     if (this.state.redirect) {
-      return <Redirect to="/searchResult" />;
+      window.location='/searchResult'
     }
   };
 
