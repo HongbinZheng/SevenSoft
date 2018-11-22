@@ -371,6 +371,7 @@ html+='<div>You will receive your tracking number once your order is shipped</di
   });
   
   var mailOptions = {
+
     from: 'Sevenfreshsjsu@gmail.com',
     to: `${email}`,
     subject: '[Order Confirmation]Thank you for shopping with us',
