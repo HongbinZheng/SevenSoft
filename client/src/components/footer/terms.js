@@ -16,9 +16,9 @@ const Terms = () => {
           This web site and all related mobile applications (including mobile
           application for pharmacy and the associated website), micro-sites, and
           social media pages and accounts (collectively the "Site") is provided
-          by Safeway Inc., together with its affiliates and subsidiaries
-          (collectively, "Safeway") as a service to our customers. The Site
-          includes without limitation (a) services offered through Safeway.com
+          by SevenFresh Inc., together with its affiliates and subsidiaries
+          (collectively, "SevenFresh") as a service to our customers. The Site
+          includes without limitation (a) services offered through SevenFresh.com
           and other on-line services accessible via the Site ("Services"); and
           (b) information such as product, program, pricing, marketing, and
           other valuable information and content such as data, text,
@@ -39,7 +39,7 @@ const Terms = () => {
         <p>
           The pharmacy mobile application, "just for U" program and
           "Personalized Prices" ("collectively, the "Programs") are intended for
-          the sole personal, noncommercial use of the Safeway Club
+          the sole personal, noncommercial use of the SevenFresh Club
           Card-associated household. A violation of this policy may result in
           our taking action we deem appropriate, including without limitation,
           issuing a warning and suspending or terminating your access to and use
@@ -85,15 +85,15 @@ const Terms = () => {
         </p>
 
         <h2>
-          <p>SAFEWAY SERVICES</p>
+          <p>SEVEN FRESH SERVICES</p>
         </h2>
         <p>
-          Safeway may make improvements and/or changes in the scope of Services
+          SevenFresh may make improvements and/or changes in the scope of Services
           and/or the programs described or offered through the Site at any time
           without notice. Furthermore, certain Services and/or programs may not
           be available in your location. References to those Services and/or
-          programs do not imply that Safeway intends to offer them in your
-          location. Safeway controls and operates the Site from the USA and
+          programs do not imply that SevenFresh intends to offer them in your
+          location. SevenFresh controls and operates the Site from the USA and
           makes no representation that the Site is appropriate or available for
           use in all locations.
         </p>
@@ -110,7 +110,7 @@ const Terms = () => {
           does not cover all possible uses, precautions, side effects and
           interactions, and should not be construed to indicate that any drug is
           safe for you. Furthermore, some Pharmacy Content comes from third
-          parties and unless expressly stated, Safeway does not represent or
+          parties and unless expressly stated, SevenFresh does not represent or
           guarantee that such Pharmacy Content is accurate, complete or timely.
           Consult your medical professional for guidance before using any
           prescription or over the counter drugs, and regarding the
@@ -143,14 +143,14 @@ const Terms = () => {
           Certain content from third parties ("Third Party Content") may be made
           available as part of the Site or through links from the Site.
           Generally, these third parties have obtained such content from sources
-          believed by them to be reliable. Safeway makes no representation with
+          believed by them to be reliable. SevenFresh makes no representation with
           respect to, nor does it guarantee or endorse the accuracy,
           completeness, timeliness, reliability, suitability, or correct
-          sequencing of any Third Party Content. Likewise, Safeway does not
+          sequencing of any Third Party Content. Likewise, SevenFresh does not
           endorse, oppose or edit any opinion or analysis expressed by such
           third parties. You should refer to the policies posted on third party
           web sites regarding privacy and terms of use prior to using such
-          sites. You agree that Safeway is not responsible for Third Party
+          sites. You agree that SevenFresh is not responsible for Third Party
           Content accessible through the Site, including opinions, advice,
           statements and advertisements, and understand that you bear all risks
           associated with the use of such content.
@@ -162,14 +162,14 @@ const Terms = () => {
         <p>
           You may create a hypertext link to the home page of the Site, but all
           other linking is prohibited without prior written authorization from
-          Safeway. You may not use, frame or utilize framing techniques to
-          enclose any Safeway trademark, logo or other proprietary materials,
+          SevenFresh. You may not use, frame or utilize framing techniques to
+          enclose any SevenFresh trademark, logo or other proprietary materials,
           including the images posted on the Site, the Content of any text or
-          the design of any page, or form contained on a page without Safeway's
+          the design of any page, or form contained on a page without SevenFresh's
           express written consent.
         </p>
         <p>
-          Safeway makes no claim or representation regarding, and accepts no
+          SevenFresh makes no claim or representation regarding, and accepts no
           responsibility or liability for, the quality, content, nature or
           reliability of web sites accessible by hyperlink from the Site, or web
           sites linking to the Site. Furthermore, these links do not imply
@@ -182,10 +182,10 @@ const Terms = () => {
         </h2>
         <p>
           Subject only to provisions outlined in our Privacy Policy any comments
-          or materials submitted to Safeway through the Site, including without
+          or materials submitted to SevenFresh through the Site, including without
           limitation, feedback data, such as questions, comments, suggestions,
           or the like regarding the Content ("Feedback") shall be deemed to be
-          non-confidential. Further, Safeway shall be free to use, with no
+          non-confidential. Further, SevenFresh shall be free to use, with no
           compensation to you, any ideas, concepts, know-how, techniques or
           methodologies contained in such Feedback for any purpose whatsoever,
           including but not limited to developing, manufacturing, and marketing
@@ -196,19 +196,19 @@ const Terms = () => {
           <p>OWNERSHIP</p>
         </h2>
         <p>
-          Any and all Content posted on the Site is owned by Safeway and others
+          Any and all Content posted on the Site is owned by SevenFresh and others
           and is protected by United States and international copyright,
           trademark and other laws. Except as stated in these Terms, no Content
           may be copied, reproduced, distributed, republished, downloaded,
           displayed, posted or transmitted in any form or by any means,
           including without limitation, electronic, mechanical, photocopying,
-          recording or otherwise without the prior written consent of Safeway or
+          recording or otherwise without the prior written consent of SevenFresh or
           the respective owner. You may electronically copy and print to hard
           copy Content for non-commercial, personal use. Any other use is
-          strictly prohibited. You may not use Safeway's name, logo or other
+          strictly prohibited. You may not use SevenFresh's name, logo or other
           trademarks for any purpose without the express written consent of
-          Safeway. Any rights not expressly granted herein are reserved by
-          Safeway.
+          SevenFresh. Any rights not expressly granted herein are reserved by
+          SevenFresh.
         </p>
 
         <h2>
@@ -216,7 +216,7 @@ const Terms = () => {
         </h2>
 
         <p>
-          TO THE EXTENT PERMITTED BY THE APPLICABLE LAW, SAFEWAY IS NOT
+          TO THE EXTENT PERMITTED BY THE APPLICABLE LAW, SEVEN FRESH IS NOT
           RESPONSIBLE FOR THE CONSEQUENCES OF OR RELIANCE ON ANY CONTENT,
           PHARMACY CONTENT, OR THIRD PARTY CONTENT CONTAINED IN OR INFORMATION
           SUBMITTED TO THE SITE, OR SERVICES OBTAINED THROUGH THE SITE, AND THE
@@ -225,16 +225,16 @@ const Terms = () => {
           ARE PROVIDED "AS IS" WITHOUT ANY WARRANTY OF ANY KIND, EITHER EXPRESS
           OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF
           MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT
-          OF A THIRD PARTY INTELLECTUAL PROPERTY RIGHTS. YOU AGREE THAT SAFEWAY
+          OF A THIRD PARTY INTELLECTUAL PROPERTY RIGHTS. YOU AGREE THAT SEVEN FRESH
           SHALL NOT BE LIABLE OR RESPONSIBLE FOR ANY INDIRECT, CONSEQUENTIAL,
           SPECIAL OR INCIDENTAL DAMAGES (INCLUDING WITHOUT LIMITATION, LOST
           PROFITS, OR DAMAGES THAT RESULT FROM INCONVENIENCE, DELAY OR LOSS OF
           USE OF THE SERVICES PROVIDED AT OR THROUGH THE SITE) ARISING OUT OF
           USE OR INABILITY TO USE OF THE SITE, SERVICES OR ANY CONTENT,
           ARRANGEMENTS MADE BASED ON INFORMATION OBTAINED AT THE SITE, OR
-          SERVICES OBTAINED THROUGH THE SITE, EVEN IF SAFEWAY HAS BEEN ADVISED
+          SERVICES OBTAINED THROUGH THE SITE, EVEN IF SEVEN FRESH HAS BEEN ADVISED
           OF THE POSSIBILITY OF SUCH DAMAGES OR LOSSES. NOTWITHSTANDING THE
-          FOREGOING, THE TOTAL LIABILITY OF SAFEWAY (WHETHER IN CONTRACT,
+          FOREGOING, THE TOTAL LIABILITY OF SEVEN FRESH (WHETHER IN CONTRACT,
           WARRANTY, TORT (INCLUDING BUT NOT LIMITED TO NEGLIGENCE), PRODUCT
           LIABILITY, STRICT LIABILITY OR OTHER THEORY) ASSOCIATED WITH ANY CLAIM
           ARISING FROM THE SITE FOR ANY REASON WHATSOEVER SHALL BE LIMITED TO
