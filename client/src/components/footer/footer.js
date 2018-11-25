@@ -8,7 +8,15 @@ const Footer = () => {
     <div className={style.footer} style={{ fontFamily: "Lucida Handwriting" }}>
       <div className={style.info}>
         <div>
-          <Popup
+          <br/>
+          <br/>
+        </div>
+        <a href="/terms">Terms and Conditions</a>
+        <p>
+          <a href="/privacy">Privacy Policy</a>
+        </p>
+        <div style={{marginBottom:20}}>
+        <Popup
             trigger={
               <button
                 style={{
@@ -44,16 +52,8 @@ const Footer = () => {
                   <ContactForm />
             </div>
           </Popup>
-          <br/>
-          <br/>
+          <a className="btn btn-info" href="/maps" style={{marginLeft:10,boxShadow: "0 10px 20px -8px rgba(0, 0, 0,.7)",}} >Locator</a>
         </div>
-        <a href="/terms">Terms and Conditions</a>
-        <p>
-          <a href="/privacy">Privacy Policy</a>
-        </p>
-        <p>
-          <a href="/maps">Locator</a>
-        </p>
       </div>
     </div>
   );
