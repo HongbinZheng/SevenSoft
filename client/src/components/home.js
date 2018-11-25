@@ -155,8 +155,8 @@ class Home extends Component {
                 
                     <a style={{marginTop:'10px', fontStyle:'bold', fontFamily:'Lucida Handwriting'}} href="/onsale" className="btn btn-success btn-lg btn-block" role="button" aria-pressed="true">Weekly Sales</a>
                 </div>
-                <div className="col float-right" style={{marginTop:'5%', marginBottom: '3%'}}>
-                    <img style={{width:'100%', maxHeight:'307px'}} src="/images/home/Home-Aisle-pic.png" alt="All Aisle pic"></img>
+                <div className="col float-right" style={{maxWidth:'50%', marginTop:'5%', marginBottom: '3%'}}>
+                    <img style={{width:'100%'}} src="/images/home/Home-Aisle-pic.png" alt="All Aisle pic"></img>
                 
                     <a style={{marginTop:'10px', fontStyle:'bold', fontFamily:'Lucida Handwriting'}} href="/aisle" className="btn btn-warning btn-lg btn-block" role="button" aria-pressed="true">All Aisles</a>
                 </div>

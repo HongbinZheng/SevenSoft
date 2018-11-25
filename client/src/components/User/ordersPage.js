@@ -97,26 +97,31 @@ class OrdersPage extends Component {
         return (
             this.state.orders ?
             <div>
-                <div className="container-fluid" style={{display:"", marginTop: "4%", marginBottom: "300px", width: "auto", textAlign: "center", fontFamily:'Lucida Handwriting'}}>
+                <div className="container" style={{marginTop: "5%", marginBottom: "5%", width: "100%", textAlign: "center", fontFamily:'Lucida Handwriting'}}>
                 {/* get each orders. */}
                     {Object.keys(this.state.orders).map((key) => {
                         return (
-                            <div key={key} className="container-fluid" style={{marginBottom:20, border: "2px solid #c2c2c2",borderRadius:"25px", width: "900px", height: "auto", alignItems: 'center',backgroundColor: "white" }}>
+                            <div key={key} className="container-fluid" style={{marginBottom:20, border: "2px solid #c2c2c2",borderRadius:"25px", width: "100%", height: "auto", alignItems: 'center',backgroundColor: "white" }}>
                                {/** get each items orders  */}
-                               <h3>Order Number: {key} </h3>
+                               <h3 style={{marginTop:'2%'}}>Order Number: {key} </h3>
                                 {this.state.orders[key].map((item,index) => {
                                     return (
-                                        <div className="row" style={{ margin: "30px",textAlign:"center",backgroundColor: "white",height:'150px',borderBottom:"1px solid #c2c2c2" }} key={item.itemid}>
+                                        <div className="row" style={{ margin: "30px",textAlign:"center",backgroundColor: "white",height:'180px',borderBottom:"1px solid #c2c2c2" }} key={item.itemid}>
                                            <div className="col" style={{margin:20, width:"100px"}}>
-                                                <img className="card-img-top" style={{ width: '50%', height: '50%' }} src={`/images/aisle/${item.name}.png`} alt='Card cap' />
-                                                <h6>{item.name}</h6>
-                                                {/** if user already rated the item, it will display the rating user give, if not, they can rate the item the purchase */}
+                                                <img className="card-img-top" style={{ width: '90%', height: '80%' }} src={`/images/aisle/${item.name}.png`} alt='Card cap' />
+                                                <h6 style={{marginTop:'6%', fontSize:20}}>{item.name}</h6>
+                                                
+                                            </div>
+                                            <div className="col" style={{width:'500px', marginTop:'50px'}}>
+                                                <h3>Qty: 
+                                                    {item.quantityInCart}</h3>
+                                                    {/** if user already rated the item, it will display the rating user give, if not, they can rate the item the purchase */}
                                                 {item.myRate === 0 ?
                                                 <div>
                                                 <h5><ReactStars
                                                     count={5}
                                                     value={item.myRate}
-                                                    size={24}
+                                                    size={38}
                                                     onChange={this.ratingChanged.bind(this,item,key,index)}
                                                     edit={true}/></h5>
                                                 </div>
@@ -125,20 +130,16 @@ class OrdersPage extends Component {
                                                 <h5><ReactStars
                                                     count={5}
                                                     value={item.myRate}
-                                                    size={24}
+                                                    size={38}
                                                     edit={false}
                                                     color2={'#ffd700'} /></h5>
                                                 </div>
                                             }
                                             </div>
-                                            <div className="col" style={{margin:30}}>
-                                                <h3>
-                                                    {item.quantityInCart}</h3>
-                                            </div>
-                                            <div className="col" style={{margin:30}}>
+                                            <div className="col" style={{marginTop:'50px'}}>
                                                 <h3 className="card-text">${(item.price * item.discount * item.quantityInCart).toFixed(2)}</h3>
                                             </div>
-                                            <div className="col" style={{margin:30}}>
+                                            <div className="col" style={{marginTop:'50px'}}>
                                                 <button className='btn btn-info' onClick={()=>this.handleAddToCart(item)}>Add To Cart</button>
                                             </div>
                                         </div>
@@ -148,7 +149,19 @@ class OrdersPage extends Component {
             )
         })}
                 </div>
-            </div>: <div style={{marginTop:40}}><h1>No order histories</h1></div>
+            </div>: <div className="row" style={{marginLeft:'18%', marginTop:'10%'}}>
+            <div className="col" style={{maxWidth:'200px'}}>
+                <img className="float-right" style={{width:'240%'}} src="/images/home/404.png" alt="No search results"></img>
+            </div>
+            <div className="col">
+                
+                <h1 style={{fontSize:60, marginTop:'7%'}}>What's the 1st order gonna be...</h1>
+                <h1 style={{fontSize:30}}>
+                Check out our great products and make your first order.
+            </h1>
+            </div>
+            
+            </div>
         )
     }
 }

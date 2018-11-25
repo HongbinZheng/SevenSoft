@@ -37,7 +37,7 @@ class CartItemlist extends Component {
                 <h5 className="card-text text-left" style={{display:'inline',fontFamily:'Lucida Handwriting'}}>Qty: {this.props.item.quantityInCart}</h5>
                 <i className="far fa-minus-square" style={{display:'inline', marginLeft:'10px'}} onClick={()=> this.props.handleDecrease(this.props.item.itemid)} /> 
                 <i onClick={() => this.props.handleIncrease(this.props.item.itemid)} className="far fa-plus-square" style={{marginLeft:'5px'}}></i>
-                <h4 className="card-text text-right" style={{fontFamily:'cursive'}}>${(this.props.item.price * this.props.item.discount * this.props.item.quantityInCart).toFixed(2)}</h4>
+                <h4 className="card-text text-right" style={{fontFamily:'cursive'}}>${((this.props.item.price * this.props.item.discount) * this.props.item.quantityInCart).toFixed(2)}</h4>
             </li>
             </div>
         );

@@ -5,22 +5,30 @@ import style from "./footer.css";
 const Terms = () => {
   return (
     <div>
-    <div style={{marginTop:'5%', marginLeft:'4%', marginRight:'4%', marginBottom:'4%'}}>
-        <h1 style={{textAlign:'center', fontSize:50, marginBotton:'1%'}}>
+      <div
+        style={{
+          marginTop: "5%",
+          marginLeft: "4%",
+          marginRight: "4%",
+          marginBottom: "4%"
+        }}
+      >
+        <h1 style={{ textAlign: "center", fontSize: 50, marginBotton: "1%" }}>
           <p>Terms of Use</p>
         </h1>
+
         <p>
           This web site and all related mobile applications (including mobile
           application for pharmacy and the associated website), micro-sites, and
           social media pages and accounts (collectively the "Site") is provided
           by SevenFresh Inc., together with its affiliates and subsidiaries
           (collectively, "SevenFresh") as a service to our customers. The Site
-          includes without limitation (a) services offered through SevenFresh.com
-          and other on-line services accessible via the Site ("Services"); and
-          (b) information such as product, program, pricing, marketing, and
-          other valuable information and content such as data, text,
-          photographs, graphics, messages or other materials ("Content"). By
-          placing an order through the Site or using the Site in any other
+          includes without limitation (a) services offered through
+          SevenFresh.com and other on-line services accessible via the Site
+          ("Services"); and (b) information such as product, program, pricing,
+          marketing, and other valuable information and content such as data,
+          text, photographs, graphics, messages or other materials ("Content").
+          By placing an order through the Site or using the Site in any other
           manner, you agree to follow and be bound by the following terms and
           conditions concerning your use of the Site ("Terms") and our Privacy
           Policy.
@@ -34,13 +42,12 @@ const Terms = () => {
           <p>TERMS OF USE FOR THE SEVEN FRESH APPLICATION</p>
         </h2>
         <p>
-          The Seven Fresh program and
-          "Personalized Prices" ("collectively, the "Programs") are intended for
-          the sole personal, noncommercial use of the SevenFresh Club
-          Card-associated household. A violation of this policy may result in
-          our taking action we deem appropriate, including without limitation,
-          issuing a warning and suspending or terminating your access to and use
-          of the Programs.
+          The Seven Fresh program and "Personalized Prices" ("collectively, the
+          "Programs") are intended for the sole personal, noncommercial use of
+          the SevenFresh Club Card-associated household. A violation of this
+          policy may result in our taking action we deem appropriate, including
+          without limitation, issuing a warning and suspending or terminating
+          your access to and use of the Programs.
         </p>
 
         <h2>
@@ -85,14 +92,14 @@ const Terms = () => {
           <p>SEVEN FRESH SERVICES</p>
         </h2>
         <p>
-          SevenFresh may make improvements and/or changes in the scope of Services
-          and/or the programs described or offered through the Site at any time
-          without notice. Furthermore, certain Services and/or programs may not
-          be available in your location. References to those Services and/or
-          programs do not imply that SevenFresh intends to offer them in your
-          location. SevenFresh controls and operates the Site from the USA and
-          makes no representation that the Site is appropriate or available for
-          use in all locations.
+          SevenFresh may make improvements and/or changes in the scope of
+          Services and/or the programs described or offered through the Site at
+          any time without notice. Furthermore, certain Services and/or programs
+          may not be available in your location. References to those Services
+          and/or programs do not imply that SevenFresh intends to offer them in
+          your location. SevenFresh controls and operates the Site from the USA
+          and makes no representation that the Site is appropriate or available
+          for use in all locations.
         </p>
 
         <h2>
@@ -140,8 +147,8 @@ const Terms = () => {
           Certain content from third parties ("Third Party Content") may be made
           available as part of the Site or through links from the Site.
           Generally, these third parties have obtained such content from sources
-          believed by them to be reliable. SevenFresh makes no representation with
-          respect to, nor does it guarantee or endorse the accuracy,
+          believed by them to be reliable. SevenFresh makes no representation
+          with respect to, nor does it guarantee or endorse the accuracy,
           completeness, timeliness, reliability, suitability, or correct
           sequencing of any Third Party Content. Likewise, SevenFresh does not
           endorse, oppose or edit any opinion or analysis expressed by such
@@ -162,8 +169,8 @@ const Terms = () => {
           SevenFresh. You may not use, frame or utilize framing techniques to
           enclose any SevenFresh trademark, logo or other proprietary materials,
           including the images posted on the Site, the Content of any text or
-          the design of any page, or form contained on a page without SevenFresh's
-          express written consent.
+          the design of any page, or form contained on a page without
+          SevenFresh's express written consent.
         </p>
         <p>
           SevenFresh makes no claim or representation regarding, and accepts no
@@ -179,28 +186,28 @@ const Terms = () => {
         </h2>
         <p>
           Subject only to provisions outlined in our Privacy Policy any comments
-          or materials submitted to SevenFresh through the Site, including without
-          limitation, feedback data, such as questions, comments, suggestions,
-          or the like regarding the Content ("Feedback") shall be deemed to be
-          non-confidential. Further, SevenFresh shall be free to use, with no
-          compensation to you, any ideas, concepts, know-how, techniques or
-          methodologies contained in such Feedback for any purpose whatsoever,
-          including but not limited to developing, manufacturing, and marketing
-          products and/or services incorporating such Feedback.
+          or materials submitted to SevenFresh through the Site, including
+          without limitation, feedback data, such as questions, comments,
+          suggestions, or the like regarding the Content ("Feedback") shall be
+          deemed to be non-confidential. Further, SevenFresh shall be free to
+          use, with no compensation to you, any ideas, concepts, know-how,
+          techniques or methodologies contained in such Feedback for any purpose
+          whatsoever, including but not limited to developing, manufacturing,
+          and marketing products and/or services incorporating such Feedback.
         </p>
 
         <h2>
           <p>OWNERSHIP</p>
         </h2>
         <p>
-          Any and all Content posted on the Site is owned by SevenFresh and others
-          and is protected by United States and international copyright,
+          Any and all Content posted on the Site is owned by SevenFresh and
+          others and is protected by United States and international copyright,
           trademark and other laws. Except as stated in these Terms, no Content
           may be copied, reproduced, distributed, republished, downloaded,
           displayed, posted or transmitted in any form or by any means,
           including without limitation, electronic, mechanical, photocopying,
-          recording or otherwise without the prior written consent of SevenFresh or
-          the respective owner. You may electronically copy and print to hard
+          recording or otherwise without the prior written consent of SevenFresh
+          or the respective owner. You may electronically copy and print to hard
           copy Content for non-commercial, personal use. Any other use is
           strictly prohibited. You may not use SevenFresh's name, logo or other
           trademarks for any purpose without the express written consent of
@@ -222,21 +229,21 @@ const Terms = () => {
           ARE PROVIDED "AS IS" WITHOUT ANY WARRANTY OF ANY KIND, EITHER EXPRESS
           OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF
           MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT
-          OF A THIRD PARTY INTELLECTUAL PROPERTY RIGHTS. YOU AGREE THAT SEVEN FRESH
-          SHALL NOT BE LIABLE OR RESPONSIBLE FOR ANY INDIRECT, CONSEQUENTIAL,
-          SPECIAL OR INCIDENTAL DAMAGES (INCLUDING WITHOUT LIMITATION, LOST
-          PROFITS, OR DAMAGES THAT RESULT FROM INCONVENIENCE, DELAY OR LOSS OF
-          USE OF THE SERVICES PROVIDED AT OR THROUGH THE SITE) ARISING OUT OF
-          USE OR INABILITY TO USE OF THE SITE, SERVICES OR ANY CONTENT,
-          ARRANGEMENTS MADE BASED ON INFORMATION OBTAINED AT THE SITE, OR
-          SERVICES OBTAINED THROUGH THE SITE, EVEN IF SEVEN FRESH HAS BEEN ADVISED
-          OF THE POSSIBILITY OF SUCH DAMAGES OR LOSSES. NOTWITHSTANDING THE
-          FOREGOING, THE TOTAL LIABILITY OF SEVEN FRESH (WHETHER IN CONTRACT,
-          WARRANTY, TORT (INCLUDING BUT NOT LIMITED TO NEGLIGENCE), PRODUCT
-          LIABILITY, STRICT LIABILITY OR OTHER THEORY) ASSOCIATED WITH ANY CLAIM
-          ARISING FROM THE SITE FOR ANY REASON WHATSOEVER SHALL BE LIMITED TO
-          THE COST OF ACCESSING THE SITE, IF ANY. SOME JURISDICTIONS DO NOT
-          ALLOW LIMITATIONS ON IMPLIED WARRANTIES, OR THE EXCLUSION OR
+          OF A THIRD PARTY INTELLECTUAL PROPERTY RIGHTS. YOU AGREE THAT SEVEN
+          FRESH SHALL NOT BE LIABLE OR RESPONSIBLE FOR ANY INDIRECT,
+          CONSEQUENTIAL, SPECIAL OR INCIDENTAL DAMAGES (INCLUDING WITHOUT
+          LIMITATION, LOST PROFITS, OR DAMAGES THAT RESULT FROM INCONVENIENCE,
+          DELAY OR LOSS OF USE OF THE SERVICES PROVIDED AT OR THROUGH THE SITE)
+          ARISING OUT OF USE OR INABILITY TO USE OF THE SITE, SERVICES OR ANY
+          CONTENT, ARRANGEMENTS MADE BASED ON INFORMATION OBTAINED AT THE SITE,
+          OR SERVICES OBTAINED THROUGH THE SITE, EVEN IF SEVEN FRESH HAS BEEN
+          ADVISED OF THE POSSIBILITY OF SUCH DAMAGES OR LOSSES. NOTWITHSTANDING
+          THE FOREGOING, THE TOTAL LIABILITY OF SEVEN FRESH (WHETHER IN
+          CONTRACT, WARRANTY, TORT (INCLUDING BUT NOT LIMITED TO NEGLIGENCE),
+          PRODUCT LIABILITY, STRICT LIABILITY OR OTHER THEORY) ASSOCIATED WITH
+          ANY CLAIM ARISING FROM THE SITE FOR ANY REASON WHATSOEVER SHALL BE
+          LIMITED TO THE COST OF ACCESSING THE SITE, IF ANY. SOME JURISDICTIONS
+          DO NOT ALLOW LIMITATIONS ON IMPLIED WARRANTIES, OR THE EXCLUSION OR
           LIMITATION OF INCIDENTAL OR CONSEQUENTIAL DAMAGES. IF THESE LAWS APPLY
           TO SOME OR ALL OF THE ABOVE DISCLAIMERS, EXCLUSIONS OR LIMITATIONS,
           THEY MAY NOT APPLY TO YOU, AND YOU MAY HAVE CERTAIN ADDITIONAL RIGHTS.{" "}

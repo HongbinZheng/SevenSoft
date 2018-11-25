@@ -34,7 +34,7 @@ class Profile extends Component {
     render() {
         return (
             <div>
-               <h2 style={{fontFamily:"roboto",margin:30}}> Hello {this.state.username} </h2>
+               <h2 style={{fontFamily:"Lucida Handwriting", marginTop:"6%", marginBottom:'2%', fontSize:40, textAlign:'center'}}> Hello {this.state.username} </h2>
                <Address username={this.state.username}/> 
                 <Popup trigger={<button style={{backgroundColor:"#F2F259",margin:30,borderRadius:"25px"}}> Change My Password</button>} modal contentStyle={{width:'350px'}}>
                     <div>
