@@ -9,9 +9,7 @@ const Terms = () => {
         <h1 style={{textAlign:'center', fontSize:50, marginBotton:'1%'}}>
           <p>Terms of Use</p>
         </h1>
-        <div>
-          <ContactForm />
-        </div>
+
         <p>
           This web site and all related mobile applications (including mobile
           application for pharmacy and the associated website), micro-sites, and
