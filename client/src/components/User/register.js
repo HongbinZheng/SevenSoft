@@ -72,7 +72,7 @@ class Register extends Component {
                 this.setState(data);
                 this.setState({error:""})
                 console.log(this.state);
-                window.location='/'
+                window.location.reload()
             }else{
                 console.log(response.data)
                 this.setState({error:response.data.message})

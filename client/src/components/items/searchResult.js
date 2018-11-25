@@ -12,6 +12,7 @@ class SearchResult extends Component {
       var cartString = localStorage.getItem('items')
       var items = JSON.parse(cartString)
       this.state ={itemResults: this.getItems(items), quantityInCart:0}
+      localStorage.removeItem("items");
     } 
 
     this.handleAddtoCart = this.handleAddtoCart.bind(this);
@@ -86,7 +87,7 @@ class SearchResult extends Component {
               style={{ margin: "10px", border: "1px solid #C2C2C2" }}
             >
               <div className="card" style={{ width: "20rem", height: "26rem" }}>
-                <Link to={`/${items.aisle}/${items.name}`}>
+                <Link to={`/aisle/${items.aisle}/${items.name}`}>
                   <img
                     className="card-img-top"
                     style={{ width: "318px", height: "212.28px" }}

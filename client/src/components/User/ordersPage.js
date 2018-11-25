@@ -88,8 +88,7 @@ class OrdersPage extends Component {
 
        axios.post('/api/updateRating',{ratingNumber,itemName,newAvgRates})
        .then(res=>console.log(res))
-       window.location.reload()
-           })
+      })
 
      }
 
@@ -140,7 +139,7 @@ class OrdersPage extends Component {
                                                 <h3 className="card-text">${(item.price * item.discount * item.quantityInCart).toFixed(2)}</h3>
                                             </div>
                                             <div className="col" style={{margin:30}}>
-                                                <button onClick={()=>this.handleAddToCart(item)}>Add To Cart</button>
+                                                <button className='btn btn-info' onClick={()=>this.handleAddToCart(item)}>Add To Cart</button>
                                             </div>
                                         </div>
                                      )

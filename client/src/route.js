@@ -37,7 +37,7 @@ class Router extends Component {
           <Route path="/checkout" exact component={CheckoutApp} />
           <Route path="/privacy" exact component={Privacy} />
           <Route path="/terms" exact component={Terms} />
-          <Route path='/confirm' exact component={ConfirmationPage} />
+          <Route path='/Confirm' exact component={ConfirmationPage} />
           <Route path="/maps" exact component={SimpleMap} />
           <Route path='/onsale' exact component={OnSale} />
           <Route path='/forgetPassword' exact component={ForgetPassword} />

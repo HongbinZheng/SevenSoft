@@ -1,62 +1,108 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 
-const checkoutPanel = {background:'#FFFFFF', marginBottom:'0', padding:'1rem',"borderRadius":"25px", border:'4px solid #c2c2c2', maxWidth:'70rem',marginLeft:"30px",marginBottom:"30px"}
+const checkoutPanel = { background: '#FFFFFF', marginBottom: '0', padding: '1rem', "borderRadius": "25px", border: '4px solid #c2c2c2', maxWidth: '70rem', marginLeft: "30px", marginBottom: "30px" }
 
 class Address extends Component {
-    constructor(){
+    constructor() {
         super()
-        this.state= {
-            edit:false,
-            address1:'',
-            address2:'',
-            city:'',
-            state:'',
-            Zip:'',
-            username:''
+        this.state = {
+            edit: false,
+            firstname: '',
+            lastname: '',
+            email: '',
+            address1: '',
+            address2: '',
+            city: '',
+            state: '',
+            Zip: '',
+            username: ''
         }
-        this.handleonClick = this. handleonClick.bind(this)
+        this.handleonClick = this.handleonClick.bind(this)
         this.onChange = this.onChange.bind(this)
     }
-    
-    componentWillMount(){
-        this.setState({username:this.props.username})
+
+    componentWillMount() {
+        this.setState({ username: this.props.username })
         let username = this.props.username
         axios.get(`/api/getAddress?username=${username}`)
-        .then(res=>{
-            console.log(res.data)
-            if(res.data){this.setState(res.data)}
+            .then(res => {
+                console.log(res.data)
+                if (res.data) { this.setState(res.data) }
 
-        })
+            })
     }
 
-    handleonClick(){
+    handleonClick() {
         let address = {
-            address1:this.state.address1,
-            address2:this.state.address2,
-            city:this.state.city,
-            state:this.state.state,
-            Zip:this.state.Zip
+            firstname: this.state.firstname,
+            lastname: this.state.lastname,
+            email: this.state.email,
+            address1: this.state.address1,
+            address2: this.state.address2,
+            city: this.state.city,
+            state: this.state.state,
+            Zip: this.state.Zip
         }
         let username = this.state.username
-        if(this.state.edit){
+        if (this.state.edit) {
             console.log(this.state)
-            axios.post('/api/changeAddress',{address,username})
-                .then(res=>console.log(res.data))
+            axios.post('/api/changeAddress', { address, username })
+                .then(res => console.log(res.data))
         }
-        this.setState({edit:!this.state.edit})
+        this.setState({ edit: !this.state.edit })
     }
-    onChange= ({target: { name, value }}) => {
-        this.setState({[name]:value})
+    onChange = ({ target: { name, value } }) => {
+        this.setState({ [name]: value })
     }
     render() {
         console.log(this.state)
         return (
             <div>
-                 {this.state.edit ?
+                {this.state.edit ?
                     <div style={checkoutPanel}>
                         <form>
                             <div className="form-group">
+                                <div className="form-row">
+                                    <div className="form-group col-md-6">
+                                        <label htmlFor="inputName" className="control-label">
+                                            First name
+                                        </label>
+                                        <input
+                                            type="text"
+                                            className="form-control"
+                                            name="firstname"
+                                            value={this.state.firstname}
+                                            onChange={this.onChange}
+                                            placeholder="First name"
+                                            required
+                                        />
+                                    </div>
+                                    <div className="form-group col-md-6">
+                                        <label htmlFor="inputLastName">Last Name</label>
+                                        <input
+                                            type="text"
+                                            className="form-control"
+                                            name="lastname"
+                                            value={this.state.lastname}
+                                            onChange={this.onChange}
+                                            placeholder="Last Name"
+                                            required
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="inputEmail">Email</label>
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        name="email"
+                                        value={this.state.email}
+                                        onChange={this.onChange}
+                                        placeholder="Enter you email accout"
+                                        required
+                                    />
+                                </div>
                                 <div className="form-group">
                                     <label htmlFor="inputAddress">Address 1</label>
                                     <input type="text" className="form-control" name="address1" value={this.state.address1} onChange={this.onChange}></input>
@@ -139,33 +185,53 @@ class Address extends Component {
                     </div>
                     :
                     <div style={checkoutPanel}>
-                    <div>
-                        <form>
-                            <div className="form-group">
+                        <div>
+                            <form>
                                 <div className="form-group">
-                                    <label htmlFor="inputAddress">Address 1 </label>
-                                    <h3>{this.state.address1}</h3>
+                                    <div className="form-row">
+                                        <div className="form-group col-md-6">
+                                            <label htmlFor="inputName" className="control-label">
+                                                First name
+                                        </label>
+                                          <h3>  {this.state.firstname} </h3>
+                                        </div>
+                                        <div className="form-group col-md-6">
+                                            <label htmlFor="inputLastName">Last Name</label>
+                                           <h3> {this.state.lastname} </h3>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div className="form-group">
-                                    <label htmlFor="inputAddress2">Address 2 </label>
-                                    <h3>{this.state.address2}</h3>
+                                 <div className="form-group">
+                                    <label htmlFor="inputEmail">Email</label>
+                                    <h3>{this.state.email} </h3>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="form-row">
-                                <div className="form-group col-md-6">
-                                    <label htmlFor="inputCity">City </label>
-                                    <h3>{this.state.city}</h3>
+                                <div className="form-group">
+                                    <div className="form-group">
+                                        <label htmlFor="inputAddress">Address 1 </label>
+                                        <h3>{this.state.address1}</h3>
+                                    </div>
+                                    <div className="form-group">
+                                        <label htmlFor="inputAddress2">Address 2 </label>
+                                        <h3>{this.state.address2}</h3>
+                                    </div>
                                 </div>
-                                <div className="form-group col-md-4">
-                                    <label htmlFor="inputState">State</label>
-                                    <h3>{this.state.state}</h3>
+                                <div className="form-row">
+                                    <div className="form-group col-md-6">
+                                        <label htmlFor="inputCity">City </label>
+                                        <h3>{this.state.city}</h3>
+                                    </div>
+                                    <div className="form-group col-md-4">
+                                        <label htmlFor="inputState">State</label>
+                                        <h3>{this.state.state}</h3>
+                                    </div>
+                                    <div className="form-group col-md-2">
+                                        <label htmlFor="inputZip">Zip</label>
+                                        <h3>{this.state.Zip}</h3>
+                                    </div>
                                 </div>
-                                <div className="form-group col-md-2">
-                                    <label htmlFor="inputZip">Zip</label>
-                                    <h3>{this.state.Zip}</h3>
-                                </div>
-                            </div>
-                        </form>
+                            </form>
                         </div>
                         <br />
                         <button onClick={this.handleonClick} className='btn btn-info'>Edit</button>

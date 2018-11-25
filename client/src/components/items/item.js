@@ -20,6 +20,9 @@ class Item extends Component {
             isLogged:false,
             index:''
         }
+        if(localStorage.getItem('items') !== null){
+            localStorage.removeItem("items");
+        }
         this.Auth = new Authserver()
     }
     

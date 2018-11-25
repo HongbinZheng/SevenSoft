@@ -74,7 +74,7 @@ class CardSection extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit} style={checkoutForm} id={"newcard"}>
-        <h3> Card Details</h3>
+        <h3> Payment Details</h3>
         <div
           style={{
             padding: "1.5rem",
