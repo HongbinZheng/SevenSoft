@@ -9,9 +9,6 @@ const Terms = () => {
         <h1 style={{textAlign:'center', fontSize:50, marginBotton:'1%'}}>
           <p>Terms of Use</p>
         </h1>
-        <div>
-          <ContactForm />
-        </div>
         <p>
           This web site and all related mobile applications (including mobile
           application for pharmacy and the associated website), micro-sites, and
@@ -34,10 +31,10 @@ const Terms = () => {
         </p>
 
         <h2>
-          <p>TERMS OF USE FOR THE PHARMACY MOBILE APPLICATION AND JUST FOR U</p>
+          <p>TERMS OF USE FOR THE SEVEN FRESH APPLICATION</p>
         </h2>
         <p>
-          The pharmacy mobile application, "just for U" program and
+          The Seven Fresh program and
           "Personalized Prices" ("collectively, the "Programs") are intended for
           the sole personal, noncommercial use of the SevenFresh Club
           Card-associated household. A violation of this policy may result in
