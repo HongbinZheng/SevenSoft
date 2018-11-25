@@ -167,7 +167,19 @@ class SearchResult extends Component {
       </div>
       </div>
     ) : (
-      <div style={{minHeight:window.innerHeight-245}}> <h1 style={{fontFamily:'Roboto',marginTop:30}}><b>Cannot found you item</b></h1></div>
+      <div className="row" style={{marginLeft:'25%', marginTop:'8%'}}>
+            <div className="col" style={{maxWidth:'200px'}}>
+                <img className="float-right" style={{width:'240%'}} src="/images/home/404.png" alt="No search results"></img>
+            </div>
+            <div className="col">
+                
+                <h1 style={{fontSize:60, marginTop:'7%'}}>Ugh...Sorry!</h1>
+                <h1 style={{fontSize:30}}>
+                Seems like we don't have what you're looking for...
+            </h1>
+            </div>
+            
+            </div>
     );
   }
 }

@@ -54,7 +54,7 @@ class ContactForm extends React.Component {
             name='text'
             onChange={this.handleChange}
             placeholder="How can we help?"
-            style={{width:400,height:250}}
+            style={{width:450,height:250}}
           />
         </div>
         <button className='btn btn-info' onClick={this.handleSubmit}>
