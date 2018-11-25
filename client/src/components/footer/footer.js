@@ -23,9 +23,9 @@ const Footer = () => {
               </button>
             }
             modal
-            contentStyle={{ width: "250px" }}
+            contentStyle={{ width: "500px",height:"500px" }}
           >
-            <div style={{ fontFamily: "Lucida Handwriting" }}>
+            <div style={{ fontFamily: "Lucida Handwriting"}}>
               <ul className="nav nav-tabs" id="myTab" role="tablist">
                 <li className="nav-item">
                   <a
@@ -41,16 +41,7 @@ const Footer = () => {
                   </a>
                 </li>
               </ul>
-              <div className="tab-content" id="myTabContent">
-                <div
-                  className="tab-pane fade show active"
-                  id="login"
-                  role="tabpanel"
-                  aria-labelledby="login-tab"
-                >
                   <ContactForm />
-                </div>
-              </div>
             </div>
           </Popup>
           <br/>

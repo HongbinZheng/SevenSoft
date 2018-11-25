@@ -41,7 +41,7 @@ class WatchList extends Component {
         return (
         <div className = "container-fluid" style={{minHeight:window.innerHeight-245, fontFamily:'Lucida Handwriting'}}>
         {this.state.item.length > 0 ?
-        <div>
+        <div style={{marginTop:80,marginBottom:60}}>
         <div className="row">
        <h1 style={{fontFamily:'Lucida Handwriting',marginLeft:30}}>On Sales Item</h1>
         {this.state.onSale.length > 0 ?
@@ -121,7 +121,7 @@ class WatchList extends Component {
         </div> 
         </div>: 
         <div>
-        <h1 style={{fontFamily:'Roboto',marginLeft:30,marginBottom:30,marginTop:60}}>You nerver add anything in your watchlist!</h1>
+        <h1 style={{fontFamily:'Roboto',marginLeft:30,marginBottom:30,marginTop:80}}>You nerver add anything in your watchlist!</h1>
         </div>}
        </div>
         );

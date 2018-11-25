@@ -39,12 +39,13 @@ class ContactForm extends React.Component {
 
   render() {
     return (
+      <div className="container" style={{width:500,height:400,textAlign:'center'}}>
       <form>
-        <label>Name</label>
-        <input type="text" name="name" value={this.state.name} onChange={this.handleChange} />
+        <label>Name</label><br/>
+        <input type="text" name="name" value={this.state.name} onChange={this.handleChange} style={{width:300}}/>
         <div>
-          <label>email</label>
-          <input type="text" name="email" value={this.state.email} onChange={this.handleChange}/>
+          <label>email</label><br/>
+          <input type="text" name="email" value={this.state.email} onChange={this.handleChange} style={{width:300}}/>
         </div>
         <div>
           <label>feedback</label>
@@ -53,12 +54,15 @@ class ContactForm extends React.Component {
             name='text'
             onChange={this.handleChange}
             placeholder="How can we help?"
+            style={{width:400,height:250}}
           />
         </div>
-        <button onClick={this.handleSubmit}>
+        <button className='btn btn-info' onClick={this.handleSubmit}>
           Send Feedback
         </button>
       </form>
+      
+      </div>
     );
   }
 }
