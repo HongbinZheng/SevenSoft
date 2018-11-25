@@ -14,7 +14,7 @@ const Footer = () => {
                 style={{
                   fontFamily: "Lucida Handwriting",
                   boxShadow: "0 10px 20px -8px rgba(0, 0, 0,.7)",
-                  fontSize: 20
+                  fontSize: 15
                 }}
                 className="btn btn-info"
               >
@@ -53,6 +53,8 @@ const Footer = () => {
               </div>
             </div>
           </Popup>
+          <br/>
+          <br/>
         </div>
         <a href="/terms">Terms and Conditions</a>
         <p>
