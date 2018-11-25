@@ -77,16 +77,17 @@ class SearchResult extends Component {
     return this.state.itemResults.length > 0 ? (
       <div
         className="container-fluid"
-        style={{ minHeight: window.innerHeight - 245 }}
+        style={{minHeight:window.innerHeight-245, marginTop:'54px', fontFamily:'Lucida Handwriting'}}
       >
+      <div style={{margin:'auto'}}>
         <h1>
           {this.state.itemResults.map(items => (
             <div
               key={items.itemNo}
               className="rounded float-left"
-              style={{ margin: "10px", border: "1px solid #C2C2C2" }}
+              style={{ margin: "10px", border: "1px solid #C2C2C2",display:"inline-block" }}
             >
-              <div className="card" style={{ width: "20rem", height: "26rem" }}>
+              <div className="card" style={{ width: "20rem", height: "28rem" }}>
                 <Link to={`/aisle/${items.aisle}/${items.name}`}>
                   <img
                     className="card-img-top"
@@ -102,26 +103,28 @@ class SearchResult extends Component {
                       style={{
                         textAlign: "center",
                         height: "50px",
-                        color: " 	#708090"
+                        color: "  #708090",
+                        marginTop:'20px'
                       }}
                     >
                       {items.name}
                     </h2>
                   </Link>
+                  </div>
 
                   {items.discount !== 1 ? (
-                    <div style={{ position: "relative", textAlign: "center" }}>
+                    <div style={{ position: "relative", textAlign: "center", marginBottom:'23px' }}>
                       <p
                         className="card-text"
                         style={{
                           textAlign: "center",
                           textDecorationLine: "line-through",
-                          fontSize: 18,
+                          fontSize: 25,
                           color: "grey",
                           display: "inline"
                         }}
                       >
-                        ${items.price}
+                        ${(items.price).toFixed(2)}
                       </p>
                       <p
                         className="card-text"
@@ -133,10 +136,11 @@ class SearchResult extends Component {
                           fontSize: 30
                         }}
                       >
-                        ${items.price * items.discount}
+                        ${(items.price * items.discount).toFixed(2)}
                       </p>
                     </div>
                   ) : (
+                  <div style={{marginBottom:'24px'}}>
                     <p
                       className="card-text"
                       style={{
@@ -145,14 +149,14 @@ class SearchResult extends Component {
                         height: "40px"
                       }}
                     >
-                      ${items.price * items.discount}
+                      ${(items.price * items.discount).toFixed(2)}
                     </p>
+                    </div>
                   )}
-                </div>
                 <button
                   onClick={() => this.handleAddtoCart(items)}
-                  className="btn btn-dark"
-                  style={{ position: "relative", bottom: "0px" }}
+                  className="btn btn-info"
+                  style={{ position: "relative", marginBottom: "0px" }}
                 >
                   Add to cart <i className="fas fa-cart-plus" />
                 </button>
@@ -160,6 +164,7 @@ class SearchResult extends Component {
             </div>
           ))}
         </h1>
+      </div>
       </div>
     ) : (
       <div style={{minHeight:window.innerHeight-245}}> <h1 style={{fontFamily:'Roboto',marginTop:30}}><b>Cannot found you item</b></h1></div>
