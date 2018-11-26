@@ -27,13 +27,14 @@ class Search extends Component {
   filterItems = () => {
     var options = {
       shouldSort: true,
+      tokenize: true,
       findAllMatches: true,
-      threshold: 0.6,
-      location: 0,
-      distance: 50,
+      threshold: 0.5,
+      location: 15,
+      distance: 55,
       maxPatternLength: 25,
       minMatchCharLength: 2,
-      keys: ["name","description"]
+      keys: ["name", "description"]
     };
 
     var fuse = new Fuse(this.state.allItems, options);
@@ -46,7 +47,7 @@ class Search extends Component {
 
   renderRedirect = () => {
     if (this.state.redirect) {
-      window.location='/searchResult'
+      window.location = "/searchResult";
     }
   };
 
@@ -82,22 +83,38 @@ class Search extends Component {
     localStorage.setItem("items", JSON.stringify(nextState.filtered));
   }
 
-
   render() {
     return (
       <div>
-      <div className="input-group" style={{marginLeft:'0px', marginTop:'8px'}}>
-        <input
-          style={{width:'500px', height:"48px", borderRadius:'20px', border:'2px solid green', marginRight:'10px', backgroundColor:'rgba(255, 255, 255, 0.7)'}}
-          onKeyDown={this.keyPress}
-          placeholder="Search for..."
-          ref={input => (this.search = input)}
-          onChange={this.handleInputChange}
-        />
-        {this.renderRedirect()}
-        <div className="input-group-append" style={{leftMargin:'3px'}}>
-        <button className="btn btn-success" type='button' style={{position: "relative", borderRadius:'45%'}} onClick={this.setRedirect}><i className="fas fa-search"></i></button>
-        </div>
+        <div
+          className="input-group"
+          style={{ marginLeft: "0px", marginTop: "8px" }}
+        >
+          <input
+            style={{
+              width: "500px",
+              height: "48px",
+              borderRadius: "20px",
+              border: "2px solid green",
+              marginRight: "10px",
+              backgroundColor: "rgba(255, 255, 255, 0.7)"
+            }}
+            onKeyDown={this.keyPress}
+            placeholder="Search for..."
+            ref={input => (this.search = input)}
+            onChange={this.handleInputChange}
+          />
+          {this.renderRedirect()}
+          <div className="input-group-append" style={{ leftMargin: "3px" }}>
+            <button
+              className="btn btn-success"
+              type="button"
+              style={{ position: "relative", borderRadius: "45%" }}
+              onClick={this.setRedirect}
+            >
+              <i className="fas fa-search" />
+            </button>
+          </div>
         </div>
         {this.state.query ? (
           <div>
