@@ -85,7 +85,8 @@ class CheckoutReview extends Component {
         this.state={
             redirect:false,
             promo:false,
-            promocode:""
+            promocode:"",
+            code:''
         }
         if(localStorage.getItem('cart') != null) {
             var cartString = localStorage.getItem('cart')
@@ -115,12 +116,16 @@ class CheckoutReview extends Component {
       }
 
       handleOnClick(){
-        if(this.state.promocode !== "SAVE15" && this.state.promocode !== "XMAS18"){
+          if(this.state.promo === true){
+            this.setState({error:"Only one promo code at one purchase"})
+          }else if(this.state.promocode !== "SAVE15" && this.state.promocode !== "XMAS18"){
               this.setState({error:"Wrong Promo Code"})
         }else if( this.state.promocode === "SAVE15" && this.getTotalPrice(this.state.cartItems) < 25){
-            this.setState({error:"Not qualify for using this code"})
-        }else{
-                this.setState({promo:true,error:null})
+            this.setState({error:"You need to purchase at least $25 for using this promo code"})
+        }else if(this.state.promocode === "XMAS18" && this.getTotalPrice(this.state.cartItems) < 20){
+            this.setState({error:"You need to purchase at least $20 for using this promo code"})
+        } else{
+                this.setState({promo:true,code:this.state.promocode})
             }
       }
 
@@ -194,9 +199,9 @@ class CheckoutReview extends Component {
       );
     }
     var invoiceSubtotal = this.getTotalPrice(this.state.cartItems)
-    if(this.state.promo && this.state.promocode === "SAVE15"){
+    if(this.state.promo && this.state.code === "SAVE15"){
         invoiceSubtotal = invoiceSubtotal * 0.85
-    } else if(this.state.promo && this.state.promocode === "XMAS18"){
+    } else if(this.state.promo && this.state.code === "XMAS18"){
         invoiceSubtotal = invoiceSubtotal - 10
     }
     var invoiceTaxes = TAX_RATE * invoiceSubtotal;
@@ -262,7 +267,7 @@ class CheckoutReview extends Component {
                                     {this.state.promo ?
                                     <div>
                                     <TableCell style={{fontSize:25}}>Promo Code: </TableCell>
-                                    <TableCell style={{fontSize:25}}>{this.state.promocode}</TableCell></div>
+                                    <TableCell style={{fontSize:25}}>{this.state.code}</TableCell></div>
                                      : null}
                                 </TableRow>
                             <TableRow>
