@@ -35,31 +35,31 @@ class OrdersPage extends Component {
     handleAddToCart(stuff){
         var quantityInCart = this.state.quantityInCart
         var item = {
-            itemid: stuff.itemNo,
+            itemid: stuff.itemid,
             name: stuff.name,
             price: stuff.price,
             discount: stuff.discount,
+            avgStars:stuff.avgstars,
+            nrates:stuff.nrates
          }
          if(localStorage.getItem('cart') !== null) {
            var cartString = localStorage.getItem('cart')
            var cart = JSON.parse(cartString)
-           if(cart[stuff.itemNo]){
-             item.quantityInCart = cart[stuff.itemNo].quantityInCart +1
+           if(cart[stuff.itemid]){
+             item.quantityInCart = cart[stuff.itemid].quantityInCart +1
          }else{
             // quantityInCart += 1
              item.quantityInCart = 1;
          }    
-           cart[stuff.itemNo] = item
+           cart[stuff.itemid] = item
            localStorage.setItem('cart', JSON.stringify(cart))
            this.setState({quantityInCart: quantityInCart})
-           window.location.reload()
             } else {
            var cart = {}
            item.quantityInCart = ++quantityInCart
-           cart[stuff.itemNo] = item
+           cart[stuff.itemid] = item
            localStorage.setItem('cart', JSON.stringify(cart))
            this.setState({quantityInCart: quantityInCart})
-           window.location.reload()
        }
     }
 

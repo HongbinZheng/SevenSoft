@@ -345,20 +345,25 @@ app.post('/api/sentEmail',(req,res)=>{
   req.body.orders.forEach(items=>{
     var item = {
       name:items.name,
-      price: (items.price * items.discount).toFixed(2)
+      price: ((items.price * items.discount)*items.quantityInCart).toFixed(2),
+      qty:items.quantityInCart
     }
     orders.push(item);
   })
   var html = "<div>here is your orders</div>"
   html += "<table border='1|1'>";
+  html+="<td> name </td>";
+  html+="<td> qty </td>";
+  html+="<td> price </td>";
 for (var i = 0; i < orders.length; i++) {
     html+="<tr>";
     html+="<td>"+orders[i].name+"</td>";
+    html+="<td>"+orders[i].qty+"</td>"
     html+="<td>"+orders[i].price+"</td>";
     html+="</tr>";
 }
 html+="</table>";
-html+=`<div>Total price: ${totalPrice}</div>`;
+html+=`<div>Total price: ${totalPrice.toFixed(2)}</div>`;
 html+='<div>You will receive your tracking number once your order is shipped</div>'
   var transporter = nodemailer.createTransport({
     service: 'gmail',
