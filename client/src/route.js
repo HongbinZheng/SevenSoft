@@ -16,10 +16,10 @@ import Terms from "./components/footer/terms";
 import ConfirmationPage from './components/Checkout/ConfirmationPage';
 import SimpleMap from './components/footer/SimpleMap'
 import Profile from "./components/User/profile/profile";
-import ContactForm from "./components/footer/contactForm";
 import AllAisle from './components/items/allAisle'
 import OnSale from './components/items/onSale'
 import ForgetPassword from './components/User/forgetPassword'
+import NotFound from './notFound'
 /////////////////////////////////////////
 
 class Router extends Component {
@@ -44,6 +44,7 @@ class Router extends Component {
           <Route path='/aisle' exact component={AllAisle} />
           <Route path="/aisle/:aisle" exact component={Aisle} />
           <Route path="/aisle/:aisle/:item" exact component={Item} />
+          <Route component={NotFound}/>
         </Switch>
       </Layout>
     );

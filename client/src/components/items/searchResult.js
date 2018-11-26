@@ -97,7 +97,7 @@ class SearchResult extends Component {
                   />
                 </Link>
                 <div className="card-body">
-                  <Link to={`/${items.aisle}/${items.name}`}>
+                  <Link to={`/aisle/${items.aisle}/${items.name}`}>
                     <h2
                       className="card-title"
                       style={{
