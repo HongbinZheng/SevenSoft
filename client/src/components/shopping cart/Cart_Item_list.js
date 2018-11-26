@@ -10,9 +10,8 @@ class CartItemlist extends Component {
           var cart = JSON.parse(cartString)
           if(cart.hasOwnProperty(this.props.item.itemID)) {
             var quantityInCart = cart[this.props.item.itemID].quantityInCart
-            console.log('Quantity of item with itemID '+this.props.item.itemID+ ' is ' + quantityInCart);
             this.state = {quantityInCart: quantityInCart}
-            console.log("State " + this.state.quantityInCart);
+
           } else {
             this.state = {
               quantityInCart: 0

@@ -28,7 +28,6 @@ class Item extends Component {
     
     componentWillMount(){
         var item =this.props.match.params.item;
-        console.log(this.props.match.params.aisle)
         axios.get(`/api/getOneItem?item=${item}`)
             .then(res=>{
                 this.setState({item:res.data[0]});
@@ -37,7 +36,6 @@ class Item extends Component {
         if (this.Auth.loggedIn()) {
             this.setState({isLogged:true})
             var username = this.Auth.getUserName()
-            console.log(item)
             this.setState({ username: username });
             axios.get(`/api/getWatchList?username=${username}&item=${item}`)
             .then(res=>{
@@ -51,7 +49,6 @@ class Item extends Component {
 
 
     handleAddtoCart(stuff){
-        console.log(stuff)
         var quantityInCart = this.state.quantityInCart
         var item = {
            itemid: stuff.itemNo,
@@ -61,10 +58,8 @@ class Item extends Component {
            avgStars:stuff.avgstars,
            nrates:stuff.nrates
         }
-        console.log(item)
         if(localStorage.getItem('cart') !== null) {
           var cartString = localStorage.getItem('cart')
-          console.log(cartString);
           var cart = JSON.parse(cartString)
           if(cart[stuff.itemNo]){
             item.quantityInCart = cart[stuff.itemNo].quantityInCart +1
@@ -111,7 +106,6 @@ class Item extends Component {
   }
 
     render() {
-        console.log(this.state)
         return (
         <div className="container" style={{marginTop:'5%', minHeight:window.innerHeight-245, marginBottom:'5%', fontFamily: "Lucida Handwriting"}}>
             <div className="row">

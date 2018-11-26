@@ -29,10 +29,8 @@ class Home extends Component {
                 axios.get(`/api/getAllWatchList?username=${username}`)
                 .then(res=>{
                     if(res.data.length > 0){
-                    console.log(res.data);
                     const items = Object.values(res.data);
                     this.setState({watchList:res.data})
-                    console.log(this.state.watchList)
                     const onSaleItem = [];
                     items.forEach(item=>{
                         if(item.discount < 1){
@@ -48,7 +46,7 @@ class Home extends Component {
    
 
     render() {
-        console.log(this.props);
+    
         return (
             <div style = {{marginTop: "5%", marginLeft: "50px", marginRight:"50px", minHeight:window.innerHeight-245, width:'90%', textAlign:'center'}}>
                 <div id="carouselExampleIndicators" className="carousel slide w-100 h-50" data-ride="carousel">

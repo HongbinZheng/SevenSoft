@@ -40,10 +40,8 @@ class OrdersPage extends Component {
             price: stuff.price,
             discount: stuff.discount,
          }
-         console.log(item)
          if(localStorage.getItem('cart') !== null) {
            var cartString = localStorage.getItem('cart')
-           console.log(cartString);
            var cart = JSON.parse(cartString)
            if(cart[stuff.itemNo]){
              item.quantityInCart = cart[stuff.itemNo].quantityInCart +1
@@ -66,17 +64,10 @@ class OrdersPage extends Component {
     }
 
     ratingChanged = (item,key,index,newRating) => {
-       console.log(item)
-       console.log(key)
-       console.log(index)
-       console.log(newRating)
        axios.get(`/api/getOneItem?item=${item.name}`)
            .then(res =>{
-               console.log(res.data[0])
                this.setState({ratingNum:res.data[0].nrates, avgRating:res.data[0].avgstars})
 
-       console.log(this.state.ratingNum)
-       console.log(this.state.avgRating)
        let totalRate = this.state.ratingNum * this.state.avgRating;
        item.myRate = newRating;
        let user = this.state.username

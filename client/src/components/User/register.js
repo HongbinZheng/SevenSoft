@@ -66,15 +66,12 @@ class Register extends Component {
         axios.post('/api/register',{ user })
             .then(response =>{
                 if(response.data.code === 200){
-                console.log(response.data)
                 let data = response.data;
                 localStorage.setItem('id_token',response.data.token);
                 this.setState(data);
                 this.setState({error:""})
-                console.log(this.state);
                 window.location.reload()
             }else{
-                console.log(response.data)
                 this.setState({error:response.data.message})
             }
             })

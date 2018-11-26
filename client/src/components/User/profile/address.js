@@ -46,7 +46,6 @@ class Address extends Component {
         }
         let username = this.state.username
         if (this.state.edit) {
-            console.log(this.state)
             axios.post('/api/changeAddress', { address, username })
                 .then(res => console.log(res.data))
         }
@@ -56,7 +55,6 @@ class Address extends Component {
         this.setState({ [name]: value })
     }
     render() {
-        console.log(this.state)
         return (
             <div>
                 {this.state.edit ?

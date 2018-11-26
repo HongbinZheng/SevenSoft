@@ -59,7 +59,6 @@ class Login extends Component {
                     localStorage.setItem('id_token',res.data.token);
                     let data = res.data;
                     this.setState({data})
-                    console.log(this.state)
                     window.location.reload()
                 }else{
                     let data = res.data;
@@ -76,7 +75,6 @@ class Login extends Component {
 
     showValidation = (data) =>{
         let errorMessage = null; 
-        console.log(data)
         if(data.code !== null && data.code !==200){
             if(this.state.username === ""){
                 data.code = null;

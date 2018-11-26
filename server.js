@@ -138,7 +138,6 @@ app.get('/api/getWatchList', (req,res)=>{
   let username = req.query.username;
   let item = req.query.item;
   firebaseDB.ref(`/watchList/${username}`).orderByChild('name').equalTo(`${item}`).once('value',(snapshot)=>{
-    console.log(snapshot.val())
     const item =[];
     snapshot.forEach((childSnapshot)=>{
       item.push({
@@ -166,7 +165,6 @@ app.get('/api/getAllWatchList', (req,res)=>{
 app.get('/api/getAddress', (req,res)=>{
   let username= req.query.username;
   firebaseDB.ref(`/address/${username}`).once('value', (snapshot)=>{
-    console.log(snapshot.val())
     res.send(snapshot.val())
   })
 })
@@ -222,14 +220,14 @@ app.post('/api/register', (req,res)=>{
   }
       var query = db.query('INSERT INTO members SET ?', user, function(err, result) {
               if(err){
-                  console.log('not able to insert!')
+                 
                   res.send({
                     "code":204,
                     message:"user exist"
                   });
               }else{
               message = "Succesfully! Your account has been created.";
-              console.log(message)
+              
               var SERECT = "superserect"
               var username = req.body.user.username;
               var token = jwt.sign(Buffer.from(username,'utf8'),SERECT);
@@ -247,7 +245,7 @@ app.post('/api/register', (req,res)=>{
   }})
 
 app.post('/api/updateRating', (req,res)=>{
-  console.log(req.body)
+  
   var ratingChange = {
     avgstars:req.body.newAvgRates,
     nrates:req.body.ratingNumber
@@ -255,11 +253,11 @@ app.post('/api/updateRating', (req,res)=>{
   var name = req.body.itemName
   connect.query(`UPDATE items SET ? WHERE name = '${name}';`,ratingChange, function(err,result){
     if(err){
-      console.log(err)
+    
       res.send({err})
     }else{
       message = "successfully update";
-      console.log(message);
+      
       res.send({message})
     }
   })
@@ -310,7 +308,7 @@ app.post('/api/forgetPassword', (req,res)=>{
 app.post('/api/addToWatchList',(req,res)=>{
   let username = req.body.username;
   let item = req.body.item;
-  console.log(item)
+ 
   firebaseDB.ref(`/watchList/${username}`).push(item)
     .then(
       res.send({
@@ -322,7 +320,7 @@ app.post('/api/addToWatchList',(req,res)=>{
 app.post('/api/removeFromWatchList',(req,res)=>{
   let username = req.body.username;
   let index = req.body.index;
-  console.log(index)
+ 
   firebaseDB.ref(`/watchList/${username}/${index}`).remove()
   .then(res.send({
     'success':'success delete'

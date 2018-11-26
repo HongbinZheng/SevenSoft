@@ -168,7 +168,6 @@ class CheckoutReview extends Component {
     //     const token = localStorage.getItem('id_token')
     //     var decoded = jwt.verify(token, SERECT);
     //     items.forEach(item=>{item.myRate = 0});
-    //     console.log(items);
     //     firebaseDB.ref(`/orders/${decoded}`).push(items);
     // }
     // this.props.history.push('/Checkout')

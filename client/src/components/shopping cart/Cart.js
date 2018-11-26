@@ -35,7 +35,6 @@ class Cart extends React.Component {
         var cartString = localStorage.getItem('cart')
         var cart = JSON.parse(cartString)
         var newItem =[];
-        //console.log(this.state.cartItems)
         for(var itemID in cart){
             newItem.push(cart[itemID])
         }
@@ -116,11 +115,9 @@ class Cart extends React.Component {
         if (localStorage.getItem('cart') != null) {
             var cartString = localStorage.getItem('cart')
             var cart = JSON.parse(cartString)
-            console.log(cart)
             var result = Object.keys(cart).map(function(key) {
                 return cart[key];
               });
-              console.log(result)
             result.forEach(item=>{
                 qty += item.quantityInCart
             })

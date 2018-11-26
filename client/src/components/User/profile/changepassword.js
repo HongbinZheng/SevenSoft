@@ -51,7 +51,6 @@ class Changepassword extends Component {
         let password = this.state.password;
         let newpw = this.state.new_password;
         let confirm = this.state.confirm_password;
-        console.log(username)
         if(password === ""){
             this.setState({
                 error:"old password cannot be empty"
@@ -85,7 +84,6 @@ class Changepassword extends Component {
     }
     render() {
         const { classes } = this.props;
-        console.log(this.props)
         return (
             <div>
                 <form className={classes.container} noValidate autoComplete="off" onSubmit={this.submitLogin}>

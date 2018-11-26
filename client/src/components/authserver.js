@@ -11,9 +11,9 @@ export default class Authserver{
     login =(username,password) => {
        return axios.post('/api/login',{username,password})
                  .then(res=>{
-                    // console.log(res.data);
+                
                     if(res.data.code === 200){
-                     console.log(res.data)
+                
                      this.setToken(res.data.token);
                      return Promise.resolve(res);
                     }else{

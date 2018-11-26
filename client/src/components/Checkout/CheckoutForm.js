@@ -64,7 +64,6 @@ class CheckoutForm extends Component {
       var decoded = jwt.verify(token, SERECT);
       const items = this.props.orders;
       items.forEach(item=>{item.myRate = 0});
-      console.log(items);
       firebaseDB.ref(`/orders/${decoded}`).push(items);
     }
     var email = this.state.email;
@@ -80,7 +79,6 @@ class CheckoutForm extends Component {
 
   render() {
     const { redirect } = this.state;
-    console.log(this.props);
     if (redirect) {
       return (
         <Redirect to="/Confirm" />

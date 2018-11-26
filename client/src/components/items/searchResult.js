@@ -37,7 +37,6 @@ class SearchResult extends Component {
 
 
   handleAddtoCart(stuff) {
-    console.log(stuff);
     var quantityInCart = this.state.quantityInCart;
     var item = {
       itemid: stuff.itemNo,
@@ -47,11 +46,11 @@ class SearchResult extends Component {
       avgStars: stuff.avgstars,
       nrates: stuff.nrates
     };
-    console.log(item);
+    
     if (localStorage.getItem("cart") != null) {
       var cartString = localStorage.getItem("cart");
       var cart = JSON.parse(cartString);
-      //console.log(cart[stuff.itemNo].quantityInCart)
+
       if (cart[stuff.itemNo]) {
         item.quantityInCart = cart[stuff.itemNo].quantityInCart + 1;
       } else {
@@ -73,7 +72,6 @@ class SearchResult extends Component {
   }
 
   render() {
-    console.log(this.state.itemResults);
     return this.state.itemResults.length > 0 ? (
       <div
         className="container-fluid"

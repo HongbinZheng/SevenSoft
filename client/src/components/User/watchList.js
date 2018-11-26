@@ -20,12 +20,10 @@ class WatchList extends Component {
             var username = this.Auth.getUserName()
            axios.get(`/api/getAllWatchList?username=${username}`)
                 .then(res=>{
-                    console.log(res.data);
                     const items = Object.values(res.data);
                     const onSaleItem = [];
                     const notOnSaleItem = [];
                     this.setState({item:res.data})
-                    console.log(this.state.item)
                     items.forEach(item=>{
                         item.discount < 1 ? 
                         onSaleItem.push(item) :
