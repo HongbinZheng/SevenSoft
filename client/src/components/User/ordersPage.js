@@ -79,6 +79,7 @@ class OrdersPage extends Component {
 
        axios.post('/api/updateRating',{ratingNumber,itemName,newAvgRates})
        .then(res=>console.log(res))
+       window.location.reload()
       })
 
      }

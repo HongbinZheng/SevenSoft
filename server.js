@@ -15,7 +15,7 @@ var nodemailer = require('nodemailer');
 var connect = mysql.createConnection({
     host: 'lancedb.cjgoraxv1j8k.us-west-1.rds.amazonaws.com',
     user: 'lanceypants',
-    password: '',
+    password: 'panceylants',
     port:'3303',
     database: 'minisafeway'
 });
@@ -30,12 +30,12 @@ global.db = connect;
 
 ////////////////Firebase config///////////////////////////////
 const config = {
-  apiKey: "",
-  authDomain: "",
-  databaseURL: "",
-  projectId: "",
-  storageBucket: "",
-  messagingSenderId: ""
+  apiKey: "AIzaSyCEK08XguV4CVa4balQ05DD-zj1L8I57QY",
+  authDomain: "minisafeway-ac266.firebaseapp.com",
+  databaseURL: "https://minisafeway-ac266.firebaseio.com",
+  projectId: "minisafeway-ac266",
+  storageBucket: "minisafeway-ac266.appspot.com",
+  messagingSenderId: "1031101506009"
 };
 
 firebase.initializeApp(config);

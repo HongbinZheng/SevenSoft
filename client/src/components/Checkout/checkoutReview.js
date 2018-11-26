@@ -125,7 +125,7 @@ class CheckoutReview extends Component {
         }else if(this.state.promocode === "XMAS18" && this.getTotalPrice(this.state.cartItems) < 20){
             this.setState({error:"You need to purchase at least $20 for using this promo code"})
         } else{
-                this.setState({promo:true,code:this.state.promocode})
+                this.setState({promo:true,code:this.state.promocode,error:null})
             }
       }
 
