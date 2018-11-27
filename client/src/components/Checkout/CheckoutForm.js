@@ -430,7 +430,7 @@ class CheckoutForm extends Component {
               }}
             >
               <button className="btn btn-primary" type="submit">
-                Checkout
+                PAY NOW
                 </button>
             </div>
           </div>
