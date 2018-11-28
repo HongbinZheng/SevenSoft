@@ -12,12 +12,14 @@ var nodemailer = require('nodemailer');
 // const urlencodeParser = bodyParser.urlencoded({extended:false})
  const jsonParser = bodyParser.json();
 ////////////////MYSql config//////////////////////////////////
+const config = require('./config');
+
 var connect = mysql.createConnection({
-    host: 'lancedb.cjgoraxv1j8k.us-west-1.rds.amazonaws.com',
-    user: 'lanceypants',
-    password: 'panceylants',
-    port:'3303',
-    database: 'minisafeway'
+  host: config.MySQL.host,
+  user: config.MySQL.user,
+  password: config.MySQL.password,
+  port:config.MySQL.port,
+  database: config.MySQL.database
 });
 connect.connect(function(err){
     if(!err) {
@@ -29,16 +31,9 @@ connect.connect(function(err){
 global.db = connect;
 
 ////////////////Firebase config///////////////////////////////
-const config = {
-  apiKey: "AIzaSyCEK08XguV4CVa4balQ05DD-zj1L8I57QY",
-  authDomain: "minisafeway-ac266.firebaseapp.com",
-  databaseURL: "https://minisafeway-ac266.firebaseio.com",
-  projectId: "minisafeway-ac266",
-  storageBucket: "minisafeway-ac266.appspot.com",
-  messagingSenderId: "1031101506009"
-};
+const firebaseConfig = config.firebase;
 
-firebase.initializeApp(config);
+firebase.initializeApp(firebaseConfig);
 const firebaseDB = firebase.database();
 
 /////////////////USE//////////////////////
@@ -368,14 +363,14 @@ html+='<div>You will receive your tracking number once your order is shipped</di
   var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'Sevenfreshsjsu@gmail.com',
-      pass: 'panceylants'
+      user: config.nodemailer.user,
+      pass: config.nodemailer.pass
     }
   });
   
   var mailOptions = {
 
-    from: 'Sevenfreshsjsu@gmail.com',
+    from: config.nodemailer.user,
     to: `${email}`,
     subject: '[Order Confirmation]Thank you for shopping with us',
     html: `${html}`

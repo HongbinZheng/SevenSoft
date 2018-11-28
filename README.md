@@ -1,47 +1,24 @@
-# command to run the project:
-npm run dev
+# SevenSoft:
+This is a project done in San Jose State University Cmpe 133 Fall 2018. The project is live in https://sevenfresh.herokuapp.com/ 
 
-type it under the root path "/node_simple_server"
-better dont change the root floder name, not sure it will work or not after you change it
+# Usage
+You can clone this repositories and run it locally with follow command: `npm run dev`
 
-server:
-npm init
-npm install bcrypt@1.0.3 body-parser concurrently cookie-parser --save
-npm install express jsonwebtoken--save
-client:
-npm install axios react-router-dom --save
-npm install http-proxy-middleware --save
+Before you run the project, you need to do `npm install` in root folder to install the dependencies alos run `npm install` under client folder to install dependencies for client side.
 
-# Install Instructions
-use: npm install
-to install all depencies in the package.json
+You need to provide your own API key for Stripe, Google Maps, EmailJS, firebase, and your own mySQL database
 
-# Change log
-10/18/2018 UPDATE
-install depencies
-npm install jsonwebtoken --save
-npm install jwt-decode --save
-create authserver.js
-modify login.js
-create item.js
-modify srever.js
+# Team
+[Quang "Lance" Ngo](https://github.com/lance-ngo)
 
-10/22/2018 update
-basic validation for login. able to display error message if user enter wrong password or didn't enter user name
+[Hongbin "Caffrey" Zheng](https://github.com/HongbinZheng)
 
-10/24/2018 update
-update basic look for aisle, and rating star
-new depencies: react-stars
+[Jinshan "Alex" Jiang](https://github.com/itjinshan)
 
-11/14/2018 update
-MAC users, if you cannot git pull due to the existance of .DS_Store file
-run the following command
+[Bryan Gallardo](https://github.com/bryg)
 
-rm .DS_Store
-git add -A
-git commit -m "Added .gitignore file"
+[Kevin Prakasa](https://github.com/kevinprakasaa)
 
-then git pull
+Shahnawasz Soroya
 
-11/21/2018
-Updated email reciept, need to get a new email in the youremail@gmail.com and password there
+Heng "Harry" Quan

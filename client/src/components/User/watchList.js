@@ -13,6 +13,7 @@ class WatchList extends Component {
             notOnSale:[]
         }
         this.Auth = new Authserver()
+        this.handleAddtoCart = this.handleAddtoCart.bind(this)
     }
 
     componentWillMount(){
@@ -32,6 +33,37 @@ class WatchList extends Component {
                     this.setState({onSale:onSaleItem,notOnSale:notOnSaleItem})
                 })
         }
+    }
+
+    handleAddtoCart(stuff){
+        var quantityInCart = this.state.quantityInCart
+        var item = {
+            itemid: stuff.itemid,
+            name: stuff.name,
+            price: stuff.price,
+            discount: stuff.discount,
+            avgStars:stuff.avgstars,
+            nrates:stuff.nrates
+         }
+         if(localStorage.getItem('cart') !== null) {
+           var cartString = localStorage.getItem('cart')
+           var cart = JSON.parse(cartString)
+           if(cart[stuff.itemid]){
+             item.quantityInCart = cart[stuff.itemid].quantityInCart +1
+         }else{
+            // quantityInCart += 1
+             item.quantityInCart = 1;
+         }    
+           cart[stuff.itemid] = item
+           localStorage.setItem('cart', JSON.stringify(cart))
+           this.setState({quantityInCart: quantityInCart})
+            } else {
+           var cart = {}
+           item.quantityInCart = ++quantityInCart
+           cart[stuff.itemid] = item
+           localStorage.setItem('cart', JSON.stringify(cart))
+           this.setState({quantityInCart: quantityInCart})
+       }
     }
 
 
